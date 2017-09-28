@@ -2,12 +2,8 @@
 
 {% block content %}
 
-{% for book in books_for_cse %}
-
   <p>{{book.name}}</p>
-  <p>{{book.available_stock}}</p>
   <p>{{book.author}}</p>
-
-{% endfor %}
+  <p>{{book.branch}}</p>
 
 {% endblock %}

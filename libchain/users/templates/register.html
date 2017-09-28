@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <form action="/users/register/" method="post">
     {% csrf_token%}
 
@@ -30,3 +34,5 @@
 </div>
 
 </form>
+
+{% endblock %}

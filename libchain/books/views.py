@@ -19,9 +19,15 @@ def by_subject(request, sub):
     """This will show the books based on the subject"""
     pass
 
+
+
 def description(request, id):
     """This will show the book's description based on the id"""
-    pass
+    book = BookDescription.objects.get(id=id)
+    context = {"book": book}
+
+    return render(request, "bookdescription.html", context)
+
 
 
 def search(request):

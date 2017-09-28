@@ -1,9 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 {% if results %}
 
   {% for result in results %}
-    <p>{{result.name}}</p>
-    <p>{{result.author}}</p>
-    <p>{{result.branch}}</p>
+    <p><a href="/books/{{result.id}}">{{result.name}}</a></p>
   {% endfor %}
 
 {% else %}
@@ -11,3 +13,5 @@
   <p> No resutl found! </p>
 
 {% endif %}
+
+{% endblock %}
