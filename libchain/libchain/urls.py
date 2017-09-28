@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^', include('home.urls')),
     url(r'home/', include('home.urls')),
     url(r'^users/', include('users.urls')),
-    url(r'^books', include('books.urls')),
-    url(r'^transactions', include('transactions.urls')),
+    url(r'^books/', include('books.urls')),
+    url(r'^transactions/', include('transactions.urls')),
     url(r'^admin/', admin.site.urls),
 ]

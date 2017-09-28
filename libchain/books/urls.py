@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^subject/(?P<sub>[a-z]+)/$', views.by_subject, name="books_by_sub"),
 
     url(r'^(?P<id>[0-9]+)/$', views.description, name="books_description"),
+
+    url(r'^search/$', views.search, name="search"),
 ]
