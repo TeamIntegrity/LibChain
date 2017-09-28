@@ -17,8 +17,8 @@ class UserProfile(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    phone = models.BigIntegerField()
-    entity = models.CharField(choices=ENTITY, max_length=100)
+    phone = models.BigIntegerField(blank=True, null=True)
+    entity = models.CharField(choices=ENTITY, max_length=100, default='student')
 
 
 
@@ -45,9 +45,9 @@ class Student(models.Model):
 
     userprofile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     rollno = models.BigIntegerField()
-    branch = models.CharField(max_length=10, choices=BRANCH)
-    sem = models.CharField(max_length=1, choices=SEM)
-    libcard = models.IntegerField()
+    branch = models.CharField(max_length=10, choices=BRANCH, blank=True, null=True)
+    sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
+    libcard = models.IntegerField(blank=True, null=True)
 
 
 

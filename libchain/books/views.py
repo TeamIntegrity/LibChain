@@ -35,6 +35,8 @@ def search(request):
 
     if request.method == 'POST':
         query =  str(request.POST.get('param'))
+        if not query:
+            return render(request, "search.html")
         results = BookDescription.objects.filter(
             Q(name__icontains=query) | Q(branch__icontains=query) |
             Q(subject__icontains=query) | Q(author__icontains=query)

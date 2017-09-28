@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<center>
+	<h3>Name - {{user.first_name}} {{user.last_name}}</h3>
+  <h3>Roll Number - {{user.username}}</h3>
+  <h3>Email - {{user.email}}</h3>
+</center>
+
+{% if student %}
+<center>
+	<h3>Branch - {{student.branch}}</h3>
+	<h3>Semester - {{student.sem}}</h3>
+	<h3>Library Card Number - {{student.libcard}}</h3>
+	<h3>Phone - {{student.userprofile.phone}}</h3>
+</center>
+{% else %}
+
+
+
+{% endif %}
+<div>
+	<p><a class="btn btn-primary outline" href="/users/edit/">Edit Profile</a> </p>
+</div>
+</div>
+<div class="clearfix"> </div>
+</div>
+</div>
+
+{% endblock %}

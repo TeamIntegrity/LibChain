@@ -1,14 +1,22 @@
 <a href="/home/">Home</a>
 
-<a href="/transactions/all/">Records</a>
 
+{% if user.first_name %}
+<p><a href="/transactions/all/">Records</a></p>
+
+<p><a href="/users/profile/">Profile</a></p>
+
+<p><a href="/users/logout/">Logout</a></p>
+
+<p>Welcome {{user.first_name}}</p>
+
+{% else %}
 <p><a href="/users/register/">Register</a></p>
 
 <p>OR</p>
 
 <p><a href="/users/login/">Login</a></p>
-
-<p><a href="/users/logout/">Logout</a></p>
+{% endif %}
 
 <form action="/books/search/" method="post" class="search">
         {% csrf_token %}
