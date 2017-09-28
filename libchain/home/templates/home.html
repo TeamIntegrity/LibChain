@@ -1,0 +1,20 @@
+<form action="/home/search/" method="post" class="search">
+        {% csrf_token %}
+        <input type="text" name="param" class="searchTerm" style="font-size: 20px;"placeholder="Search">
+       <input type="submit" class="btn round raised" value="GO">
+    </form>
+
+
+{% for book in books_for_cse %}
+
+  <p>{{book.name}}</p>
+  <p>{{book.available_stock}}</p>
+  <p>{{book.author}}</p>
+
+{% endfor %}
+
+<p><a href="/users/register/">Register</a></p>
+
+<p>OR</p>
+
+<p><a href="/users/login/">Login</a></p>

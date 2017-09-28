@@ -1,0 +1,13 @@
+{% if results %}
+
+  {% for result in results %}
+    <p>{{result.name}}</p>
+    <p>{{result.author}}</p>
+    <p>{{result.branch}}</p>
+  {% endfor %}
+
+{% else %}
+
+  <p> No resutl found! </p>
+
+{% endif %}
