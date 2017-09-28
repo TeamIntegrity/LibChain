@@ -1,0 +1,32 @@
+<form action="/users/register/" method="post">
+    {% csrf_token%}
+
+<div class="group">
+    <label for="name" class="label">First Name</label>
+    <input id="user" type="text" class="input" name="first_name">
+    </div>
+    <div class="group">
+    <label for="user" class="label">Last Name</label>
+    <input id="user" type="text" class="input" name="last_name">
+    </div>
+    <div class="group">
+    <label for="email" class="label">Email</label>
+    <input id="pass" type="text" class="input" name="email">
+    </div>
+    <div class="group">
+    <label for="email" class="label">Roll Number</label>
+    <input id="pass" type="text" class="input" name="rollno">
+    </div>
+    <div class="group">
+    <label for="pass" class="label">Password</label>
+    <input id="pass" type="password" class="input" data-type="password" name="password1">
+    </div>
+    <div class="group">
+    <label for="pass" class="label">Repeat Password</label>
+    <input id="pass" type="password" class="input" data-type="password" name="password2">
+</div>
+<div class="group">
+			<input type="submit" class="button" value="Register">
+</div>
+
+</form>
