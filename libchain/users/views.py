@@ -76,7 +76,7 @@ def register(request):
 
             userprofile = UserProfile()
             userprofile.user = user_created
-            userprofile.name = user_created.first_name +" "+ user_created.last_name
+            #userprofile.name = user_created.first_name +" "+ user_created.last_name
             userprofile.save()
 
             userprofile = UserProfile.objects.get(user=user_created)
