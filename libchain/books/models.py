@@ -20,7 +20,7 @@ class BookDescription(models.Model):
 
 class BookDepartmentSubject(models.Model):
     """This will define the relationship among books, departments and subjects"""
-    book = models.ManyToManyField(BookDescription)
+    book = models.ForeignKey(BookDescription, default=1)
     department = models.ManyToManyField(Department)
     subject = models.ManyToManyField(Subject)
     semester = models.IntegerField()
