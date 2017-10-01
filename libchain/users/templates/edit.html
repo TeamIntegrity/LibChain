@@ -7,7 +7,27 @@
          {% csrf_token %}
          <div class="group">
          <label for="user" class="label">Branch</label>
-         <input id="user" type="text" class="input" name="branch" placeholder={{student.department_name.name}}>
+         <select class="input" name="branch">
+            <option value="" selected>
+               {{student.department_name.name}}
+            </option>
+            <option value="COMPUTER SCIENCE AND ENGINEERING">
+               COMPUTER SCIENCE AND ENGINEERING
+            </option>
+            <option value="ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING">
+               ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING
+            </option>
+            <option value="ELECTRICAL AND ELCETRONICS ENGINEERING">
+               ELECTRICAL AND ELCETRONICS ENGINEERING
+            </option>
+            <option value="MECHANICAL ENGINEERING">
+               MECHANICAL ENGINEERING
+            </option>
+            <option value="CIVIL ENGINEERING">
+               CIVIL ENGINEERING
+            </option>
+          </select>
+         <!--<input id="user" type="text" class="input" name="branch" placeholder={{student.department_name.name}}>-->
          </div>
          <div class="group">
          <label for="user" class="label">Semester</label>
