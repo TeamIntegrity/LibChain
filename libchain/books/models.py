@@ -12,6 +12,10 @@ class BookDescription(models.Model):
     initial_stock = models.IntegerField()
     available_stock = models.IntegerField()
 
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{}'.format(self.name)
+
 
 
 class BookDepartmentSubject(models.Model):
@@ -27,3 +31,7 @@ class Book(models.Model):
     """This class will hold the book details specific to one book"""
     details = models.ForeignKey(BookDescription, on_delete=models.CASCADE)
     book_number = models.IntegerField()
+
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{} {}'.format(self.book_number, self.details.name)

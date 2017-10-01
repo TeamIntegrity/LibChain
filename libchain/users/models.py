@@ -20,6 +20,10 @@ class UserProfile(models.Model):
     phone = models.BigIntegerField(blank=True, null=True)
     entity = models.CharField(choices=ENTITY, max_length=100, default='student')
 
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{} {}'.format(self.user.first_name, self.user.last_name)
+
 
 
 class Student(models.Model):
@@ -48,6 +52,11 @@ class Student(models.Model):
     branch = models.CharField(max_length=10, choices=BRANCH, blank=True, null=True)
     sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
     libcard = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{} {}'.format(self.userprofile.user.first_name,
+                                self.userprofile.user.last_name)
 
 
 

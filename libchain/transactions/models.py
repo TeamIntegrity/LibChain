@@ -16,3 +16,7 @@ class Transaction(models.Model):
     return_time = models.DateTimeField()
 
     hash = models.CharField(max_length=200)
+
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{} {}'.format(self.student.rollno, self.book.details.name)
