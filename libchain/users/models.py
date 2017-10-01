@@ -51,8 +51,8 @@ class Student(models.Model):
 
     userprofile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     rollno = models.BigIntegerField()
-    branch = models.CharField(max_length=200, choices=BRANCH, blank=True, null=True)
-    department_name = models.ForeignKey(Department, default=1)
+    #branch = models.CharField(max_length=200, choices=BRANCH, blank=True, null=True)
+    department_name = models.ForeignKey(Department, blank=True, null=True)
     sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
     libcard = models.IntegerField(blank=True, null=True)
 
