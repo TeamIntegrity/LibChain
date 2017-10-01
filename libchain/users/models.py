@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+from department.models import Department
+
 
 
 class UserProfile(models.Model):
@@ -30,11 +32,11 @@ class Student(models.Model):
     """This model class will hold the data specific to students only"""
 
     BRANCH = (
-        ('cse', 'COMPUTER SCIENCE AND ENGINEERING'),
-        ('et&t', 'ELECTRONICS AND TELECOMMUNICATIONS'),
-        ('eee', 'ELECTRICAL AND ELCETRONICS ENGINEERING'),
-        ('mech', 'MECHANICAL ENGINEERING'),
-        ('civil', 'CIVIL ENGINEERING'),
+        ('COMPUTER SCIENCE AND ENGINEERING', 'COMPUTER SCIENCE AND ENGINEERING'),
+        ('ELECTRONICS AND TELECOMMUNICATIONS', 'ELECTRONICS AND TELECOMMUNICATIONS'),
+        ('ELECTRICAL AND ELCETRONICS ENGINEERING', 'ELECTRICAL AND ELCETRONICS ENGINEERING'),
+        ('MECHANICAL ENGINEERING', 'MECHANICAL ENGINEERING'),
+        ('CIVIL ENGINEERING', 'CIVIL ENGINEERING'),
     )
     SEM = (
         ('1', '1st SEMESTER'),
@@ -49,7 +51,8 @@ class Student(models.Model):
 
     userprofile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     rollno = models.BigIntegerField()
-    branch = models.CharField(max_length=10, choices=BRANCH, blank=True, null=True)
+    branch = models.CharField(max_length=200, choices=BRANCH, blank=True, null=True)
+    department_name = models.ForeignKey(Department, default=1)
     sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
     libcard = models.IntegerField(blank=True, null=True)
 
