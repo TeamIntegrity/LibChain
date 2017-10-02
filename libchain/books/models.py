@@ -1,7 +1,7 @@
 from django.db import models
 
 # Importing models from department app
-from department.models import Department, Subject
+from department.models import Department, Subject, Semester
 
 
 class BookDescription(models.Model):
@@ -23,7 +23,7 @@ class BookDepartmentSubject(models.Model):
     book = models.ForeignKey(BookDescription, default=1)
     department = models.ManyToManyField(Department)
     subject = models.ManyToManyField(Subject)
-    semester = models.IntegerField()
+    semester = models.ManyToManyField(Semester)
 
 
 

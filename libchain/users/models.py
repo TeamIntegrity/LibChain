@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from department.models import Department
+from department.models import Department, Semester
 
 
 
@@ -53,7 +53,8 @@ class Student(models.Model):
     rollno = models.BigIntegerField()
     #branch = models.CharField(max_length=200, choices=BRANCH, blank=True, null=True)
     department_name = models.ForeignKey(Department, blank=True, null=True)
-    sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
+    #sem = models.CharField(max_length=1, choices=SEM, blank=True, null=True)
+    semester = models.ForeignKey(Semester, blank=True, null=True, default=None)
     libcard = models.IntegerField(blank=True, null=True)
 
     def __str__(self):

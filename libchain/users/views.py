@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from users.models import Student, UserProfile
 
-from department.models import Department
+from department.models import Department, Semester
 
 # Register, Login and Logout views
 from django.contrib.auth import authenticate
@@ -175,7 +175,7 @@ def edit(request):
         if branch:
             student.department_name = Department.objects.get(name=branch)
         if semester:
-            student.sem = semester
+            student.semester = Semester.objects.get(semester=semester)
         if libcard:
             student.libcard = libcard
         student.save()

@@ -8,6 +8,14 @@ class Department(models.Model):
         """To represent the objects name in the admin panel"""
         return '{}'.format(self.name)
 
+class Semester(models.Model):
+    """This will store the details about the semesters"""
+    semester = models.IntegerField()
+
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{}'.format(self.semester)
+
 
 
 class Subject(models.Model):
