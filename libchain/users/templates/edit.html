@@ -31,7 +31,36 @@
          </div>
          <div class="group">
          <label for="user" class="label">Semester</label>
-         <input id="user" type="text" class="input" name="semester" placeholder={{student.sem}}>
+         <select class="input" name="semester">
+            <option value="" selected>
+               {{student.semester.semester}}
+            </option>
+            <option value="1">
+               1st SEMESTER
+            </option>
+            <option value="2">
+               2nd SEMESTER
+            </option>
+            <option value="3">
+               3rd SEMESTER
+            </option>
+            <option value="4">
+               4th SEMESTER
+            </option>
+            <option value="5">
+               5th SEMESTER
+            </option>
+            <option value="6">
+               6th SEMESTER
+            </option>
+            <option value="7">
+               7th SEMESTER
+            </option>
+            <option value="8">
+               8th SEMESTER
+            </option>
+          </select>
+         <!--<input id="user" type="text" class="input" name="semester" placeholder={{student.semester.semester}}>-->
          </div>
          <div class="group">
          <label for="user" class="label">Library Card Number</label>

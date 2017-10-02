@@ -31,24 +31,6 @@ class UserProfile(models.Model):
 class Student(models.Model):
     """This model class will hold the data specific to students only"""
 
-    BRANCH = (
-        ('COMPUTER SCIENCE AND ENGINEERING', 'COMPUTER SCIENCE AND ENGINEERING'),
-        ('ELECTRONICS AND TELECOMMUNICATIONS', 'ELECTRONICS AND TELECOMMUNICATIONS'),
-        ('ELECTRICAL AND ELCETRONICS ENGINEERING', 'ELECTRICAL AND ELCETRONICS ENGINEERING'),
-        ('MECHANICAL ENGINEERING', 'MECHANICAL ENGINEERING'),
-        ('CIVIL ENGINEERING', 'CIVIL ENGINEERING'),
-    )
-    SEM = (
-        ('1', '1st SEMESTER'),
-        ('2', '2nd SEMESTER'),
-        ('3', '3rd SEMESTER'),
-        ('4', '4th SEMESTER'),
-        ('5', '5th SEMESTER'),
-        ('6', '6th SEMESTER'),
-        ('7', '7th SEMESTER'),
-        ('8', '8th SEMESTER'),
-    )
-
     userprofile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
     rollno = models.BigIntegerField()
     #branch = models.CharField(max_length=200, choices=BRANCH, blank=True, null=True)
