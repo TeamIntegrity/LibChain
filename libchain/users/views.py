@@ -139,7 +139,7 @@ def logout(request):
 
     # The user logs out
     auth_logout(request)
-    return redirect('/users/login/')
+    return redirect('/home/')
 
 
 

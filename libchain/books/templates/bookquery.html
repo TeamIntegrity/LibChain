@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for book in books_query %}
+<div>
+  <p>{{book.book.name}}</p>
+  <p>{{book.book.author}}</p>
+</div>
+{% endfor %}
+
+{% endblock %}

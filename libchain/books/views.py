@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 
 # Importing the BookDescription model
-from .models import BookDescription
+from .models import BookDescription, BookDepartmentSubject
+
+# Importing department models
+from department.models import Department, Semester, Subject
 
 # Importing search utility tool Q
 from django.db.models import Q
@@ -9,15 +12,38 @@ from django.db.models import Q
 
 def by_semester(request, sem):
     """This will show the books by semester"""
-    pass
+
+    semester = Semester.objects.get(semester=sem)
+    books_query = BookDepartmentSubject.objects.filter(semester=semester)
+
+    context = {'books_query': books_query}
+
+    return render(request, "bookquery.html", context)
+
+
 
 def by_branch(request, b):
     """This will show the books by branch name"""
-    pass
+
+    department = Department.objects.get(name=b)
+    books_query = BookDepartmentSubject.objects.filter(department=department)
+
+    context = {'books_query': books_query}
+
+    return render(request, "bookquery.html", context)
+
+
 
 def by_subject(request, sub):
     """This will show the books based on the subject"""
-    pass
+
+    subject = Subject.objects.filter(subject=sub)
+    books_query = BookDepartmentSubject.objects.filter(subject=subject)
+
+    context = {'books_query': books_query}
+
+    return render(request, 'bookquery.html', context)
+
 
 
 
@@ -38,8 +64,7 @@ def search(request):
         if not query:
             return render(request, "search.html")
         results = BookDescription.objects.filter(
-            Q(name__icontains=query) | Q(branch__icontains=query) |
-            Q(subject__icontains=query) | Q(author__icontains=query)
+            Q(name__icontains=query) | Q(author__icontains=query)
         )
         context={'results':results}
         return render(request, "search.html", context)
