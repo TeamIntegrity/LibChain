@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form action="/books/add/" method="post">
+    {% csrf_token%}
+
+    <p><label>Book Name</label>
+    <input type="text" name="book_name"></p>
+
+    <p><label>Book Author</label>
+    <input type="text" name="book_author"></p>
+
+    <p><label>Book Description</label>
+    <input type="text" name="book_description"></p>
+
+    <p><label>Choose the departments this book belongs to</label></p>
+    {% for department in departments %}
+    <p><input type="checkbox" name="department" value="{{department}}">{{department}}</p>
+    {% endfor %}
+
+    <p><label>Choose the subjects this book belongs to</label></p>
+    {% for subject in subjects %}
+    <p><input type="checkbox" name="subject" value="{{subject}}">{{subject}}</p>
+    {% endfor %}
+
+    <p><label>Choose the semesters this book belongs to</label></p>
+    {% for semester in semesters %}
+    <p><input type="checkbox" name="semester" value="{{semester}}">{{semester}}</p>
+    {% endfor %}
+
+    <input type="submit" class="button" value="Add">
+
+
+</form>
+
+
+{% endblock %}

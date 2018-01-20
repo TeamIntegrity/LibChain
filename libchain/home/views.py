@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 # Importing the book models
-from books.models import BookDescription, BookDepartmentSubject
+from books.models import BookDescription
 
 # Importing department models
 from department.models import Department
@@ -21,11 +21,11 @@ def home(request):
 
     # If user is logged in show the home page according to the user data
     if student != None:
-        books_for_cse = BookDepartmentSubject.objects.filter(department=student.department_name)
+        books_for_cse = BookDescription.objects.filter(department=student.department_name)
         context = {'books_for_cse': books_for_cse}
 
     else:
-        books_for_cse = BookDepartmentSubject.objects.all()
+        books_for_cse = BookDescription.objects.all()
         context = {'books_for_cse': books_for_cse}
 
     return render(request, 'home.html', context)

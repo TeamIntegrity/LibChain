@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^(?P<id>[0-9]+)/$', views.description, name="books_description"),
 
     url(r'^search/$', views.search, name="search"),
+
+    url(r'^add/$', views.add_books, name="add_books"),
 ]
