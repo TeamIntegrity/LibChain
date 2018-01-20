@@ -1,5 +1,13 @@
 from django.shortcuts import render, redirect
 
+import datetime
+
+# Importing students model
+from users.models import Student, Staff
+
+# Importing transaction models
+from transactions.models import Transaction
+
 # Importing the BookDescription model
 from .models import BookDescription, Book
 
@@ -125,3 +133,75 @@ def add_books(request):
     context = {"departments": departments, "semesters": semesters,
                 "subjects": subjects}
     return render(request, "add_books.html", context)
+
+
+
+def issue(request):
+    """ This method will allow admin to issue books to the student """
+
+    if request.method == "POST":
+        book_number = request.POST.get("book_number")
+        library_card_num = request.POST.get("library_card_num")
+
+        book = Book.objects.get(book_number=book_number)
+        student = Student.objects.get(libcard=library_card_num)
+        context = {"book": book, "student": student}
+        return render(request, "issue_confirm.html", context)
+
+    return render(request, "issue.html")
+
+
+
+def issue_confirm(request):
+    """ This method will show details about the book and student and confirm the issue """
+
+    if request.method == "POST":
+        book_number = request.POST.get("book_number")
+        libcard = request.POST.get("libcard")
+
+        book = Book.objects.get(book_number=book_number)
+        student = Student.objects.get(libcard=libcard)
+
+        staff = Staff.objects.get(userprofile__user=request.user)
+
+        Transaction.objects.create(staff=staff, student=student, book=book, issued=True, issue_time=datetime.datetime.now())
+
+        return redirect("/books/issue/")
+
+
+
+def return_book(request):
+    """ This method will allow admin to take books back from students """
+
+    if request.method == "POST":
+        book_number = request.POST.get("book_number")
+        library_card_num = request.POST.get("library_card_num")
+
+        book = Book.objects.get(book_number=book_number)
+        student = Student.objects.get(libcard=library_card_num)
+        tx_detail = Transaction.objects.get(book=book, student=student, issued=True, returned=False)
+        context = {"book": book, "student": student, "tx_detail": tx_detail}
+        return render(request, "return_confirm.html", context)
+
+    return render(request, "return.html")
+
+
+
+def return_confirm(request):
+    """ This method will show details about the book and student and confirm the return """
+
+    if request.method == "POST":
+        book_number = request.POST.get("book_number")
+        libcard = request.POST.get("libcard")
+
+        book = Book.objects.get(book_number=book_number)
+        student = Student.objects.get(libcard=libcard)
+
+        tx = Transaction.objects.get(student=student, book=book, issued=True, returned=False)
+
+        tx.returned = True
+        tx.return_time = datetime.datetime.now()
+
+        tx.save()
+
+        return redirect("/books/return/")

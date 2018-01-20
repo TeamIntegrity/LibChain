@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form action="/books/return/confirm/" method="post">
+    {% csrf_token%}
+
+    <p><label>Book Name</label>
+    <input type="text" name="book_name" value="{{book.details.name}}" placeholder="{{book.details.name}}"></p>
+
+    <p><label>Book Number</label>
+    <input type="text" name="book_number" value="{{book.book_number}}" placeholder="{{book.book_number}}"></p>
+
+    <p><label>Author</label>
+    <input type="text" name="book_author" value="{{book.details.author}}" placeholder="{{book.details.author}}"></p>
+
+
+    <p><label>Studnet Name</label>
+    <input type="text" name="student_name" value="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}" placeholder="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}"></p>
+
+    <p><label>Studnet Library Card Number</label>
+    <input type="text" name="libcard" value="{{student.libcard}}" placeholder="{{student.libcard}}"></p>
+
+    <p><label>Studnet Roll Number</label>
+    <input type="text" name="rollno" value="{{student.rollno}}" placeholder="{{student.rollno}}"></p>
+
+    <p><label>Branch</label>
+    <input type="text" name="branch" value="{{student.department_name}}" placeholder="{{student.department_name}}"></p>
+
+    <p><label>Semester</label>
+    <input type="text" name="semester" value="{{student.semester}}" placeholder="{{student.semester}}"></p>
+
+    <p><label>Issued On</label>
+    <input type="text" name="issued_date" value="{{tx_detail.issue_time}}" placeholder="{{tx_detail.issue_time}}"></p>
+
+
+    <input type="submit" class="button" value="Confirm">
+
+
+</form>
+
+
+{% endblock %}
