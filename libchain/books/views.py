@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Importing the BookDescription model
-from .models import BookDescription
+from .models import BookDescription, Book
 
 # Importing department models
 from department.models import Department, Semester, Subject
@@ -63,10 +63,18 @@ def search(request):
         query =  str(request.POST.get('param'))
         if not query:
             return render(request, "search.html")
-        results = BookDescription.objects.filter(
-            Q(name__icontains=query) | Q(author__icontains=query)
-        )
-        context={'results':results}
+
+        if query.isdecimal():
+            results = Book.objects.filter(
+                Q(book_number__icontains=query)
+            )
+            number = True
+        else:
+            results = BookDescription.objects.filter(
+                Q(name__icontains=query) | Q(author__icontains=query)
+            )
+            number = False
+        context={'results':results, 'number': number}
         return render(request, "search.html", context)
 
     return redirect("/home/")
@@ -81,12 +89,17 @@ def add_books(request):
         book_author = request.POST.get("book_author")
         book_description = request.POST.get("book_description")
 
+        book_number_init = int(request.POST.get("book_number_init"))
+        book_number_end = int(request.POST.get("book_number_end"))
+
+        initial_stock = (book_number_end - book_number_init)+1
+
         departments = request.POST.getlist("department")
         subjects = request.POST.getlist("subject")
         semesters = request.POST.getlist("semester")
 
         book = BookDescription.objects.create(name=book_name, author=book_author,
-                description=book_description, initial_stock=0, available_stock=0)
+                description=book_description, initial_stock=initial_stock, available_stock=initial_stock)
 
         for department in departments:
             dprt = Department.objects.get(name=department)
@@ -99,6 +112,9 @@ def add_books(request):
         for semester in semesters:
             sem = Semester.objects.get(semester=semester)
             book.semester.add(sem)
+
+        for i in range(book_number_init, book_number_end+1):
+            Book.objects.create(details=book, book_number=i)
 
         return redirect("/books/add/")
 
