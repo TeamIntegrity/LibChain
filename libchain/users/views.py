@@ -14,6 +14,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 
+# Importing from transactions app
+from transactions.models import Transaction
+
 
 
 def register(request):
@@ -206,8 +209,18 @@ def edit(request):
 
 
 
-def user_detail(request):
-    """This is the admin function which will show the details
-        about all the users
+def user_detail(request, libcard):
     """
-    pass
+    This will act as the link for the admins to find details about the student
+    """
+
+    base = get_base(request)
+
+    try:
+        student = Student.objects.get(libcard=libcard)
+    except:
+        return render(request, "error.html", {"message": "No user could be found with that card number", "base": base})
+
+    tx_details = student.transaction_set.all()
+    context = {"base": base, "student": student, "tx_details": tx_details}
+    return render(request, "user_detail.html", context)
