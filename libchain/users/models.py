@@ -18,7 +18,6 @@ class UserProfile(models.Model):
         ('staff', 'STAFF'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=100)
     phone = models.BigIntegerField(blank=True, null=True)
     entity = models.CharField(choices=ENTITY, max_length=100, default='student')
 

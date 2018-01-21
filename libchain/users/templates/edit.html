@@ -1,8 +1,9 @@
- {% extends 'base.html' %}
+ {% extends base %}
 
  {% block content %}
-<div>
 
+{% if profile == 'student' %}
+<div>
 			<form action="/users/edit/" method="post">
          {% csrf_token %}
          <div class="group">
@@ -76,4 +77,26 @@
 			</form>
 </div>
 
+{% elif profile == 'staff' %}
+<div>
+			<form action="/users/edit/" method="post">
+         {% csrf_token %}
+
+         <label for="user" class="label">Name</label>
+         <input id="user" type="text" class="input" name="name" placeholder={{staff.userprofile.user.first_name}}>
+
+         <label for="user" class="label">Phone</label>
+         <input id="user" type="text" class="input" name="phone" placeholder={{staff.userprofile.phone}}>
+
+         <label for="user" class="label">Email</label>
+         <input id="user" type="text" class="input" name="email" placeholder={{staff.userprofile.user.email}}>
+
+         <div class="group">
+              <input type="submit" class="button" value="Save">
+         </div>
+      </form>
+</div>
+
+
+{% endif %}
 {% endblock %}

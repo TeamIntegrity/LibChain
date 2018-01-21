@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from api.views import get_base
+
 from users.models import UserProfile, Student
 
 from transactions.models import Transaction
@@ -9,6 +11,7 @@ def transaction(request, type):
     """This will return the transaction detail table for
         specific users and can be filtered by the type
     """
+    base = get_base(request)
     if type == "all":
         userprofile = UserProfile.objects.get(user=request.user)
         try:
@@ -21,7 +24,7 @@ def transaction(request, type):
         else:
             return redirect("/")
 
-        context = {"tx_details": tx_details}
+        context = {"tx_details": tx_details, "base": base}
         return render(request, "tx_detail.html", context)
 
 

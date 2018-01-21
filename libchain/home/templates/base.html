@@ -1,12 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geek's Corner | The GEC e-Library</title>
+</head>
+
+<body>
 <a href="/home/">Home</a>
 
-<a href="/books/add/">Add Books</a>
-<a href="/books/issue/">Issue</a>
-<a href="/books/return/">Return</a>
+{% block nav %}
 
+{% endblock %}
+
+<form action="/books/search/" method="post" class="search">
+        {% csrf_token %}
+        <input type="text" name="param" class="searchTerm" style="font-size: 20px;"placeholder="Search">
+       <input type="submit" class="btn round raised" value="GO">
+</form>
 
 {% if user.first_name %}
-<p><a href="/transactions/all/">Records</a></p>
 
 <p><a href="/users/profile/">Profile</a></p>
 
@@ -22,12 +33,10 @@
 <p><a href="/users/login/">Login</a></p>
 {% endif %}
 
-<form action="/books/search/" method="post" class="search">
-        {% csrf_token %}
-        <input type="text" name="param" class="searchTerm" style="font-size: 20px;"placeholder="Search">
-       <input type="submit" class="btn round raised" value="GO">
-</form>
 
 {% block content %}
 
 {% endblock %}
+
+</body>
+</html>

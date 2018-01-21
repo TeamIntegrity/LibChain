@@ -17,14 +17,19 @@ from department.models import Department, Semester, Subject
 # Importing search utility tool Q
 from django.db.models import Q
 
+# Importing base template method from api
+from api.views import get_base
+
 
 def by_semester(request, sem):
     """This will show the books by semester"""
 
+    base = get_base(request)
+
     semester = Semester.objects.get(semester=sem)
     books_query = BookDescription.objects.filter(semester=semester)
 
-    context = {'books_query': books_query}
+    context = {'books_query': books_query, "base": base}
 
     return render(request, "bookquery.html", context)
 
@@ -36,7 +41,9 @@ def by_branch(request, b):
     department = Department.objects.get(name=b)
     books_query = BookDescription.objects.filter(department=department)
 
-    context = {'books_query': books_query}
+    base = get_base(request)
+
+    context = {'books_query': books_query, "base": base}
 
     return render(request, "bookquery.html", context)
 
@@ -48,7 +55,9 @@ def by_subject(request, sub):
     subject = Subject.objects.filter(subject=sub)
     books_query = BookDescription.objects.filter(subject=subject)
 
-    context = {'books_query': books_query}
+    base = get_base(request)
+
+    context = {'books_query': books_query, "base": base}
 
     return render(request, 'bookquery.html', context)
 
@@ -58,7 +67,8 @@ def by_subject(request, sub):
 def description(request, id):
     """This will show the book's description based on the id"""
     book = BookDescription.objects.get(id=id)
-    context = {"book": book}
+    base = get_base(request)
+    context = {"book": book, "base": base}
 
     return render(request, "bookdescription.html", context)
 
@@ -66,6 +76,7 @@ def description(request, id):
 
 def search(request):
     """This method will search the entire database for the suggested books"""
+    base = get_base(request)
 
     if request.method == 'POST':
         query =  str(request.POST.get('param'))
@@ -82,7 +93,7 @@ def search(request):
                 Q(name__icontains=query) | Q(author__icontains=query)
             )
             number = False
-        context={'results':results, 'number': number}
+        context={'results':results, 'number': number, "base": base}
         return render(request, "search.html", context)
 
     return redirect("/home/")
@@ -91,6 +102,7 @@ def search(request):
 
 def add_books(request):
     """ This method will let the admins add books to the database """
+    base = get_base(request)
 
     if request.method == "POST":
         book_name = request.POST.get("book_name")
@@ -131,13 +143,14 @@ def add_books(request):
     subjects = Subject.objects.all()
 
     context = {"departments": departments, "semesters": semesters,
-                "subjects": subjects}
+                "subjects": subjects, "base": base}
     return render(request, "add_books.html", context)
 
 
 
 def issue(request):
     """ This method will allow admin to issue books to the student """
+    base = get_base(request)
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -145,7 +158,7 @@ def issue(request):
 
         book = Book.objects.get(book_number=book_number)
         student = Student.objects.get(libcard=library_card_num)
-        context = {"book": book, "student": student}
+        context = {"book": book, "student": student, "base": base}
         return render(request, "issue_confirm.html", context)
 
     return render(request, "issue.html")
@@ -154,6 +167,7 @@ def issue(request):
 
 def issue_confirm(request):
     """ This method will show details about the book and student and confirm the issue """
+    base = get_base(request)
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -172,6 +186,7 @@ def issue_confirm(request):
 
 def return_book(request):
     """ This method will allow admin to take books back from students """
+    base = get_base(request)
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -180,7 +195,7 @@ def return_book(request):
         book = Book.objects.get(book_number=book_number)
         student = Student.objects.get(libcard=library_card_num)
         tx_detail = Transaction.objects.get(book=book, student=student, issued=True, returned=False)
-        context = {"book": book, "student": student, "tx_detail": tx_detail}
+        context = {"book": book, "student": student, "tx_detail": tx_detail, "base": base}
         return render(request, "return_confirm.html", context)
 
     return render(request, "return.html")
@@ -189,6 +204,7 @@ def return_book(request):
 
 def return_confirm(request):
     """ This method will show details about the book and student and confirm the return """
+    base = get_base(request)
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")

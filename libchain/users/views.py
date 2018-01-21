@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 
+from api.views import get_base
+
 # Importing Django's default User model class for users
 from django.contrib.auth.models import User
 
-from users.models import Student, UserProfile
+from users.models import Student, UserProfile, Staff
 
 from department.models import Department, Semester
 
@@ -16,6 +18,8 @@ from django.contrib.auth import logout as auth_logout
 
 def register(request):
     """This is the register function"""
+
+    base = get_base(request)
 
     # After use submits its credentials
     if request.method=='POST':
@@ -31,29 +35,29 @@ def register(request):
         # Checks for missing form fieds
         if not email:
             message = "Please provide a valid email"
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
         if not password1 or not password2:
             message = "Passwords do not match"
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
         if not first_name:
             message = "Please provide your name"
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
         if not last_name:
             last_name = ""
 
         if not rollno:
             message = "Please provide your roll number"
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
 
         # Checks for invalid form fields
         invalid = []
         if "@" not in email or "." not in email:
             message = "Please provide a valid email."
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
 
         # Check for duplicate email
@@ -64,7 +68,7 @@ def register(request):
 
         if already_user != None:
             message = "The roll number entered already has an account"
-            return render(request, "login_error.html", {"message":message})
+            return render(request, "login_error.html", {"message":message, "base": base})
 
 
 
@@ -95,18 +99,19 @@ def register(request):
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
-                return render(request, 'login_error.html', {"message": message})
+                return render(request, 'login_error.html', {"message": message, "base": base})
 
         else:
             message = "Passwords do not match"
-            return render(request, "login_error.html", {"message": message})
+            return render(request, "login_error.html", {"message": message, "base": base})
 
-    return render(request, "register.html")
+    return render(request, "register.html", {"base": base})
 
 
 
 def login(request):
     """This is the login function"""
+    base = get_base(request)
 
     # After the user enters the credentials
     if request.method=='POST':
@@ -122,15 +127,15 @@ def login(request):
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
-                return render(request, 'login_error.html', {"message": message})
+                return render(request, 'login_error.html', {"message": message, "base": base})
 
         else:
             message = """The user could not be found.
                         Kindly ensure the email and
                         password entered are correct."""
-            return render(request, 'login_error.html', {"message": message})
+            return render(request, 'login_error.html', {"message": message, "base": base})
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {"base": base})
 
 
 
@@ -146,10 +151,16 @@ def logout(request):
 def profile(request):
     """This function will show the user their profile details"""
     user = User.objects.get(id=request.user.id)
+    base = get_base(request)
 
     userprofile = UserProfile.objects.get(user=user)
-    student = Student.objects.get(userprofile=userprofile)
-    context = {"student": student}
+
+    if userprofile.entity == 'student':
+        student = Student.objects.get(userprofile=userprofile)
+        context = {"student": student, 'base': base, 'profile': 'student'}
+    elif userprofile.entity == 'staff':
+        staff = Staff.objects.get(userprofile=userprofile)
+        context = {"staff": staff, 'base': base, 'profile': 'staff'}
 
     return render(request, "profile.html", context)
 
@@ -157,32 +168,40 @@ def profile(request):
 
 def edit(request):
     """This function will let the user edit their details"""
+    base = get_base(request)
 
-    user = User.objects.get(id=request.user.id)
-    userprofile = UserProfile.objects.get(user=user)
-    student = Student.objects.get(userprofile=userprofile)
+    userprofile = UserProfile.objects.get(user=request.user)
 
     if request.method=="POST":
-        branch = request.POST.get('branch')
-        semester = request.POST.get('semester')
-        libcard = request.POST.get('libcard')
-        phone = request.POST.get('phone')
+        if userprofile.entity == 'student':
+            student = Student.objects.get(userprofile=userprofile)
+            branch = request.POST.get('branch')
+            semester = request.POST.get('semester')
+            libcard = request.POST.get('libcard')
+            phone = request.POST.get('phone')
 
-        if phone:
-            userprofile.phone = phone
-        userprofile.save()
+            if phone:
+                userprofile.phone = phone
+            userprofile.save()
 
-        if branch:
-            student.department_name = Department.objects.get(name=branch)
-        if semester:
-            student.semester = Semester.objects.get(semester=semester)
-        if libcard:
-            student.libcard = libcard
-        student.save()
+            if branch:
+                student.department_name = Department.objects.get(name=branch)
+            if semester:
+                student.semester = Semester.objects.get(semester=semester)
+            if libcard:
+                student.libcard = libcard
+            student.save()
+        else:
+            pass
 
         return redirect("/users/profile/")
 
-    context = {"student": student}
+    if userprofile.entity == 'student':
+        student = Student.objects.get(userprofile=userprofile)
+        context = {"student": student, "base": base, "profile": "student"}
+    elif userprofile.entity == 'staff':
+        staff = Staff.objects.get(userprofile=userprofile)
+        context = {"staff": staff, "base": base, "profile": "staff"}
     return render(request, "edit.html", context)
 
 
