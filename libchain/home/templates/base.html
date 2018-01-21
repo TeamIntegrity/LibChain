@@ -6,6 +6,9 @@
 
 <body>
 <a href="/home/">Home</a>
+<a href="/home/">Semester</a>
+<a href="/home/">Department</a>
+<a href="/home/">Subject</a>
 
 {% block nav %}
 
@@ -19,9 +22,7 @@
 
 {% if user.first_name %}
 
-<p><a href="/users/profile/">Profile</a></p>
 
-<p><a href="/users/logout/">Logout</a></p>
 
 <p>Welcome {{user.first_name}}</p>
 

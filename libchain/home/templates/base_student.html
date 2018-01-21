@@ -3,7 +3,9 @@
 {% block nav %}
 
 {% if request.user %}
-<p><a href="/transactions/all/">Records</a></p>
+<a href="/transactions/all/">Records</a>
+<a href="/users/profile/">Profile</a>
+<a href="/users/logout/">Logout</a>
 {% endif %}
 
 {% endblock %}

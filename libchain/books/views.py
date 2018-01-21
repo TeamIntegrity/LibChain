@@ -37,8 +37,9 @@ def by_semester(request, sem):
 
 def by_branch(request, b):
     """This will show the books by branch name"""
+    branch = ' '.join(b.split('-'))
 
-    department = Department.objects.get(name=b)
+    department = Department.objects.get(name=branch.upper())
     books_query = BookDescription.objects.filter(department=department)
 
     base = get_base(request)
@@ -51,8 +52,9 @@ def by_branch(request, b):
 
 def by_subject(request, sub):
     """This will show the books based on the subject"""
+    subj = ' '.join(sub.split('-'))
 
-    subject = Subject.objects.filter(subject=sub)
+    subject = Subject.objects.get(name=subj.upper())
     books_query = BookDescription.objects.filter(subject=subject)
 
     base = get_base(request)
@@ -161,7 +163,7 @@ def issue(request):
         context = {"book": book, "student": student, "base": base}
         return render(request, "issue_confirm.html", context)
 
-    return render(request, "issue.html")
+    return render(request, "issue.html", {"base": base})
 
 
 
@@ -198,7 +200,7 @@ def return_book(request):
         context = {"book": book, "student": student, "tx_detail": tx_detail, "base": base}
         return render(request, "return_confirm.html", context)
 
-    return render(request, "return.html")
+    return render(request, "return.html", {"base": base})
 
 
 
