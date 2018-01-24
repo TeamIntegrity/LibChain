@@ -53,15 +53,14 @@
           <li><a href="/books/semester/1/"><p>1st Semester</p></a></li>
           <li><a href="/books/semester/2/"><p>2nd Semester</p></a></li>
           <li><a href="/books/semester/3/"><p>3rd Semester</p></a></li>
-          <li><a href="/books/semester4/"><p>4th Semester</p></a></li>
+          <li><a href="/books/semester/4/"><p>4th Semester</p></a></li>
           <li><a href="/books/semester/5/"><p>5th Semester</p></a></li>
           <li><a href="/books/semester/6/"><p>6th Semester</p></a></li>
           <li><a href="/books/semester/7/"><p>7th Semester</p></a></li>
           <li><a href="/books/semester/8/"><p>8th Semester</p></a></li>
           </ul>
           </li>
-      <li><a href="#"><b>Department</b></a>
-       <div  id="drop">
+      <li><a href="#"><b>Department</b></b></a>
            <ul>
           <li><a href=""><p>Computer Science & Engineering</p></a></li>
           <li><a href=""><p>Civil Engineering</p></a></li>
@@ -72,14 +71,14 @@
            </li>
       <li><a href="#"><b>Subject</b></a></li>
 
-       <li><a href="/users/login/"><span class="glyphicon glyphicon-user"></span><b> Login</b></a></li>
+       <li><a href="/users/login/"><b> Login</b></a></li>
         <li><a href="/users/register/"><span ></span> <b>Register</b></a></li>
       </ul><ul>
       <div class="container">
       <form action="/books/search/" method="post" class="search"  class="nav navbar-nav navbar-right">
         {% csrf_token %}
           <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search..." name="seacrh" style="">
+          <input type="text" class="form-control" placeholder="Search..." name="param" style="">
          <div class="input-group-btn">
           <button class="btn btn-default" type="submit">
 

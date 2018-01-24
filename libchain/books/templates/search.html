@@ -5,14 +5,43 @@
 {% if results %}
 
   {% if number %}
-    {% for result in results %}
-      <p><a href="/books/{{result.details.id}}">{{result.details.name}}</a></p>
-    {% endfor %}
+  <div class="container" style="padding-top:200px;">
+    <div style="font-family:FontAwesome; font-size:17px;"><p><b>Search results...</b><i class="glyphicon glyphicon-chevron-right"></i></p></div>
+    <div class="row" style="padding-top:15px;">
+      {% for result in results %}
+      <div class="col-sm-3">
+        <div class="box"><a href="/books/{{result.details.id}}">
+           <div class="panel panel-warning">
+
+                 <img src="/static/image/os.jpeg" class="img-responsive" style="width:200px" alt="Image">
+
+                 <div class="panel-footer"></a><div class="link">{{result.details.name}}</div></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
+
 
   {% else %}
-    {% for result in results %}
-      <p><a href="/books/{{result.id}}">{{result.name}}</a></p>
-    {% endfor %}
+  <div class="container" style="padding-top:200px;">
+    <div style="font-family:FontAwesome; font-size:17px;"><p><b>Search results...</b><i class="glyphicon glyphicon-chevron-right"></i></p></div>
+    <div class="row" style="padding-top:15px;">
+      {% for result in results %}
+      <div class="col-sm-3">
+        <div class="box"><a href="/books/{{result.id}}">
+           <div class="panel panel-warning">
+
+                 <img src="/static/image/os.jpeg" class="img-responsive" style="width:200px" alt="Image">
+
+                 <div class="panel-footer"></a><div class="link">{{result.name}}</div></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+    </div>
   {% endif %}
 
 {% else %}
