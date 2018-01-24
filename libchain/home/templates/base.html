@@ -17,25 +17,27 @@
 
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" style="padding-top:5px;">
-<div class="container-fluid" style="background:#28d361;height: 80px;">
+<nav class="navbar navbar-default navbar-fixed-top" style="padding-top:5px;background:#28d361;">
+<div class="container-fluid">
 <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand " style = "margin-right:20px;color:white;"; href="#"><h3><b>Geek`s Corner</b></h3></a>
+      <a class="navbar-brand " style = "margin-right:20px;margin-bottom:20px;color:white;" href="#"><h3><b>Geek`s Corner</b></h3></a>
     </div>
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav">
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:20px;">
-          <button type="button" class="btn btn-default">Home</button></a>
+          <a href="/home/" style="color:white;margin-top:25px;">
+          <b>Home</b></a>
 	</li>
 	<li class="dropdown"> 
-          <a href="/home/" style="color:white;margin-top:20px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <button type="button" class="btn btn-default">Semester</button></a>
+          <a href="/home/" style="color:white;margin-top:25px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+           <b>Semester</b></a>
           
           <ul class="dropdown-menu">
             <li><a href="/books/semester/1/">Semester 1</a></li>
@@ -46,8 +48,8 @@
           </ul>
 	</li>
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:20px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <button type="button" class="btn btn-default">Department</button></a>
+          <a href="/home/" style="color:white;margin-top:25px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <b>Department</b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -59,8 +61,8 @@
           </ul>
 	</li>
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:20px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <button type="button" class="btn btn-default">Subject</button></a>
+          <a href="/home/" style="color:white;margin-top:25px; class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <b>Subject</b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Action</a></li>
             <li><a href="#">Another action</a></li>
@@ -78,9 +80,8 @@
 
 <form action="/books/search/" method="post" class="navbar-form navbar-left">
         {% csrf_token %}
-       <input type="text" name="param" class="form-control" style="width: 350px; border-left:0 solid transparent;
-       border-right:0 solid transparent;border-top:0 solid transparent;border-bottom: 2 solid ;margin-top:25px;
-       background:transparent;" placeholder="Search for books">
+       <input type="text" name="param" class="form-control" style="width: 300px;margin-top:25px;
+      " placeholder="Search for books">
        <input type="submit" class="btn btn-default" style="margin-top:25px;" value=" GO "><i class=></i>
 </form>
 
@@ -94,8 +95,9 @@
 {% else %}
 
 	<ul class="nav navbar-nav navbar-right">
-      <li><a href="/users/register/" style="color:white; margin-top:25px;""><span class="glyphicon glyphicon-user"></span> Register </a></li>
-      <li><a href="/users/login/" style="color:white; margin-top:25px;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+	
+      <li><a href="#" style="color:white; margin-top:25px;margin-right:20px;"><span class="glyphicon glyphicon-user"></span> Register </a></li>
+      <li><a href="#" style="color:white; margin-top:25px;margin-right:20px;"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
     </ul>
 </div>
 </div>
