@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends base %}
 
 {% block content %}
 
 {% for book in books_for_cse %}
 <div>
-  <p>{{book.book.name}}</p>
-  <p>{{book.book.author}}</p>
+  <p>{{book.name}}</p>
+  <p>{{book.author}}</p>
 </div>
 {% endfor %}
 

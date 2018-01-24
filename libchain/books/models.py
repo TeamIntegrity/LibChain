@@ -12,18 +12,13 @@ class BookDescription(models.Model):
     initial_stock = models.IntegerField()
     available_stock = models.IntegerField()
 
-    def __str__(self):
-        """To represent the objects name in the admin panel"""
-        return '{}'.format(self.name)
-
-
-
-class BookDepartmentSubject(models.Model):
-    """This will define the relationship among books, departments and subjects"""
-    book = models.ForeignKey(BookDescription, default=1)
     department = models.ManyToManyField(Department)
     subject = models.ManyToManyField(Subject)
     semester = models.ManyToManyField(Semester)
+
+    def __str__(self):
+        """To represent the objects name in the admin panel"""
+        return '{}'.format(self.name)
 
 
 

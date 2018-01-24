@@ -1,0 +1,22 @@
+{% extends base %}
+
+{% block content %}
+
+
+<form action="/books/return/" method="post">
+    {% csrf_token%}
+
+    <p><label>Book Number</label>
+    <input type="text" name="book_number"></p>
+
+    <p><label>Studnet Library Card Number</label>
+    <input type="text" name="library_card_num"></p>
+
+
+    <input type="submit" class="button" value="Go">
+
+
+</form>
+
+
+{% endblock %}

@@ -1,12 +1,19 @@
-{% extends 'base.html' %}
+{% extends base %}
 
 {% block content %}
 
 {% if results %}
 
-  {% for result in results %}
-    <p><a href="/books/{{result.id}}">{{result.name}}</a></p>
-  {% endfor %}
+  {% if number %}
+    {% for result in results %}
+      <p><a href="/books/{{result.details.id}}">{{result.details.name}}</a></p>
+    {% endfor %}
+
+  {% else %}
+    {% for result in results %}
+      <p><a href="/books/{{result.id}}">{{result.name}}</a></p>
+    {% endfor %}
+  {% endif %}
 
 {% else %}
 
