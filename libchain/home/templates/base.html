@@ -2,36 +2,109 @@
 <html>
 <head>
     <title>Geek's Corner | The GEC e-Library</title>
+    <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/static/css/style.css"/>
+ 	<link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ 			<script src="/static/js/jquery-2.0.3.js"></script>
+  			<script src="/static/js/bootstrap.min.js"></script>
+     <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+	  background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+  </style>
+
 </head>
 
 <body>
-<a href="/home/">Home</a>
-<a href="/home/">Semester</a>
-<a href="/home/">Department</a>
-<a href="/home/">Subject</a>
+<nav class="navbar navbar-default navbar-fixed-top role-navigation " style="background-color: rgb(35, 176, 133); padding: 10px; border-radius: 2px;">
+  <div class="container-fluid">
+
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      </div>
+      <div class="navbar-collapse collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+       <a class="navbar-brand" style="color: white;"href="/">Geek's Corner</a>
+    <li ><a href="/home/" class="glyphicon glyphicon-home"></a></li>
+
+    <li><a href="#"><b>Semester</b></b></a>
+        <ul>
+          <li><a href="/books/semester/1/"><p>1st Semester</p></a></li>
+          <li><a href="/books/semester/2/"><p>2nd Semester</p></a></li>
+          <li><a href="/books/semester/3/"><p>3rd Semester</p></a></li>
+          <li><a href="/books/semester4/"><p>4th Semester</p></a></li>
+          <li><a href="/books/semester/5/"><p>5th Semester</p></a></li>
+          <li><a href="/books/semester/6/"><p>6th Semester</p></a></li>
+          <li><a href="/books/semester/7/"><p>7th Semester</p></a></li>
+          <li><a href="/books/semester/8/"><p>8th Semester</p></a></li>
+          </ul>
+          </li>
+      <li><a href="#"><b>Department</b></a>
+       <div  id="drop">
+           <ul>
+          <li><a href=""><p>Computer Science & Engineering</p></a></li>
+          <li><a href=""><p>Civil Engineering</p></a></li>
+          <li><a href=""><p>Mechanical Engineering</p></a></li>
+          <li><a href=""><p>Electronics & Telecommunication</p></a></li>
+          <li><a href=""><p>Elecrical & Electronics Engineering</p></a></li>
+          </ul>
+           </li>
+      <li><a href="#"><b>Subject</b></a></li>
+
+       <li><a href="/users/login/"><span class="glyphicon glyphicon-user"></span><b> Login</b></a></li>
+        <li><a href="/users/register/"><span ></span> <b>Register</b></a></li>
+      </ul><ul>
+      <div class="container">
+      <form action="/books/search/" method="post" class="search"  class="nav navbar-nav navbar-right">
+        {% csrf_token %}
+          <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search..." name="seacrh" style="">
+         <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+
+          <i class="glyphicon glyphicon-search"></i> </button>
+          </div>
+      </div>
+      </form>
+    </div>
+</div>
+</nav>
+
+
+
 
 {% block nav %}
 
 {% endblock %}
 
-<form action="/books/search/" method="post" class="search">
-        {% csrf_token %}
-        <input type="text" name="param" class="searchTerm" style="font-size: 20px;"placeholder="Search">
-       <input type="submit" class="btn round raised" value="GO">
-</form>
+
 
 {% if user.first_name %}
-
-
 
 <p>Welcome {{user.first_name}}</p>
 
 {% else %}
-<p><a href="/users/register/">Register</a></p>
-
-<p>OR</p>
-
-<p><a href="/users/login/">Login</a></p>
 {% endif %}
 
 

@@ -2,11 +2,60 @@
 
 {% block content %}
 
-{% for book in books_for_cse %}
-<div>
-  <p>{{book.name}}</p>
-  <p>{{book.author}}</p>
-</div>
-{% endfor %}
+
+
+<div class="container" style="padding-top:200px;">
+  <div style="font-family:FontAwesome; font-size:17px;"><p><b>Computer Science & Engineering</b><i class="glyphicon glyphicon-chevron-right"></i></p></div>
+  <div class="row" style="padding-top:15px;">
+    {% for book in books_for_cse %}
+    <div class="col-sm-3">
+      <div class="box"><a href="">
+         <div class="panel panel-warning">
+
+               <img src="/static/image/os.jpeg" class="img-responsive" style="width:200px" alt="Image">
+
+               <div class="panel-footer"></a><div class="link"><p>{{book.name}}<br>{{book.author}} {% if not forloop.last %}  {% endif %}</p></div></div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+
+    <br><div style="font-family:FontAwesome; font-size:17px;"><p><b>Civil Engineering</b><i class="glyphicon glyphicon-chevron-right"></i></p></div>
+    <div class="row" style="padding-top:15px;">
+      {% for book in books_for_civil %}
+      <div class="col-sm-3">
+        <div class="box"><a href="">
+           <div class="panel panel-warning">
+
+                 <img src="/static/image/os.jpeg" class="img-responsive" style="width:200px" alt="Image">
+
+                 <div class="panel-footer"></a><div class="link"><p>{{book.name}}<br>{{book.author}} {% if not forloop.last %}  {% endif %}</p></div></div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+
+      <br><div style="font-family:FontAwesome; font-size:17px;"><p><b>Mechanical Engineering</b><i class="glyphicon glyphicon-chevron-right"></i></p></div>
+      <div class="row" style="padding-top:15px;">
+        {% for book in books_for_mech %}
+        <div class="col-sm-3">
+          <div class="box"><a href="">
+             <div class="panel panel-warning">
+
+                   <img src="/static/image/os.jpeg" class="img-responsive" style="width:200px" alt="Image">
+
+                   <div class="panel-footer"></a><div class="link"><p>{{book.name}}<br>{{book.author}} {% if not forloop.last %}  {% endif %}</p></div></div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+
+
+  </div>
+
+
 
 {% endblock %}
