@@ -1,0 +1,103 @@
+
+
+*{
+
+	margin: 0px;
+	padding: 0px;
+}
+
+.box { width: 230px; background:  no-repeat; border-radius:3px; } 
+.box:hover { -moz-box-shadow: 0 0 10px #ccc; -webkit-box-shadow: 0 0 10px #ccc; box-shadow: 0 0 10px; }
+
+.link p 
+{
+	cursor:pointer;
+	color: #000000;
+}
+.fl_right button{
+
+float: right;
+padding:2px 8px;
+margin-top: 15px;
+margin-right: 16px;
+background:#ddd;
+border:none;
+cursor:pointer;
+border-radius:8px;
+font-size:20px;
+
+}
+
+.container {
+margin-top:15px;
+}
+.glyphicon-search{
+	font-size: 16px;
+}
+.btn-default{
+	background:orange;
+	width: 50px;
+	padding:0px;
+}
+.from-control{
+	width: 50%;
+	font-size: 0px;
+}
+#input-group input{
+
+	font-size: 10px;
+	font-family: times;
+}
+#myNavbar ul li
+{
+
+	font-size:16px;
+	font-family:FontAwesome;
+	position: relative;
+	text-align: center;
+	height: 42px; 
+	line-height: 40px;
+	display: block;
+	width: 150px;
+	border:0px solid white;
+}
+#drop ul li{
+
+	height: 
+}
+#myNavbar ul li a
+{
+	text-decoration:none;
+
+	color: #ffffff;
+	display: block;
+}
+#myNavbar  ul{
+
+	list-style: none;
+	
+}
+#myNavbar li
+{
+
+	background-color: #1C2331;
+}
+#myNavbar ul ul{
+
+	position: absolute;
+	display: none;
+}
+#myNavbar ul li:hover> ul
+{
+	display: block;
+
+}
+#myNavbar ul li a:hover{
+
+	border-radius: 6px;
+
+}
+#myNavbar ul li ul li a:hover> p
+{
+	color:red;
+}
