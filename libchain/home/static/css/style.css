@@ -6,10 +6,10 @@
 	padding: 0px;
 }
 
-.box { width: 230px; background:  no-repeat; border-radius:3px; } 
+.box { width: 230px; background:  no-repeat; border-radius:3px; }
 .box:hover { -moz-box-shadow: 0 0 10px #ccc; -webkit-box-shadow: 0 0 10px #ccc; box-shadow: 0 0 10px; }
 
-.link p 
+.link p
 {
 	cursor:pointer;
 	color: #000000;
@@ -55,7 +55,7 @@ margin-top:15px;
 	font-family:FontAwesome;
 	position: relative;
 	text-align: center;
-	height: 42px; 
+	height: 42px;
 	line-height: 40px;
 	display: block;
 	width: 150px;
@@ -63,7 +63,7 @@ margin-top:15px;
 }
 #drop ul li{
 
-	height: 
+	height:
 }
 #myNavbar ul li a
 {
@@ -75,12 +75,12 @@ margin-top:15px;
 #myNavbar  ul{
 
 	list-style: none;
-	
+
 }
 #myNavbar li
 {
 
-	background-color: #1C2331;
+	background-color:  rgb(35, 176, 133);
 }
 #myNavbar ul ul{
 

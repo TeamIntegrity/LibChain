@@ -29,7 +29,7 @@ def by_semester(request, sem):
     semester = Semester.objects.get(semester=sem)
     books_query = BookDescription.objects.filter(semester=semester)
 
-    context = {'books_query': books_query, "base": base}
+    context = {'books_query': books_query, "base": base, "sem": sem}
 
     return render(request, "bookquery.html", context)
 
