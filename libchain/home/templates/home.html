@@ -8,82 +8,28 @@
 <br>
 <br>
 <br>
-{% for book in books_for_cse %}
+
 <div class="container">
 	<div class="row">
 	<center>
 		<div class='list-group gallery'>
+			{% for book in books_for_cse %}
             <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
                 <a class="thumbnail fancybox" rel="ligthbox" href="">
                     <img class="img-responsive" alt="" src="http://placehold.it/320x320">
                     <div class='text-center'>
                         <small class='text'>
                          {{book.name}}<br>
-  						 {{book.author}}
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
                         </small>
                     </div> <!-- text-right / end -->
                 </a>
             </div>
-            <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320">
-                    <div class='text-center'>
-                        <small class='text'>
-                         {{book.name}}<br>
-  						 {{book.author}}
-                        </small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div>
-            <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320">
-                    <div class='text-center'>
-                        <small class='text'>
-                         {{book.name}}<br>
-  						 {{book.author}}
-                        </small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div>
-                        <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320">
-                    <div class='text-center'>
-                        <small class='text'>
-                         {{book.name}}<br>
-  						 {{book.author}}
-                        </small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div>
-                        <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320">
-                    <div class='text-center'>
-                        <small class='text'>
-                         {{book.name}}<br>
-  						 {{book.author}}
-                        </small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div>
-                        <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="http://placehold.it/320x320">
-                    <div class='text-center'>
-                        <small class='text'>
-                         {{book.name}}<br>
-  						 {{book.author}}
-                        </small>
-                    </div> <!-- text-right / end -->
-                </a>
-            </div>
+						{% endfor %}
         </div>
      </center>
     </div>
 </div>
 
-{% endfor %}
 
 {% endblock %}
