@@ -29,7 +29,9 @@ def home(request):
         context = {'books_for_cse': books_for_cse, "base": base}
 
     else:
-        books_for_cse = BookDescription.objects.all()
-        context = {'books_for_cse': books_for_cse, "base": base}
+        books_for_cse = BookDescription.objects.filter(department__name = "COMPUTER SCIENCE AND ENGINEERING")[:4]
+        books_for_civil = BookDescription.objects.filter(department__name = "CIVIL ENGINEERING")[:4]
+        books_for_mech = BookDescription.objects.filter(department__name = "MECHANICAL ENGINEERING")[:4]
+        context = {'books_for_cse': books_for_cse, "books_for_civil": books_for_civil, "books_for_mech": books_for_mech, "base": base}
 
     return render(request, 'home.html', context)
