@@ -3512,30 +3512,24 @@ tbody.collapse.in {
 .dropdown {
   position: relative;
 }
-.dropdown-toggle:focus {
-  outline: 0;
-}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
   left: 0;
-  z-index: 1000;
+  z-index:1000px;
   display: none;
   float: left;
-  min-width: 160px;
-  padding: 5px 0;
+  min-width:150px;
+
   margin: 2px 0 0;
-  font-size: 140px;
-  text-align: left;
+  font-size: 20px;
+  text-align: center;
   list-style: none;
-  background-color: #1C2331;
-  -webkit-background-clip: padding-box;
-          background-clip: padding-box;
   
-  border-radius: 4px;
-  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  
 }
+
 .dropdown-menu.pull-right {
   right: 0;
   left: auto;
@@ -3546,42 +3540,28 @@ tbody.collapse.in {
   overflow: hidden;
   background-color: #e5e5e5;
 }
-.dropdown-menu > li > a {
-  display: block;
+
+
+}
+.dropdown-menu >  li > a {
+  display: none;
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
-  color: #fff;
   white-space: nowrap;
+ 
+  
 }
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  color: #262626;
-  text-decoration: none;
-  background-color: #f5f5f5;
+
+.dropdown-menu >  li > a p:hover{
+
+text-decoration: none;
+  color: red;
+  display: block;
 }
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  color: #fff;
-  text-decoration: none;
-  background-color: #337ab7;
-  outline: 0;
-}
-.dropdown-menu > .disabled > a,
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  color: #777;
-}
-.dropdown-menu > .disabled > a:hover,
-.dropdown-menu > .disabled > a:focus {
-  text-decoration: none;
-  cursor: not-allowed;
-  background-color: transparent;
-  background-image: none;
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
+
+
 .open > .dropdown-menu {
   display: block;
 }
@@ -3596,6 +3576,7 @@ tbody.collapse.in {
   right: auto;
   left: 0;
 }
+
 .dropdown-header {
   display: block;
   padding: 3px 20px;
@@ -4176,9 +4157,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
 }
-.navbar-collapse {
-  padding-right: 15px;
-  padding-left: 15px;
+
+.navbar-collapse  {
+text-decoration: none;
+  padding-right:150px;
+  padding-left:250px;
   overflow-x: visible;
   -webkit-overflow-scrolling: touch;
   border-top: 1px solid transparent;

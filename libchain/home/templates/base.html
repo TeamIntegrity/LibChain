@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
  			<script src="/static/js/jquery-2.0.3.js"></script>
   			<script src="/static/js/bootstrap.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
@@ -23,34 +24,56 @@
     }
 
     /* Add a gray background color and some padding to the footer */
-    footer {
-	  background-color: #f2f2f2;
-      padding: 25px;
-    }
+* {
+    box-sizing: border-box;
+}
 
-  </style>
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; 
+
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+} 
+ .footer {margin-left: 50px; margin-top:30px;width: 200px; height:80px; border: 2px solid #fff; padding: 10px; }
+ .footer1 {margin-left: 50px; margin-top:30px;width: 200px; height:80px; } 
+ </style>
 
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top role-navigation " style="background-color: rgb(35, 176, 133); padding: 10px; border-radius: 2px;">
-  <div class="container-fluid">
-
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
-      </div>
-      <div class="navbar-collapse collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-       <a class="navbar-brand" style="color: white;"href="/">Geek's Corner</a>
-    <li ><a href="/home/" class="glyphicon glyphicon-home"></a></li>
-
-    <li><a href="#"><b>Semester</b></b></a>
-        <ul>
-          <li><a href="/books/semester/1/"><p>1st Semester</p></a></li>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #00C851;" >
+<div class="container">
+<div class="navbar-header">
+ <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+ <span class="sr-only">toggle</span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ <span class="icon-bar"></span>
+ </button>
+ <a href="#" style="color:#1a237e; font-family:arial; font-size:25px; text-decoration: none; float: left;"><b>Geek's Corner</b></a>
+</div>
+<div class="navbar-collapse collapse">
+<ul class="nav navbar-nav navbar-left">
+      <li ><a href="/home/" class="glyphicon glyphicon-home" style="color:#1a237e;"></a></li>
+      <li class="dropdown">
+      <li><a href="#" style="color:#1a237e;" class="dropdown-toggle" data-toggle="dropdown"><b>Semester</b><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="/books/semester/1/"><p>1st Semester</p></a></li>
           <li><a href="/books/semester/2/"><p>2nd Semester</p></a></li>
           <li><a href="/books/semester/3/"><p>3rd Semester</p></a></li>
           <li><a href="/books/semester4/"><p>4th Semester</p></a></li>
@@ -59,41 +82,35 @@
           <li><a href="/books/semester/7/"><p>7th Semester</p></a></li>
           <li><a href="/books/semester/8/"><p>8th Semester</p></a></li>
           </ul>
-          </li>
-      <li><a href="#"><b>Department</b></a>
-       <div  id="drop">
-           <ul>
-          <li><a href=""><p>Computer Science & Engineering</p></a></li>
+        
+
+
+      </li>
+      <li><a href="#" style="color:#1a237e;" class="dropdown-toggle" data-toggle="dropdown"><b>Department<b class="caret"></b></b></a>
+      <ul class="dropdown-menu">
+ <li><a href=""><p>Computer Science & Engineering</p></a></li>
           <li><a href=""><p>Civil Engineering</p></a></li>
           <li><a href=""><p>Mechanical Engineering</p></a></li>
           <li><a href=""><p>Electronics & Telecommunication</p></a></li>
           <li><a href=""><p>Elecrical & Electronics Engineering</p></a></li>
           </ul>
-           </li>
-      <li><a href="#"><b>Subject</b></a></li>
-
-       <li><a href="/users/login/"><span class="glyphicon glyphicon-user"></span><b> Login</b></a></li>
-        <li><a href="/users/register/"><span ></span> <b>Register</b></a></li>
-      </ul><ul>
-      <div class="container">
-      <form action="/books/search/" method="post" class="search"  class="nav navbar-nav navbar-right">
+           </li></li>
+      <li><a href="#" style="color:#1a237e;"><b>Subject</b></a></li>
+      <li><div class="fl_right">
+    <form action="/books/search/" method="post" class="search"  class="clear" ">
         {% csrf_token %}
-          <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search..." name="seacrh" style="">
-         <div class="input-group-btn">
-          <button class="btn btn-default" type="submit">
-
-          <i class="glyphicon glyphicon-search"></i> </button>
-          </div>
-      </div>
+          <input type="text" value="" placeholder="Search Here" style="width: 350px; height:35px;margin-top: 10px;">
+          <button class="fa fa-search" type="submit" title="Search"><em>  <i class="glyphicon glyphicon-search"></i></em></button>
+        
       </form>
-    </div>
+          </div></li>
+           <li><a href="/users/login/"><span class="glyphicon glyphicon-user" style="color:#1a237e;"></span><b style="color:#1a237e;"> Login</b></a></li>
+        <li><a href="/users/register/" "><span ></span> <b style="color:#1a237e;">Register</b></a></li>
+</ul>
+</div>  
 </div>
-</nav>
-
-
-
-
+</div>
+<br>
 {% block nav %}
 
 {% endblock %}
@@ -106,11 +123,37 @@
 
 {% else %}
 {% endif %}
-
-
 {% block content %}
 
 {% endblock %}
+<footer class="page-footer blue center-on-small-only">
+
+    
+    <div class="row">
+  <div class="column" style="background-color:#263238;">
+    <div class="footer" style="color:red;">###</div>
+  
+  </div>
+  <div class="column" style="background-color:#263238;">
+     <div class="footer1"><h3>links</h3>
+   <ul>
+   <li><a href="#">about</a></li>
+   <li><a href="#">about</a></li>
+   <li><a href="#">about</a></li>
+   <li><a href="#">about</a></li>
+     
+
+   </ul></div>
+
+  </div>
+  <div class="column" style="background-color:#263238;">
+    
+   
+  </div>
+</div>
+
+</footer>
+
 
 </body>
 </html>

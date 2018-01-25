@@ -17,8 +17,9 @@
 .fl_right button{
 
 float: right;
+position: relative;
 padding:2px 8px;
-margin-top: 15px;
+margin-top: 10px;
 margin-right: 16px;
 background:#ddd;
 border:none;
@@ -48,56 +49,23 @@ margin-top:15px;
 	font-size: 10px;
 	font-family: times;
 }
-#myNavbar ul li
-{
+/*navbar----------------*/
+.navbar-collapse ul li{
 
-	font-size:16px;
+	background-color: #00C851;
+	font-size:14px;
+	display: block;
 	font-family:FontAwesome;
 	position: relative;
-	text-align: center;
-	height: 42px;
-	line-height: 40px;
-	display: block;
-	width: 150px;
-	border:0px solid white;
-}
-#drop ul li{
-
-	height:
-}
-#myNavbar ul li a
-{
-	text-decoration:none;
-
-	color: #ffffff;
-	display: block;
-}
-#myNavbar  ul{
-
-	list-style: none;
 
 }
-#myNavbar li
-{
+.navbar-collapse ul li a:hover{
 
-	background-color:  rgb(35, 176, 133);
+	background-color: #00C851;
+	 
 }
-#myNavbar ul ul{
+.dropdown-toggle ul li a:hover>{
+	background-color: red;
 
-	position: absolute;
-	display: none;
-}
-#myNavbar ul li:hover> ul
-{
-	display: block;
 
-}
-#myNavbar ul li a:hover{
-
-	border-radius: 6px;
-
-}
-#myNavbar ul li ul li a:hover> p
-{
-	color:red;
 }
