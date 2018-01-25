@@ -4,24 +4,30 @@
 
 <section>
 <!--for demo wrap-->
-<h1>Transactions</h1>
-<div>
-  <table cellpadding="0" cellspacing="0" border="0">
-    <thead>
-      <tr>
-        <th>Book Number</th>
-        <th>Book Name</th>
-        <th>Issued On</th>
-        <th>Issue Tx Hash</th>
-        <th>Returned On</th>
-        <th>Return Tx Hash</th>
-      </tr>
-    </thead>
-  </table>
-</div>
-<div>
-  <table cellpadding="0" cellspacing="0" border="0">
-    <tbody>
+<div class="container">
+<div class="table-responsive">          
+
+<table class="table" border=1 width=100% bordercolor=black style="border-collapse:collapse; margin-top:130px;">
+<tr>
+<th bgcolor=#000055><h4 style="color:white";><center>TRANSACTIONS</center></h4> 
+<tr>
+<tr>
+<td>
+<table  class="table table-bordered" style="border:1px;width:90%; margin-left:40px;">
+<tr>
+
+
+<th>BookNumber</th>
+<th>BookName</th>
+<th>IssuedOn</th>
+<th>IssueTxHash</th>
+<th>ReturnedOn</th>
+<th>ReturnTxHash</th>
+</tr>
+</td>
+</tr>
+</td>
+</tr>
       {% for tx in tx_details %}
       <tr>
         <td> {{ tx.book.book_number }} </td>
@@ -32,9 +38,9 @@
         <td> {{ tx.return_hash }} </td>
       </tr>
       {% endfor %}
-      </tbody>
   </table>
-</div>
+  </div>
+  </div>
 </section>
 
 
