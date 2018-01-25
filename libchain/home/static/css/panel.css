@@ -1,3 +1,12 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon/icomoon.eot?srf3rx");
+  src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .gallery
 {
     display: inline-block;
@@ -17,8 +26,17 @@
     opacity: 0;
 }
 
+ul li {
+  font-size: 20px;
+  font-family: Arial;
+}
+
+ul li ul li {
+  font-size: 12px;
+}
+
 .dropdown:hover .dropdown-menu {
-    max-height: 200px;
+    max-height: 300px;
     opacity: 1;
 }
 

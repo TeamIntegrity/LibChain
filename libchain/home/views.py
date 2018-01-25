@@ -7,7 +7,7 @@ from api.views import get_base
 from books.models import BookDescription
 
 # Importing department models
-from department.models import Department
+from department.models import Department, Semester, Subject
 
 # Importing user models
 from users.models import Student, UserProfile
@@ -17,21 +17,16 @@ def home(request):
 
     base = get_base(request)
 
-    # Check to see if the user is logged in
-    try:
-        student = Student.objects.get(userprofile=UserProfile.objects.get(user=request.user))
-    except:
-        student = None
+    books_for_cse = BookDescription.objects.filter(department__name = "COMPUTER SCIENCE AND ENGINEERING")[:5]
+    books_for_civil = BookDescription.objects.filter(department__name = "CIVIL ENGINEERING")[:5]
+    books_for_mech = BookDescription.objects.filter(department__name = "MECHANICAL ENGINEERING")[:5]
 
-    # If user is logged in show the home page according to the user data
-    if student != None:
-        books_for_cse = BookDescription.objects.filter(department=student.department_name)
-        context = {'books_for_cse': books_for_cse, "base": base}
-
-    else:
-        books_for_cse = BookDescription.objects.filter(department__name = "COMPUTER SCIENCE AND ENGINEERING")[:5]
-        books_for_civil = BookDescription.objects.filter(department__name = "CIVIL ENGINEERING")[:5]
-        books_for_mech = BookDescription.objects.filter(department__name = "MECHANICAL ENGINEERING")[:5]
-        context = {'books_for_cse': books_for_cse, 'books_for_civil': books_for_civil, 'books_for_mech': books_for_mech, "base": base}
+    semesters = Semester.objects.all()
+    departments = Department.objects.all()[:5]
+    subjects = Subject.objects.all()
+    
+    context = {'books_for_cse': books_for_cse, 'books_for_civil': books_for_civil,
+                'books_for_mech': books_for_mech, "base": base, 'semesters': semesters,
+                'departments': departments, 'subjects': subjects}
 
     return render(request, 'home.html', context)

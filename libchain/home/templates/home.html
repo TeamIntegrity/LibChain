@@ -4,17 +4,68 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
+
 
 <div class="container">
 	<div class="row">
+			<div class= 'col-md-4'>
+				<h3 style="color: grey;"> <u>Computer Science <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3>
+			</div>
 	<center>
 		<div class='list-group gallery'>
 			{% for book in books_for_cse %}
-            <div class='col-sm-6 col-xs-4 col-md-4 col-lg-2'>
+            <div class='col-sm-6 col-xs-4 col-md-2 col-lg-2' style="margin-left: 2.5%;">
+                <a class="thumbnail fancybox" rel="ligthbox" href="">
+                    <img class="img-responsive" alt="" src="https://images-na.ssl-images-amazon.com/images/I/51V2KZzUFhL._SX382_BO1,204,203,200_.jpg">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+            </div>
+						{% endfor %}
+        </div>
+     </center>
+    </div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-4'>
+				<h3 style="color: grey;"> <u>Civil Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3>
+			</div>
+	<center>
+		<div class='list-group gallery'>
+			{% for book in books_for_civil %}
+            <div class='col-sm-6 col-xs-4 col-md-2 col-lg-2' style="margin-left: 2.5%;">
+                <a class="thumbnail fancybox" rel="ligthbox" href="">
+                    <img class="img-responsive" alt="" src="https://images-na.ssl-images-amazon.com/images/I/51V2KZzUFhL._SX382_BO1,204,203,200_.jpg">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+            </div>
+						{% endfor %}
+        </div>
+     </center>
+    </div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-4'>
+				<h3 style="color: grey;"> <u>Mechanical Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3>
+			</div>
+	<center>
+		<div class='list-group gallery'>
+			{% for book in books_for_mech %}
+            <div class='col-sm-6 col-xs-4 col-md-2 col-lg-2' style="margin-left: 2.5%;">
                 <a class="thumbnail fancybox" rel="ligthbox" href="">
                     <img class="img-responsive" alt="" src="https://images-na.ssl-images-amazon.com/images/I/51V2KZzUFhL._SX382_BO1,204,203,200_.jpg">
                     <div class='text-center'>

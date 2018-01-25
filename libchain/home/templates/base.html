@@ -2,17 +2,19 @@
 <html>
 <head>
     <title>Geek's Corner | The GEC e-Library</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/static/js/panel.js"></script>
-  <script src="https://use.fontawesome.com/ad9a7757bb.js"></script>
-  <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/panel.js"></script>
+    <script src="https://use.fontawesome.com/ad9a7757bb.js"></script>
+    <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/panel.css">
 
+    <!-- Font Awesome web icons -->
+	<script src="https://use.fontawesome.com/fbcf5005d5.js"></script>
 
-  <link rel="stylesheet" type="text/css" href="/static/css/panel.css">
 </head>
 
 <body>
@@ -32,45 +34,37 @@
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav">
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px;">
-          <b>Home</b></a>
+          <a href="/home/" style="color:white; margin-top:5px;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
 	</li>
+
 	<li class="dropdown">
           <a href="/home/" style="color:white;margin-top:5px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-           <b>Semester</b> <i class="glyphicon glyphicon-chevron-down"></i></a>
+           Semester <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
 
           <ul class="dropdown-menu">
-            <li><a href="/books/semester/1/">Semester 1</a></li>
-            <li><a href="/books/semester/2/">Semester 2</a></li>
-            <li><a href="#">Semester 3</a></li>
-            <li><a href="#">Semester 4</a></li>
-            <li><a href="#">Semester 5</a></li>
+            {% for sem in semesters %}
+            <li><a href="/books/semester/{{sem}}/">{{sem}} Semester</a></li>
+            {% endfor %}
           </ul>
 	</li>
+
 	<li class="dropdown">
           <a href="/home/" style="color:white;margin-top:5px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <b>Department</b> <i class="glyphicon glyphicon-chevron-down"></i></a>
+          Department <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-
-            <li><a href="#">Separated link</a></li>
-
-            <li><a href="#">One more separated link</a></li>
+            {% for dep in departments %}
+            <li><a href="/books/branch/{{dep}}/">{{dep}}</a></li>
+            {% endfor %}
           </ul>
 	</li>
+
 	<li class="dropdown">
           <a href="/home/" style="color:white;margin-top:5px; class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <b>Subject</b> <i class="glyphicon glyphicon-chevron-down"></i></a>
+          Subject <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-
-            <li><a href="#">Separated link</a></li>
-
-            <li><a href="#">One more separated link</a></li>
+            {% for sub in subjects %}
+            <li><a href="/books/subject/{{sub}}/">{{sub}}</a></li>
+            {% endfor %}
           </ul>
 	</li>
 </ul>
@@ -80,17 +74,22 @@
 
 <form action="/books/search/" method="post" class="navbar-form navbar-left">
         {% csrf_token %}
-       <input type="text" name="param" class="form-control" style="width: 300px;margin-top:5px;
-      " placeholder="Search for books">
+       <input type="text" name="param" class="form-control" style="width: 450px;margin-top:5px;" placeholder="Search for books">
        <input type="submit" class="btn btn-default" style="margin-top:5px;" value=" GO "><i class=></i>
 </form>
 
 
 
 {% if not user.is_authenticated %}
-	<ul class="nav navbar-nav navbar-right">
-      <li><a href="/users/register/" style="color:white; margin-top:5px;margin-right:20px;">Register </a></li>
-      <li><a href="/users/login/" style="color:white; margin-top:5px;margin-right:20px;">Login </a></li>
+	<ul class="nav navbar-nav">
+    <li class="dropdown">
+            <a href="/home/" style="color:white;margin-top:5px;"" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="/users/register/" style="margin-top:5px;">Register </a></li>
+              <li><a href="/users/login/" style="margin-top:5px;">Login </a></li>
+            </ul>
+  	</li>
     </ul>
 {% endif %}
 

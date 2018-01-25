@@ -5,12 +5,12 @@
 
 <ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px; margin-right:25px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <b> Welcome {{user.first_name}} </b>  <i class="glyphicon glyphicon-chevron-down"></i></a>
-          <ul class="dropdown-menu">
-      <li><a href="/transactions/all/" style="margin-top:5px;"> Records </a></li>
-      <li><a href="/users/profile/" style="margin-top:5px;"> Profile </a></li>
-      <li><a href="/users/logout/" style="margin-top:5px;"> Logout </a></li>
+          <a href="/home/" style="color:white;margin-top:5px; margin-right:110px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{user.first_name}} <i class="fa fa-user" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu" style="margin-right: 50px;">
+              <li><a href="/transactions/all/" style="margin-top:5px;"> Records </a></li>
+              <li><a href="/users/profile/" style="margin-top:5px;"> Profile </a></li>
+              <li><a href="/users/logout/" style="margin-top:5px;"> Logout </a></li>
           </ul>
 	</li>
 </ul>

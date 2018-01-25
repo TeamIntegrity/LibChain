@@ -2,25 +2,25 @@
 
 {% block nav %}
 
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav">
 <li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px; margin-right:25px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <b> Actions</b>  <i class="glyphicon glyphicon-chevron-down"></i></a>
+          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+           Actions <i class="fa fa-book" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
-      <li><a href="/books/add/" style="margin-top:5px;"> Add Books </a></li>
-      <li><a href="/books/issue/" style="margin-top:5px;"> Issue </a></li>
-      <li><a href="/books/return/" style="margin-top:5px;"> Return </a></li>
+              <li><a href="/books/add/" style="margin-top:5px;"> Add Books </a></li>
+              <li><a href="/books/issue/" style="margin-top:5px;"> Issue </a></li>
+              <li><a href="/books/return/" style="margin-top:5px;"> Return </a></li>
           </ul>
 	</li>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px; margin-right:25px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          <b> Welcome {{user.first_name}} </b>  <i class="glyphicon glyphicon-chevron-down"></i></a>
+          <a href="/home/" style="color:white;margin-top:5px; margin-right: 10px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{user.first_name}} <i class="fa fa-user" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
-      <li><a href="/users/profile/" style="margin-top:5px;"> Profile </a></li>
-      <li><a href="/users/logout/" style="margin-top:5px;"> Logout </a></li>
+              <li><a href="/users/profile/" style="margin-top:5px;"> Profile </a></li>
+              <li><a href="/users/logout/" style="margin-top:5px;"> Logout </a></li>
           </ul>
 	</li>
 </ul>
