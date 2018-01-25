@@ -17,14 +17,14 @@ def home(request):
 
     base = get_base(request)
 
-    books_for_cse = BookDescription.objects.filter(department__name = "COMPUTER SCIENCE AND ENGINEERING")[:5]
-    books_for_civil = BookDescription.objects.filter(department__name = "CIVIL ENGINEERING")[:5]
-    books_for_mech = BookDescription.objects.filter(department__name = "MECHANICAL ENGINEERING")[:5]
+    books_for_cse = BookDescription.objects.filter(department__name = "Computer Science & Engineering")[:5]
+    books_for_civil = BookDescription.objects.filter(department__name = "Civil Engineering")[:5]
+    books_for_mech = BookDescription.objects.filter(department__name = "Mechanical Engineering")[:5]
 
     semesters = Semester.objects.all()
     departments = Department.objects.all()[:5]
     subjects = Subject.objects.all()
-    
+
     context = {'books_for_cse': books_for_cse, 'books_for_civil': books_for_civil,
                 'books_for_mech': books_for_mech, "base": base, 'semesters': semesters,
                 'departments': departments, 'subjects': subjects}
