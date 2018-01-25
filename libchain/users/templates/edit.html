@@ -3,12 +3,40 @@
  {% block content %}
 
 {% if profile == 'student' %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div>
-			<form action="/users/edit/" method="post">
+<div class="container">
+               <div class="row">
+               </div><br>
+                    
+                     
+                       <!-- Pack 1-->
+                       <div class="col-lg-2">
+                       </div>
+                        <div class="col-lg-8" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>User Credentials</h2>
+                                <div class="space"></div>
+                     </div>
+                     </center>
+                        <div class="col-lg-2">
+                       </div>
+                     <ul class="list-group">
+			            <li class="list-group-item">
+
+         <form action="/users/edit/" method="post">
          {% csrf_token %}
-         <div class="group">
-         <label for="user" class="label">Branch</label>
-         <select class="input" name="branch">
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);"> Branch </label></center>
+         <center><select class="form-input" name="branch">
             <option value="" selected>
                {{student.department_name.name}}
             </option>
@@ -27,12 +55,16 @@
             <option value="CIVIL ENGINEERING">
                CIVIL ENGINEERING
             </option>
+            </center>
           </select>
          <!--<input id="user" type="text" class="input" name="branch" placeholder={{student.department_name.name}}>-->
          </div>
-         <div class="group">
-         <label for="user" class="label">Semester</label>
-         <select class="input" name="semester">
+         </li>
+
+         <li class="list-group-item">
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);">Semester</label></center>
+         <center><select class="input" name="semester">
             <option value="" selected>
                {{student.semester.semester}}
             </option>
@@ -60,43 +92,53 @@
             <option value="8">
                8th SEMESTER
             </option>
+          </center>
           </select>
          <!--<input id="user" type="text" class="input" name="semester" placeholder={{student.semester.semester}}>-->
          </div>
-         <div class="group">
-         <label for="user" class="label">Library Card Number</label>
-         <input id="user" type="text" class="input" name="libcard" placeholder={{student.libcard}}>
+         </li>
+         <li class="list-group-item">
+
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);">Library Card Number</label></center>
+         <center><input id="user" type="text" class="input" name="libcard" placeholder={{student.libcard}}></center>
          </div>
-         <div class="group">
-         <label for="user" class="label">Phone</label>
-         <input id="user" type="text" class="input" name="phone" placeholder={{student.userprofile.phone}}>
+         <hr>
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);">Phone</label></center>
+         <center><input id="user" type="text" class="input" name="phone" placeholder={{student.userprofile.phone}}></center>
          </div>
-         <div class="group">
-         			<input type="submit" class="button" value="Save">
+         <hr>
+         <div class="form-group">
+         			<center><input type="submit" class="button" value="Save"></center>
          </div>
+         </li>
 			</form>
 </div>
 
 {% elif profile == 'staff' %}
 <div>
+         <li class="list-group-item">
 			<form action="/users/edit/" method="post">
          {% csrf_token %}
 
-         <label for="user" class="label">Name</label>
+         <label for="user" class="label" style="color: rgb(35, 176, 133);">Name</label>
          <input id="user" type="text" class="input" name="name" placeholder={{staff.userprofile.user.first_name}}>
-
-         <label for="user" class="label">Phone</label>
+ 
+         <label for="user" class="label" style="color: rgb(35, 176, 133);">Phone</label>
          <input id="user" type="text" class="input" name="phone" placeholder={{staff.userprofile.phone}}>
 
-         <label for="user" class="label">Email</label>
+         <label for="user" class="label" style="color: rgb(35, 176, 133);">Email</label>
          <input id="user" type="text" class="input" name="email" placeholder={{staff.userprofile.user.email}}>
+         </li>
 
-         <div class="group">
-              <input type="submit" class="button" value="Save">
+         <div class="form-group">
+         <center><input type="submit" class="button" value="Save"></center>
          </div>
+         
       </form>
 </div>
-
+</ul>
 
 {% endif %}
 {% endblock %}
