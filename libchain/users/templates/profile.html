@@ -9,40 +9,54 @@
 <br>
 <br>
 <br>
-		<center>
-			<h3>Name - {{user.first_name}} {{user.last_name}}</h3>
-		  <h3>Roll Number - {{user.username}}</h3>
-		  <h3>Email - {{user.email}}</h3>
-		</center>
+<div class="container">
+    				<div class="row">
+					</div><br>
+                    
+                     
+                       <!-- Pack 1-->
+                       <div class="col-md-4">
+                       </div>
+                        <div class="col-md-4" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>User Credentials</h2>
+                                <div class="space"></div>
+    						</div>
+    						</center>
+                                <ul class="list-group">
+        	
+                            <li class="list-group-item"><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}}</li>
+                            <li class="list-group-item"><i class="glyphicon glyphicon-info-sign"></i> Roll Number - {{user.username}} </li>
+                            <li class="list-group-item "><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
 
 		{% if student %}
-		<center>
-			<h3>Branch - {{student.department_name.name}}</h3>
-			<h3>Semester - {{student.semester.semester}} Semester</h3>
-			<h3>Library Card Number - {{student.libcard}}</h3>
-			<h3>Phone - {{student.userprofile.phone}}</h3>
-		</center>
+		                    <li class="list-group-item"><i class="glyphicon glyphicon-bold"></i> Branch - {{student.department_name.name}} </li>
+                            <li class="list-group-item"><i class="glyphicon glyphicon-flag"></i> Semester - {{student.semester.semester}} Semester </li>
+                            <li class="list-group-item "><i class="glyphicon glyphicon-pencil"></i> Library Card Number - {{student.libcard}} </li>
+                            <li class="list-group-item "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
 		{% else %}
 		{% endif %}
 
 {% elif profile == 'staff' %}
+                            <li class="list-group-item"><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}} </li>
+                            <li class="list-group-item" ><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
+                            <li class="list-group-item "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
+			
 
-		<center>
-			<h3>Name - {{user.first_name}} {{user.last_name}}</h3>
-			<h3>Email - {{user.email}}</h3>
-			<h3>Phone - {{student.userprofile.phone}}</h3>
-		</center>
-
-                <!-- price & service -->
-
+</ul>
+                        </div>
+                        <div class="col-md-4">
+                       </div>
 {% endif %}
 
-
-<div>
-	<p><a class="btn btn-primary outline" href="/users/edit/">Edit Profile</a> </p>
+<br>
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+	<p><a class="btn btn-default" style="background-color: rgb(35, 176, 133); color: white;" href="/users/edit/">Edit Profile</a> </p>
 </div>
 </div>
-<div class="clearfix"> </div>
 </div>
 </div>
 

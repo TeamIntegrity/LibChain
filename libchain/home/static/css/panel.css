@@ -136,8 +136,8 @@ ul li ul li {
 #details { font-family: "Quicksand", sans-serif; font-size: 60px; }
 #home-box > h2 { font-family: "Quicksand", sans-serif; font-weight: 400; line-height: 1.1; color: #75b1ae; }
 .price { font-size: 25px; float: left; }
-.pricing_header { background: none repeat scroll 0% 0% rgb(44, 62, 80); border-radius: 5px 5px 0px 0px; transition: background 0.4s ease-out 0s; }
-.pricing_header h2 { text-align:center; line-height: 25px; padding: 15px 0px; margin: 0px; font-family: "Quicksand", sans-serif; font-weight: 400; color: #75b1ae; }
+.pricing_header { background: none repeat scroll 0% 0% rgb(35, 176, 133); border-radius: 5px 5px 0px 0px; transition: background 0.4s ease-out 0s; }
+.pricing_header h2 { text-align:center; line-height: 25px; padding: 15px 0px; margin: 0px; font-family: "Quicksand", sans-serif; font-weight: 400; color: white; }
 .list-group-item:first-child { border-top-right-radius: 0px; border-top-left-radius: 0px; }
 .btn { float: right; font-family: "Quicksand", sans-serif; font-weight:500;}
 .off { text-decoration: line-through; color: rgb(86,86,86); }
