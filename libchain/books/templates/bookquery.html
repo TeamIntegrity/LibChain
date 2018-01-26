@@ -12,23 +12,24 @@
 <br>
 <div class="container">
 	<div class="row">
+			<div class= 'col-md-4'>
+				<h3 style="color: grey;"> <u>Books for {{query}}</u> </h3>
+			</div>
 	<center>
 		<div class='list-group gallery'>
 			{% for book in books_query %}
-			<div class="col-md-4"></div>
-            <div class='col-md-4' style="margin-left: 2.5%;">
+            <div class='col-sm-6 col-xs-4 col-md-2 col-lg-2' style="margin-left: 2.5%;">
                 <a class="thumbnail fancybox" rel="ligthbox" href="">
                     <img class="img-responsive" alt="" src="https://images-na.ssl-images-amazon.com/images/I/51V2KZzUFhL._SX382_BO1,204,203,200_.jpg">
                     <div class='text-center'>
                         <small class='text'>
                          {{book.name}}<br>
-  						 {{book.author}} 
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
                         </small>
                     </div> <!-- text-right / end -->
                 </a>
-        	</div>
-        	<div class="col-md-4"></div>
-        {% endfor %}
+            </div>
+						{% endfor %}
         </div>
      </center>
     </div>
@@ -36,4 +37,3 @@
 
 
 {% endblock %}
-

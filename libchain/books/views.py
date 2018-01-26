@@ -32,7 +32,7 @@ def by_semester(request, sem):
     semester = Semester.objects.get(semester=sem)
     books_query = BookDescription.objects.filter(semester=semester)
 
-    context = {'books_query': books_query, "base": base, "semesters": semesters,
+    context = {'books_query': books_query, "query": "semester "+sem, "base": base, "semesters": semesters,
                 "departments": departments, "subjects": subjects}
 
     return render(request, "bookquery.html", context)
@@ -48,7 +48,7 @@ def by_branch(request, b):
 
     base = get_base(request)
 
-    context = {'books_query': books_query, "base": base, "semesters": semesters,
+    context = {'books_query': books_query, "base": base, "query": b, "semesters": semesters,
                 "departments": departments, "subjects": subjects}
 
     return render(request, "bookquery.html", context)
@@ -64,7 +64,7 @@ def by_subject(request, sub):
 
     base = get_base(request)
 
-    context = {'books_query': books_query, "base": base, "semesters": semesters,
+    context = {'books_query': books_query, "base": base, "base": base, "query": sub, "semesters": semesters,
                 "departments": departments, "subjects": subjects}
 
     return render(request, 'bookquery.html', context)
@@ -103,7 +103,7 @@ def search(request):
             )
             number = False
         context={'results':results, 'number': number, "base": base, "semesters": semesters,
-                    "departments": departments, "subjects": subjects}
+                    "departments": departments, "subjects": subjects, "query": query}
         return render(request, "search.html", context)
 
     return redirect("/home/")
