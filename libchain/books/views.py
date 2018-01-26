@@ -18,7 +18,10 @@ from department.models import Department, Semester, Subject
 from django.db.models import Q
 
 # Importing base template method from api
-from api.views import get_base
+from api.views import get_base, get_vars
+
+# Global variables to be used in each methods
+semesters, departments, subjects = get_vars()
 
 
 def by_semester(request, sem):
@@ -29,7 +32,8 @@ def by_semester(request, sem):
     semester = Semester.objects.get(semester=sem)
     books_query = BookDescription.objects.filter(semester=semester)
 
-    context = {'books_query': books_query, "base": base}
+    context = {'books_query': books_query, "base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
 
     return render(request, "bookquery.html", context)
 
@@ -44,7 +48,8 @@ def by_branch(request, b):
 
     base = get_base(request)
 
-    context = {'books_query': books_query, "base": base}
+    context = {'books_query': books_query, "base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
 
     return render(request, "bookquery.html", context)
 
@@ -59,7 +64,8 @@ def by_subject(request, sub):
 
     base = get_base(request)
 
-    context = {'books_query': books_query, "base": base}
+    context = {'books_query': books_query, "base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
 
     return render(request, 'bookquery.html', context)
 
@@ -70,7 +76,8 @@ def description(request, id):
     """This will show the book's description based on the id"""
     book = BookDescription.objects.get(id=id)
     base = get_base(request)
-    context = {"book": book, "base": base}
+    context = {"book": book, "base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
 
     return render(request, "bookdescription.html", context)
 
@@ -95,7 +102,8 @@ def search(request):
                 Q(name__icontains=query) | Q(author__icontains=query)
             )
             number = False
-        context={'results':results, 'number': number, "base": base}
+        context={'results':results, 'number': number, "base": base, "semesters": semesters,
+                    "departments": departments, "subjects": subjects}
         return render(request, "search.html", context)
 
     return redirect("/home/")
@@ -140,10 +148,6 @@ def add_books(request):
 
         return redirect("/books/add/")
 
-    departments = Department.objects.all()
-    semesters = Semester.objects.all()
-    subjects = Subject.objects.all()
-
     context = {"departments": departments, "semesters": semesters,
                 "subjects": subjects, "base": base}
     return render(request, "add_books.html", context)
@@ -160,7 +164,8 @@ def issue(request):
 
         book = Book.objects.get(book_number=book_number)
         student = Student.objects.get(libcard=library_card_num)
-        context = {"book": book, "student": student, "base": base}
+        context = {"book": book, "student": student, "base": base, "semesters": semesters,
+                    "departments": departments, "subjects": subjects}
         return render(request, "issue_confirm.html", context)
 
     return render(request, "issue.html", {"base": base})
@@ -197,7 +202,8 @@ def return_book(request):
         book = Book.objects.get(book_number=book_number)
         student = Student.objects.get(libcard=library_card_num)
         tx_detail = Transaction.objects.get(book=book, student=student, issued=True, returned=False)
-        context = {"book": book, "student": student, "tx_detail": tx_detail, "base": base}
+        context = {"book": book, "student": student, "tx_detail": tx_detail, "base": base, "semesters": semesters,
+                    "departments": departments, "subjects": subjects}
         return render(request, "return_confirm.html", context)
 
     return render(request, "return.html", {"base": base})

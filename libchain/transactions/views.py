@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 
-from api.views import get_base
+from api.views import get_base, get_vars
 
 from users.models import UserProfile, Student
 
 from transactions.models import Transaction
+
+
+# Global variables to be used in each methods
+semesters, departments, subjects = get_vars()
 
 
 def transaction(request, type):
@@ -24,7 +28,8 @@ def transaction(request, type):
         else:
             return redirect("/")
 
-        context = {"tx_details": tx_details, "base": base}
+        context = {"tx_details": tx_details, "base": base, 'semesters': semesters,
+        'departments': departments, 'subjects': subjects}
         return render(request, "tx_detail.html", context)
 
 
