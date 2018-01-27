@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^semester/(?P<sem>[0-9]+)/$', views.by_semester, name="books_by_sems"),
+    url(r'^branch/(?P<b>[-&\w\s]+)/semester/(?P<sem>[0-9]+)/$', views.by_branch_sem, name="books_by_branch_sem"),
     url(r'^branch/(?P<b>[-&\w\s]+)/$', views.by_branch, name="books_by_branch"),
     url(r'^subject/(?P<sub>[-&\w\s]+)/$', views.by_subject, name="books_by_sub"),
 

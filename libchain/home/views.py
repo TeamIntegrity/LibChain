@@ -24,6 +24,7 @@ def home(request):
 
     first_row = None
     second_row = None
+    third_row = None
     sem = None
     department = None
 
@@ -35,8 +36,9 @@ def home(request):
         sem = student.semester
         department = student.department_name
 
-        first_row = BookDescription.objects.filter(semester=sem)
-        second_row = BookDescription.objects.filter(department=department)
+        first_row = BookDescription.objects.filter(department=department, semester=sem)[:6]
+        second_row = BookDescription.objects.filter(department=department)[:6]
+        third_row = BookDescription.objects.filter(semester=sem)[:6]
 
     # Books for branches
     books_for_cse = BookDescription.objects.filter(department__name = "Computer Science & Engineering")[:6]
@@ -55,7 +57,7 @@ def home(request):
                 'books_for_mech': books_for_mech, "books_for_et": books_for_et,
                 "books_for_eee": books_for_eee, "base": base, 'semesters': semesters,
                 'departments': departments, 'subjects': subjects, "first_row": first_row,
-                "second_row": second_row, "sem": sem, "branch": department, "books_for_maths": books_for_maths,
+                "second_row": second_row, "third_row": third_row, "sem": sem, "branch": department, "books_for_maths": books_for_maths,
                 "books_for_chemistry": books_for_chemistry, "books_for_physics": books_for_physics}
 
     return render(request, 'home.html', context)

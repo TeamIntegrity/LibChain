@@ -54,6 +54,21 @@ def by_branch(request, b):
     return render(request, "bookquery.html", context)
 
 
+def by_branch_sem(request, b, sem):
+    """This will show the books by branch & sem"""
+    branch = ' '.join(b.split('-'))
+
+    department = Department.objects.get(name=branch.upper())
+    books_query = BookDescription.objects.filter(department=department, semester=sem)
+
+    base = get_base(request)
+
+    context = {'books_query': books_query, "base": base, "query": b, "query2": sem, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
+
+    return render(request, "bookquery.html", context)
+
+
 
 def by_subject(request, sub):
     """This will show the books based on the subject"""
