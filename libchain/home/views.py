@@ -22,9 +22,9 @@ def home(request):
 
     base = get_base(request)
 
-    books_for_cse = BookDescription.objects.filter(department__name = "Computer Science & Engineering")[:5]
-    books_for_civil = BookDescription.objects.filter(department__name = "Civil Engineering")[:5]
-    books_for_mech = BookDescription.objects.filter(department__name = "Mechanical Engineering")[:5]
+    books_for_cse = BookDescription.objects.filter(department__name = "Computer Science & Engineering")[:6]
+    books_for_civil = BookDescription.objects.filter(department__name = "Civil Engineering")[:6]
+    books_for_mech = BookDescription.objects.filter(department__name = "Mechanical Engineering")[:6]
 
 
     context = {'books_for_cse': books_for_cse, 'books_for_civil': books_for_civil,
