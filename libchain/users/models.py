@@ -13,8 +13,6 @@ class UserProfile(models.Model):
 
     ENTITY = (
         ('student', 'STUDENT'),
-        ('librarian', 'LIBRARIAN'),
-        ('faculty', 'FACULTY'),
         ('staff', 'STAFF'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)

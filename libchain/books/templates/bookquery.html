@@ -17,13 +17,13 @@
             <div class='row' style="margin-left: 2.5%;">
 							<div class="col-xs-12">
 								{% for book in books_query %}
-								<div class="col-xs-2">
+								<div class="col-md-2 col-xs-6">
                 <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
                     <img class="img-responsive" alt="" src="{{book.image_url}}">
                     <div class='text-center'>
                         <small class='text'>
                          {{book.name}}<br>
-  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+  						 			 		{{book.author}}
                         </small>
                     </div> <!-- text-right / end -->
                 </a>

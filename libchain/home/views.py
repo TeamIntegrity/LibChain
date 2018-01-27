@@ -30,15 +30,15 @@ def home(request):
 
     if request.user.is_authenticated:
         userprofile = UserProfile.objects.get(user=request.user)
-        if not userprofile.entity == "student":
-            pass
-        student = Student.objects.get(userprofile=userprofile)
-        sem = student.semester
-        department = student.department_name
 
-        first_row = BookDescription.objects.filter(department=department, semester=sem)[:6]
-        second_row = BookDescription.objects.filter(department=department)[:6]
-        third_row = BookDescription.objects.filter(semester=sem)[:6]
+        if userprofile.entity == "student":
+            student = Student.objects.get(userprofile=userprofile)
+            sem = student.semester
+            department = student.department_name
+
+            first_row = BookDescription.objects.filter(department=department, semester=sem)[:6]
+            second_row = BookDescription.objects.filter(department=department)[:6]
+            third_row = BookDescription.objects.filter(semester=sem)[:6]
 
     # Books for branches
     books_for_cse = BookDescription.objects.filter(department__name = "Computer Science & Engineering")[:6]

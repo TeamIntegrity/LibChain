@@ -139,10 +139,6 @@ def add_books(request):
 
         initial_stock = (book_number_end - book_number_init)+1
 
-        departments = request.POST.getlist("department")
-        subjects = request.POST.getlist("subject")
-        semesters = request.POST.getlist("semester")
-
         book = BookDescription.objects.create(name=book_name, author=book_author,
                 description=book_description, initial_stock=initial_stock, available_stock=initial_stock)
 

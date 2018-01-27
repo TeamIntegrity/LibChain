@@ -33,21 +33,11 @@
             <option value="" selected>
                {{student.department_name.name}}
             </option>
-            <option value="COMPUTER SCIENCE AND ENGINEERING">
-               COMPUTER SCIENCE AND ENGINEERING
+            {% for dep in departments %}
+            <option value="{{dep}}">
+               {{dep}}
             </option>
-            <option value="ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING">
-               ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING
-            </option>
-            <option value="ELECTRICAL AND ELCETRONICS ENGINEERING">
-               ELECTRICAL AND ELCETRONICS ENGINEERING
-            </option>
-            <option value="MECHANICAL ENGINEERING">
-               MECHANICAL ENGINEERING
-            </option>
-            <option value="CIVIL ENGINEERING">
-               CIVIL ENGINEERING
-            </option>
+            {% endfor %}
             </center>
           </select>
          <!--<input id="user" type="text" class="input" name="branch" placeholder={{student.department_name.name}}>-->
