@@ -19,7 +19,7 @@
 								{% for book in books_query %}
 								<div class="col-xs-2">
                 <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
-                    <img class="img-responsive" alt="" src="https://images-na.ssl-images-amazon.com/images/I/51V2KZzUFhL._SX382_BO1,204,203,200_.jpg">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
                     <div class='text-center'>
                         <small class='text'>
                          {{book.name}}<br>
