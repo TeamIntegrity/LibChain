@@ -146,3 +146,44 @@ ul li ul li {
 .btn { float: right; font-family: "Quicksand", sans-serif; font-weight:500;}
 .off { text-decoration: line-through; color: rgb(86,86,86); }
 .space {height: 2px; background-color: #75b1ae;}
+
+
+ .form-control::-webkit-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control::-moz-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control::placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.navbar form input {
+    margin: 0 5px 1px 8px;
+        margin-top: 0px;
+        margin-right: 5px;
+    height: 1.5rem;
+    font-size: 16px;
+}
+.navbar .dropdown-menu a:hover {
+    color: green!important;
+}
+.navbar .dropdown-menu a {
+    font-size: 10px !important;
+}

@@ -4,6 +4,8 @@
     <title>Geek's Corner | The GEC e-Library</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/css/panel.css">
@@ -11,12 +13,13 @@
      <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
     <!-- Font Awesome web icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
 	<script src="https://use.fontawesome.com/fbcf5005d5.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/static/js/panel.js"></script>
     <script src="https://use.fontawesome.com/ad9a7757bb.js"></script>
-
 </head>
 
 <body>
@@ -30,8 +33,8 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand " style = "margin-right:20px;margin-bottom:25px;padding-top:1px;color:white;font-family:Ubuntu,serif;font-size: 48px;" href="/"><h3><b>Geek`s Corner</b></h3></a>
+      </button><div class="animated rubberBand">
+      <a class="navbar-brand " style = "margin-right:20px;margin-bottom:25px;padding-top:1px;color:white;font-family:Ubuntu,serif;font-size: 48px;" href="/"><h3><b>Geek`s Corner</b></h3></a></div>
     </div>
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav">
@@ -77,9 +80,11 @@
 <form action="/books/search/" method="post" class="navbar-form navbar-left">
         {% csrf_token %}
       <div class="form-group">
-       <input type="text" name="param" class="form-control" style="width: 300px;margin-top:8px;" placeholder="Search for books">
+       <input type="text" name="param" class="form-control mr-lg-2" style="width: 280px;margin-top:8px;color: #fff;" placeholder="Search for books">
        </div>
-       <input type="submit" class="btn btn-default" style="margin-top:8px;position: fixed;" value=" GO ">
+       <button type="button"
+       class="btn btn-outline-success waves-effect btn-md" style="position:fixed;background-color: white;color: background:rgb(35, 176, 133);margin-top: 12px;" type="submit">Go</button>
+       
 </form>
 
 
@@ -87,7 +92,7 @@
 {% if not user.is_authenticated %}
 	<ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
-            <a href="/home/" style="color:white;margin-top:8px;margin-right:38px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="/home/" style="color:white;margin-right:18px;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
               <li><a href="/users/register/" style="margin-top:5px;">Register </a></li>
@@ -107,12 +112,10 @@
 
 {% endblock %}
 </div>
-    <section style="height:80px;"></section>
   <div class="row" style="text-align:center;">
-    <h2></h2>
   </div>
     <!----------- Footer ------------>
-    <footer class="footer-bs">
+    <footer class="footer-bs" style="margin-top: 20%;">
         <div class="row">
           <div class="col-md-3 footer-brand animated fadeInLeft">
               <h2>Geek`s Corner </h2>
