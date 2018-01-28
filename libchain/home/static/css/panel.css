@@ -151,6 +151,7 @@ ul li ul li {
  .form-control::-webkit-input-placeholder {
   color: lightgrey;
   opacity: 1;
+  font-size: 16px;
 }
 
 .form-control::-moz-placeholder {
@@ -161,11 +162,13 @@ ul li ul li {
 .form-control:-ms-input-placeholder {
   color: lightgrey;
   opacity: 1;
+  font-size: 16px;
 }
 
 .form-control::-ms-input-placeholder {
   color: lightgrey;
   opacity: 1;
+  font-size: 16px;
 }
 
 .form-control::placeholder {
@@ -186,4 +189,13 @@ ul li ul li {
 }
 .navbar .dropdown-menu a {
     font-size: 10px !important;
+}
+
+.input[type="date"], input[type="datetime-local"], input[type="email"], input[type="number"], input[type="password"], input[type="search-md"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], textarea.md-textarea {
+    height: 2.8rem;
+}
+
+.navbar form input {
+    height: 2.5rem;
+    
 }
