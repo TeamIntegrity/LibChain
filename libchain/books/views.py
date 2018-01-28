@@ -107,18 +107,21 @@ def search(request):
         if not query:
             return render(request, "search.html")
 
-        if query.isdecimal():
-            results = Book.objects.filter(
-                Q(book_number__icontains=query)
-            )
-            number = True
-        else:
-            results = BookDescription.objects.filter(
-                Q(name__icontains=query) | Q(author__icontains=query)
-            )
-            number = False
-        context={'results':results, 'number': number, "base": base, "semesters": semesters,
-                    "departments": departments, "subjects": subjects, "query": query}
+
+        books_by_name = BookDescription.objects.filter(
+            Q(name__icontains=query) | Q(author__icontains=query)
+            | Q(description__icontains=query) | Q(department__name__icontains=query)
+            | Q(subject__name__icontains=query)
+        )
+
+        try:
+            books_by_num = Book.objects.get(book_number=query)
+        except:
+            books_by_num = None
+
+        context={"base": base, "semesters": semesters, "departments": departments,
+                "subjects": subjects, "query": query, "books_by_name": books_by_name,
+                "books_by_num": books_by_num}
         return render(request, "search.html", context)
 
     return redirect("/home/")
