@@ -115,21 +115,64 @@
 </div>
 
 {% elif profile == 'staff' %}
+
+<br>
+<br>
+<br>
 <div>
-         <li class="list-group-item">
-			<form action="/users/edit/" method="post">
-         {% csrf_token %}
+               <div class="row">
+               </div><br>
 
-         <label for="user" class="label" style="color: rgb(35, 176, 133);">Name</label>
-         <input id="user" type="text" class="input" name="name" placeholder={{staff.userprofile.user.first_name}}>
 
-         <label for="user" class="label" style="color: rgb(35, 176, 133);">Phone</label>
-         <input id="user" type="text" class="input" name="phone" placeholder={{staff.userprofile.phone}}>
+                       <!-- Pack 1-->
+                       <div class="col-lg-2">
+                       </div>
+                        <div class="col-lg-8" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>User Credentials</h2>
+                                <div class="space"></div>
+                     </div>
+                     </center>
+                     <li class="list-group-item">
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;">Name</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;"  name="name" placeholder={{staff.userprofile.user.first_name}}></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         
 
-         <label for="user" class="label" style="color: rgb(35, 176, 133);">Email</label>
-         <input id="user" type="text" class="input" name="email" placeholder={{staff.userprofile.user.email}}>
+         
+<div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6">
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;">Phone</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="phone" placeholder={{staff.userprofile.phone}}></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         
+
+         
+<div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6">
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;">Email</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="email" placeholder={{staff.userprofile.user.email}}></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
          </li>
-
+         <br>
          <div class="form-group">
          <center><input type="submit" class="button" value="Save"></center>
          </div>
