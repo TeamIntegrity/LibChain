@@ -182,7 +182,8 @@ def issue(request):
                     "departments": departments, "subjects": subjects}
         return render(request, "issue_confirm.html", context)
 
-    return render(request, "issue.html", {"base": base})
+    return render(request, "issue.html", {"base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects})
 
 
 
@@ -220,7 +221,8 @@ def return_book(request):
                     "departments": departments, "subjects": subjects}
         return render(request, "return_confirm.html", context)
 
-    return render(request, "return.html", {"base": base})
+    return render(request, "return.html", {"base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects})
 
 
 
