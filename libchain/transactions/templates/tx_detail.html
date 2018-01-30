@@ -28,6 +28,7 @@
 </tr>
 </td>
 </tr>
+</table>
       {% for tx in tx_details %}
       <tr>
         <td> {{ tx.book.book_number }} </td>
@@ -38,10 +39,9 @@
         <td> {{ tx.return_hash }} </td>
       </tr>
       {% endfor %}
-  </table>
+</table>
   </div>
   </div>
 </section>
-
 
 {% endblock %}
