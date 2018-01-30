@@ -150,24 +150,15 @@ ul li ul li {
 #go{
     width:100px;
     margin: 10px;
-    color: #0f0;
+    color: white;
     font-size: 22px;
     border: none;
-    background-color:#003300;  
+    background-color:rgb(35, 176, 133);  
     text-align: center;
     padding: 10px;   
-    font-family: times;   
-    border-radius: 0 60px 0 60px;
-    -webkit-transition: all 2s ease-in-out;
-    -moz-transition: all 2s ease-in-out;
-    -ms-transition: all 2s ease-in-out;
-    -o-transition: all 2s ease-in-out;
+    font-family: times;
 }
 #go:hover{
-    background-color: #0f0; 
-    color: #fff;
-    border-radius: 60px 0 60px 0;
-    box-shadow: 0 0px 5px 2px rgba(0,0,0,0.5);
 }
 
  .form-control::-webkit-input-placeholder {
@@ -220,4 +211,14 @@ ul li ul li {
 .navbar form input {
     height: 2.5rem;
     
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 4.5px solid transparent;
+    border-radius: 0;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 3px 3px 3px 3px grey;
 }
