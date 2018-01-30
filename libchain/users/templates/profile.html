@@ -3,17 +3,12 @@
 {% block content %}
 
 {% if profile == 'student' %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <div class="container">
     				<div class="row">
 					</div><br>
-                    
-                     
+
+
                        <!-- Pack 1-->
                        <div class="col-md-4">
                        </div>
@@ -25,24 +20,24 @@
     						</div>
     						</center>
                                 <ul class="list-group">
-        	
-                            <li class="list-group-item"><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}}</li>
-                            <li class="list-group-item"><i class="glyphicon glyphicon-info-sign"></i> Roll Number - {{user.username}} </li>
-                            <li class="list-group-item "><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
+
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}}</li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-info-sign"></i> Roll Number - {{user.username}} </li>
+                            <li class="list-group-item" style="font-size:14px; " ><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
 
 		{% if student %}
-		                    <li class="list-group-item"><i class="glyphicon glyphicon-bold"></i> Branch - {{student.department_name.name}} </li>
-                            <li class="list-group-item"><i class="glyphicon glyphicon-flag"></i> Semester - {{student.semester.semester}} Semester </li>
-                            <li class="list-group-item "><i class="glyphicon glyphicon-pencil"></i> Library Card Number - {{student.libcard}} </li>
-                            <li class="list-group-item "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
+		                    <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-bold"></i> Branch - {{student.department_name.name}} </li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-flag"></i> Semester - {{student.semester.semester}} Semester </li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-pencil"></i> Library Card Number - {{student.libcard}} </li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
 		{% else %}
 		{% endif %}
 
 {% elif profile == 'staff' %}
-                            <li class="list-group-item"><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}} </li>
-                            <li class="list-group-item" ><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
-                            <li class="list-group-item "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
-			
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-user"></i> Name - {{user.first_name}} {{user.last_name}} </li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-envelope"></i> Email - {{user.email}} </li>
+                            <li class="list-group-item" style="font-size:14px; "><i class="glyphicon glyphicon-phone"></i> Phone - {{student.userprofile.phone}} </li>
+
 
 </ul>
                         </div>

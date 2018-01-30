@@ -1,28 +1,22 @@
 {% extends base %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <section id="login">
     <div class="container">
     	<div class="row">
     	    <div class="col-xs-12">
         	    <div class="form-wrap">
-                <h1>Log in with your Roll Number</h1>
+                <h1>Sign in to Geek's Corner</h1>
                     <form role="form" action="/users/login/" method="post" id="login-form" autocomplete="off">
     {% csrf_token%}
 <div class="form-group">
-                            <label for="email" class="sr-only" style="color: red;">Roll No</label>
-                            <input type="text" name="rollno" id="pass" class="form-control" placeholder="316XXXXXXXX">
+                            <label for="email">Roll No</label>
+                            <input type="text" name="rollno" id="pass" class="form-control" style="font-size: 16px;" placeholder="316XXXXXXXX">
                         </div>
                         <div class="form-group">
-                            <label for="pass" class="sr-only">Password</label>
-                            <input type="password" name="password" id="pass" class="form-control" placeholder="Password">
+                            <label for="pass">Password</label>
+                            <input type="password" name="password" id="pass" class="form-control"  style="font-size: 16px;" placeholder="********">
                         </div>
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>
