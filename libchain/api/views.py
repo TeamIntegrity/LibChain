@@ -28,7 +28,7 @@ def get_vars():
     """ This will return variables to be used in nav bar """
 
     semesters = Semester.objects.all()
-    departments = Department.objects.all()
-    subjects = Subject.objects.all()[:5]
+    departments = Department.objects.all().order_by('name')
+    subjects = Subject.objects.all().order_by('name')[:5]
 
     return (semesters, departments, subjects)

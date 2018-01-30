@@ -138,7 +138,11 @@ def login(request):
         if user:
             if user.is_active:
                 auth_login(request, user)
-                return redirect('/home/')
+                entity = UserProfile.objects.get(user=user).entity
+                if entity == "staff":
+                    return redirect('/users/admin/dashboard/')
+                else:
+                    return redirect('/home/')
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
@@ -225,6 +229,15 @@ def edit(request):
         context = {"staff": staff, "base": base, "profile": "staff", 'semesters': semesters,
         'departments': departments, 'subjects': subjects}
     return render(request, "edit.html", context)
+
+
+
+def dashboard(request):
+    """ This method will render the dashboard for the admin """
+    base = get_base(request)
+
+    context = {'base': base, 'semesters': semesters, 'departments': departments, 'subjects': subjects}
+    return render(request, "dashboard.html", context)
 
 
 
