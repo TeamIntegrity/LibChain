@@ -2,10 +2,17 @@
 
 {% block nav %}
 
-{% if request.user %}
-<a href="/transactions/all/">Records</a>
-<a href="/users/profile/">Profile</a>
-<a href="/users/logout/">Logout</a>
-{% endif %}
+
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+          <a href="/home/" style="color:white;margin-top:5px; margin-right:20px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{user.first_name}} <i class="fa fa-user" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu">
+              <li><a href="/transactions/all/" style="margin-top:5px;"> Records </a></li>
+              <li><a href="/users/profile/" style="margin-top:5px;"> Profile </a></li>
+              <li><a href="/users/logout/" style="margin-top:5px;"> Logout </a></li>
+          </ul>
+	</li>
+</ul>
 
 {% endblock %}

@@ -1,0 +1,223 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon/icomoon.eot?srf3rx");
+  src: url("../fonts/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), url("../fonts/icomoon/icomoon.ttf?srf3rx") format("truetype"), url("../fonts/icomoon/icomoon.woff?srf3rx") format("woff"), url("../fonts/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.content {
+  margin-top: 100px;
+}
+
+.gallery
+{
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+ul li {
+  font-size: 20px;
+  font-family: Arial;
+}
+
+ul li ul li {
+  font-size: 12px;
+}
+
+.dropdown:hover .dropdown-menu {
+    max-height: 300px;
+    opacity: 1;
+}
+
+/*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+#login {
+    padding-top: 50px
+}
+#login .form-wrap {
+    width: 30%;
+    margin: 0 auto;
+}
+#login h1 {
+    color: #1fa67b;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#login .form-group {
+    margin-bottom: 25px;
+}
+#login .checkbox {
+    margin-bottom: 20px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#login .checkbox.show:before {
+    content: '\e013';
+    color: #1fa67b;
+    font-size: 17px;
+    margin: 1px 0 0 3px;
+    position: absolute;
+    pointer-events: none;
+    font-family: 'Glyphicons Halflings';
+}
+#login .checkbox .character-checkbox {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    display: inline-block;
+}
+#login .checkbox .label {
+    color: #6d6d6d;
+    font-size: 13px;
+    font-weight: normal;
+}
+#login .btn.btn-custom {
+    font-size: 14px;
+	margin-bottom: 20px;
+}
+#login .forget {
+    font-size: 13px;
+	text-align: center;
+	display: block;
+}
+
+/*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+.form-control {
+    color: #212121;
+}
+.btn-custom {
+    color: #fff;
+	background-color: #1fa67b;
+}
+.btn-custom:hover,
+.btn-custom:focus {
+    color: #fff;
+}
+
+/*    --------------------------------------------------
+    :: Footer
+	-------------------------------------------------- */
+#footer {
+    color: #6d6d6d;
+    font-size: 12px;
+    text-align: center;
+}
+#footer p {
+    margin-bottom: 0;
+}
+#footer a {
+    color: inherit;
+}
+
+.container { padding-top: 40px; }
+#details { font-family: "Quicksand", sans-serif; font-size: 60px; }
+#home-box > h2 { font-family: "Quicksand", sans-serif; font-weight: 400; line-height: 1.1; color: #75b1ae; }
+.price { font-size: 25px; float: left; }
+.pricing_header { background: none repeat scroll 0% 0% rgb(35, 176, 133); border-radius: 5px 5px 0px 0px; transition: background 0.4s ease-out 0s; }
+.pricing_header h2 { text-align:center; line-height: 25px; padding: 15px 0px; margin: 0px; font-family: "Quicksand", sans-serif; font-weight: 400; color: white; }
+.list-group-item:first-child { border-top-right-radius: 0px; border-top-left-radius: 0px; }
+.btn { float: right; font-family: "Quicksand", sans-serif; font-weight:500;}
+.off { text-decoration: line-through; color: rgb(86,86,86); }
+.space {height: 2px; background-color: #75b1ae;}
+
+#go{
+    width:100px;
+    margin: 10px;
+    color: #0f0;
+    font-size: 22px;
+    border: none;
+    background-color:#003300;  
+    text-align: center;
+    padding: 10px;   
+    font-family: times;   
+    border-radius: 0 60px 0 60px;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -ms-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+}
+#go:hover{
+    background-color: #0f0; 
+    color: #fff;
+    border-radius: 60px 0 60px 0;
+    box-shadow: 0 0px 5px 2px rgba(0,0,0,0.5);
+}
+
+ .form-control::-webkit-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-moz-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.navbar form input {
+    margin: 0 5px 1px 8px;
+        margin-top: 0px;
+        margin-right: 5px;
+    height: 1.5rem;
+    font-size: 16px;
+}
+.navbar .dropdown-menu a:hover {
+    color: green!important;
+}
+.navbar .dropdown-menu a {
+    font-size: 10px !important;
+}
+
+.input[type="date"], input[type="datetime-local"], input[type="email"], input[type="number"], input[type="password"], input[type="search-md"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], textarea.md-textarea {
+    height: 2.8rem;
+}
+
+.navbar form input {
+    height: 2.5rem;
+    
+}

@@ -2,11 +2,327 @@
 
 {% block content %}
 
-{% for book in books_for_cse %}
-<div>
-  <p>{{book.name}}</p>
-  <p>{{book.author}}</p>
+{% if first_row %}
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/{{branch}}/semester/{{sem}}/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Books for {{branch}}, {{sem}} semester <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in first_row %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
 </div>
-{% endfor %}
+</div>
+
+{% endif %}
+
+{% if second_row %}
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/{{branch}}/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Books for {{branch}} <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in second_row %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+{% endif %}
+
+{% if third_row %}
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/semester/{{sem}}/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Books for Semester {{sem}} <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in third_row %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+{% endif %}
+
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/Computer Science & Engineering/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Computer Science <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_cse %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/Civil Engineering/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Civil Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_civil %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/Mechanical Engineering/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Mechanical Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_mech %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/Electrical & Electronics Engineering/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Electrical Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_eee %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/branch/Electronics & Telecommunications Engineering/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Electronics Engineering <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_et %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/subject/Mathematics/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Mathematics <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_maths %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/subject/Physics/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Physics <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_physics %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8'>
+				<a href="/books/subject/Chemistry/"><h3 style="color: grey; margin-bottom: 5%;"> <u>Chemistry <i class="fa fa-angle-right" aria-hidden="true"></i></u> </h3></a>
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_for_chemistry %}
+								<div class="col-xs-2">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 			 		{{book.author}} {% if not forloop.last %} {% endif %}
+                        </small>
+                    </div> <!-- text-right / end -->
+                </a>
+							</div>
+								{% endfor %}
+            </div>
+        </div>
+     </center>
+</div>
+</div>
 
 {% endblock %}

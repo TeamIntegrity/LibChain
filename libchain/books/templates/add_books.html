@@ -2,41 +2,72 @@
 
 {% block content %}
 
-
-<form action="/books/add/" method="post">
+<form action="/books/add/" method="post" style="margin-top:100px;">
     {% csrf_token%}
+ <div class="container">
+               <div class="row">
+               </div><br>
+                    
+                     
+                       <!-- Pack 1-->
+                       <div class="col-lg-2">
+                       </div>
+                        <div class="col-lg-8" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>Add Books</h2>
+                                <div class="space"></div>
+                     </div>
+                     </center>
+                     <table class="table-responsive">
+                     <table class="table" border=1 width=100% bordercolor=black style="border-collapse:collapse; ">
+                     <table  class="table table-bordered" style="border:0px;">
+						<tr>
+							<th><center>Book Name</center></th>
+        						<td><input type="text" name="book_name" style="width:100%""></td>
+        				</tr>
+    							<tr>
+    								<th><center>Book Author</center></th>
+    									<td><input type="text" name="book_name" style="width:100%""></td>
+    							</tr>
+    									<tr>
+    						 				<th><center>Book Description</center></th>
+    											<td><input type="text" name="book_name" style="width:100%"></td>
+    									</tr>
 
-    <p><label>Book Name</label>
-    <input type="text" name="book_name"></p>
+    </table>
 
-    <p><label>Book Author</label>
-    <input type="text" name="book_author"></p>
-
-    <p><label>Book Description</label>
-    <input type="text" name="book_description"></p>
-
-    <p><label>Choose the departments this book belongs to</label></p>
+    <p><label>Choose the Departments This Book Belongs To:</label></p>
     {% for department in departments %}
     <p><input type="checkbox" name="department" value="{{department}}">{{department}}</p>
     {% endfor %}
 
-    <p><label>Choose the subjects this book belongs to</label></p>
+    <p><label>Choose the Subjects This Book Belongs To:</label></p>
     {% for subject in subjects %}
     <p><input type="checkbox" name="subject" value="{{subject}}">{{subject}}</p>
     {% endfor %}
 
-    <p><label>Choose the semesters this book belongs to</label></p>
+    <p><label>Choose the Semesters This Book Belongs To:</label></p>
     {% for semester in semesters %}
     <p><input type="checkbox" name="semester" value="{{semester}}">{{semester}}</p>
     {% endfor %}
 
-    <p><label>Choose the book numbers range</label></p>
-    <label>From</label> <input type="text" name="book_number_init"> <label>To</label> <input type="text" name="book_number_end">
+    <p><label>Choose the Book Numbers Range:</label></p>
+    <label>From</label> <input type="text" name="book_number_init"> <label>To</label> <input type="text" name="book_number_end"><br><br>
 
-    <input type="submit" class="button" value="Add">
+    
+<center><input type="submit" class="button" value="Add" id="go">
+<input type="reset" class="button" value="Cancel" id="go">
 
 
-</form>
+<br></center>
+<br>
+      
+    </div>
+  
+ </form>
+</table>
+</table>
 
 
 {% endblock %}

@@ -2,11 +2,42 @@
 
 {% block content %}
 
-{% for book in books_query %}
-<div>
-  <p>{{book.name}}</p>
-  <p>{{book.author}}</p>
+
+<div class="container">
+	<div class="row">
+			<div class= 'col-md-8 col-md-offset-2'>
+				{% if query2 %}
+				<center><h3 style="color: grey; margin-bottom: 5%;"> <b>Books for {{query}}, {{query2}} semester</b> </h3></center>
+				{% else %}
+				<center><h3 style="color: grey; margin-bottom: 5%;"> <b>Books for {{query}}</b> </h3></center>
+				{% endif %}
+			</div>
+
+	<center>
+            <div class='row' style="margin-left: 2.5%;">
+							<div class="col-xs-12">
+								{% for book in books_query %}
+								<div class="col-md-2 col-xs-4">
+                <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+                    <img class="img-responsive" alt="" src="{{book.image_url}}">
+                    <div class='text-center'>
+                        <small class='text'>
+                         {{book.name}}<br>
+  						 {{book.author}}
+                        </small>
+                    </div> <!-- text-right / end -->
+                    
+                </a>
+							</div>
+							<div class="col-xs-1"></div>
+
+								{% endfor %}
+            </div>
+        </div>
+     </center>
 </div>
-{% endfor %}
+</div>
+
+
 
 {% endblock %}

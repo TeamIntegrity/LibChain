@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from api.views import get_base
+from api.views import get_base, get_vars
 
 # Importing Django's default User model class for users
 from django.contrib.auth.models import User
@@ -16,6 +16,9 @@ from django.contrib.auth import logout as auth_logout
 
 # Importing from transactions app
 from transactions.models import Transaction
+
+# Global variables to be used in each methods
+semesters, departments, subjects = get_vars()
 
 
 
@@ -38,29 +41,34 @@ def register(request):
         # Checks for missing form fieds
         if not email:
             message = "Please provide a valid email"
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
         if not password1 or not password2:
             message = "Passwords do not match"
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
         if not first_name:
             message = "Please provide your name"
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
         if not last_name:
             last_name = ""
 
         if not rollno:
             message = "Please provide your roll number"
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
 
         # Checks for invalid form fields
         invalid = []
         if "@" not in email or "." not in email:
             message = "Please provide a valid email."
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
 
         # Check for duplicate email
@@ -71,7 +79,8 @@ def register(request):
 
         if already_user != None:
             message = "The roll number entered already has an account"
-            return render(request, "login_error.html", {"message":message, "base": base})
+            return render(request, "login_error.html", {"message":message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
 
 
@@ -102,13 +111,16 @@ def register(request):
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
-                return render(request, 'login_error.html', {"message": message, "base": base})
+                return render(request, 'login_error.html', {"message": message, "base": base, 'semesters': semesters,
+                'departments': departments, 'subjects': subjects})
 
         else:
             message = "Passwords do not match"
-            return render(request, "login_error.html", {"message": message, "base": base})
+            return render(request, "login_error.html", {"message": message, "base": base, 'semesters': semesters,
+                            'departments': departments, 'subjects': subjects})
 
-    return render(request, "register.html", {"base": base})
+    return render(request, "register.html", {"base": base, 'semesters': semesters,
+                    'departments': departments, 'subjects': subjects})
 
 
 
@@ -130,15 +142,18 @@ def login(request):
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
-                return render(request, 'login_error.html', {"message": message, "base": base})
+                return render(request, 'login_error.html', {"message": message, "base": base, 'semesters': semesters,
+                'departments': departments, 'subjects': subjects})
 
         else:
             message = """The user could not be found.
                         Kindly ensure the email and
                         password entered are correct."""
-            return render(request, 'login_error.html', {"message": message, "base": base})
+            return render(request, 'login_error.html', {"message": message, "base": base, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects})
 
-    return render(request, 'login.html', {"base": base})
+    return render(request, 'login.html', {"base": base, 'semesters': semesters,
+    'departments': departments, 'subjects': subjects})
 
 
 
@@ -160,10 +175,12 @@ def profile(request):
 
     if userprofile.entity == 'student':
         student = Student.objects.get(userprofile=userprofile)
-        context = {"student": student, 'base': base, 'profile': 'student'}
+        context = {"student": student, 'base': base, 'profile': 'student', 'semesters': semesters,
+        'departments': departments, 'subjects': subjects}
     elif userprofile.entity == 'staff':
         staff = Staff.objects.get(userprofile=userprofile)
-        context = {"staff": staff, 'base': base, 'profile': 'staff'}
+        context = {"staff": staff, 'base': base, 'profile': 'staff', 'semesters': semesters,
+        'departments': departments, 'subjects': subjects}
 
     return render(request, "profile.html", context)
 
@@ -201,10 +218,12 @@ def edit(request):
 
     if userprofile.entity == 'student':
         student = Student.objects.get(userprofile=userprofile)
-        context = {"student": student, "base": base, "profile": "student"}
+        context = {"student": student, "base": base, "profile": "student", 'semesters': semesters,
+        'departments': departments, 'subjects': subjects}
     elif userprofile.entity == 'staff':
         staff = Staff.objects.get(userprofile=userprofile)
-        context = {"staff": staff, "base": base, "profile": "staff"}
+        context = {"staff": staff, "base": base, "profile": "staff", 'semesters': semesters,
+        'departments': departments, 'subjects': subjects}
     return render(request, "edit.html", context)
 
 
@@ -222,5 +241,6 @@ def user_detail(request, libcard):
         return render(request, "error.html", {"message": "No user could be found with that card number", "base": base})
 
     tx_details = student.transaction_set.all()
-    context = {"base": base, "student": student, "tx_details": tx_details}
+    context = {"base": base, "student": student, "tx_details": tx_details, 'semesters': semesters,
+    'departments': departments, 'subjects': subjects}
     return render(request, "user_detail.html", context)

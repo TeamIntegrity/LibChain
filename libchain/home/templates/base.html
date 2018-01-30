@@ -2,42 +2,166 @@
 <html>
 <head>
     <title>Geek's Corner | The GEC e-Library</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/css/mdb.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/panel.css">
+     <link rel="stylesheet" type="text/css" href="/static/css/table.css">
+     <link rel="stylesheet" type="text/css" href="/static/css/footer.css">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
+    <!-- Font Awesome web icons -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.5/js/mdb.min.js"></script>
+	<script src="https://use.fontawesome.com/fbcf5005d5.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/panel.js"></script>
+    <script src="https://use.fontawesome.com/ad9a7757bb.js"></script>
 </head>
 
 <body>
-<a href="/home/">Home</a>
-<a href="/home/">Semester</a>
-<a href="/home/">Department</a>
-<a href="/home/">Subject</a>
 
+<nav class="navbar navbar-default navbar-fixed-top" style="padding-top:5px;background:rgb(35, 176, 133);">
+<div class="container-fluid">
+<div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button><div class="animated rubberBand">
+      <a class="navbar-brand " style = "margin-right:20px;margin-bottom:25px;padding-top:1px;color:white;font-family:Ubuntu,serif;font-size: 48px;" href="/"><h3><b>Geek`s Corner</b></h3></a></div>
+    </div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+	<li class="dropdown">
+          <a href="/home/" style="color:white; margin-top:5px;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+	</li>
+
+	<li class="dropdown">
+          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+           Semester <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+
+          <ul class="dropdown-menu">
+            {% for sem in semesters %}
+            <li><a href="/books/semester/{{sem}}/">{{sem}} Semester</a></li>
+            {% endfor %}
+          </ul>
+	</li>
+
+	<li class="dropdown">
+          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Department <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu">
+            {% for dep in departments %}
+            <li><a href="/books/branch/{{dep}}/">{{dep}}</a></li>
+            {% endfor %}
+          </ul>
+	</li>
+
+	<li class="dropdown">
+          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Subject <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu">
+            {% for sub in subjects %}
+            <li><a href="/books/subject/{{sub}}/">{{sub}}</a></li>
+            {% endfor %}
+          </ul>
+	</li>
+</ul>
 {% block nav %}
 
 {% endblock %}
 
-<form action="/books/search/" method="post" class="search">
+<form action="/books/search/" method="post" class="navbar-form navbar-left">
         {% csrf_token %}
-        <input type="text" name="param" class="searchTerm" style="font-size: 20px;"placeholder="Search">
-       <input type="submit" class="btn round raised" value="GO">
+      <div class="form-group">
+       <input type="text" name="param" class="form-control mr-lg-2" style="width: 280px;margin-top:8px;color: #fff;" placeholder="Search for books">
+       </div>
+       <button type="button"
+       class="btn btn-outline-success waves-effect btn-md" style="position:fixed;background-color: white;color: background:rgb(35, 176, 133);margin-top: 12px;" type="submit">Go</button>
+
 </form>
 
-{% if user.first_name %}
 
 
-
-<p>Welcome {{user.first_name}}</p>
-
-{% else %}
-<p><a href="/users/register/">Register</a></p>
-
-<p>OR</p>
-
-<p><a href="/users/login/">Login</a></p>
+{% if not user.is_authenticated %}
+	<ul class="nav navbar-nav navbar-right">
+    <li class="dropdown">
+            <a href="/home/" style="color:white;margin-right:18px;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="/users/register/" style="margin-top:5px;">Register </a></li>
+              <li><a href="/users/login/" style="margin-top:5px;">Login </a></li>
+            </ul>
+  	</li>
+    </ul>
 {% endif %}
 
+</div>
+</div>
+</nav>
 
+
+<div class="content">
 {% block content %}
 
 {% endblock %}
+</div>
+  <div class="row" style="text-align:center;">
+  </div>
+    <!--- Footer ------------>
+    <footer class="footer-bs" style="margin-top: 20%;">
+        <div class="row">
+          <div class="col-md-3 footer-brand animated fadeInLeft">
+              <h2>Geek`s Corner </h2>
+                <p>Designed and Created by Team Integrity</p>
+                <p>© 2017 Team Integrity All rights reserved</p>
+            </div>
+          <div class="col-md-4 footer-nav animated fadeInUp">
+              <h4>Menu —</h4>
+              <div class="col-md-6">
+                    <ul class="pages">
+                        <li><a href="#" style="font-size: 12px;">Home</a></li>
+                        <li><a href="#" style="font-size: 12px;">Semester</a></li>
+                        <li><a href="#" style="font-size: 12px;">Subjects</a></li>
+                        <li><a href="#" style="font-size: 12px;">Departments</a></li>
+                    </ul>
+                </div>
+              <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#" style="font-size: 12px;">About Us</a></li>
+                        <li><a href="#" style="font-size: 12px;">Contacts</a></li>
+                        <li><a href="#" style="font-size: 12px;">Terms & Condition</a></li>
+                        <li><a href="#" style="font-size: 12px;">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+          <div class="col-md-2 footer-social animated fadeInDown">
+              <h4>Follow Us</h4>
+              <ul>
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Instagram</a></li>
+                  <li><a href="#">RSS</a></li>
+                </ul>
+            </div>
+          <div class="col-md-3 footer-ns animated fadeInRight">
+              <h4>Newsletter</h4>
+                <p>Subscribe to our Newsletter and stay up-to-date</p>
+                <p>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Your email">
+
+                    </div><!-- /input-group -->
+                 </p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
