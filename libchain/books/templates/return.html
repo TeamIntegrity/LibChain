@@ -3,20 +3,47 @@
 {% block content %}
 
 
-<form action="/books/return/" method="post">
+<form action="/books/return/" method="post" style="margin-top:100px;">
     {% csrf_token%}
+     <div class="container">
+               <div class="row">
+               </div><br>
+                    
+                     
+                       <!-- Pack 1-->
+                       <div class="col-lg-2">
+                       </div>
+                        <div class="col-lg-8" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>Return Books</h2>
+                                <div class="space"></div>
+                     </div>
+                     </center>
+                     <table class="table-responsive">
+                     <table class="table" border=1 width=100% bordercolor=black style="border-collapse:collapse; ">
+                     <table  class="table table-bordered" style="border:0px;">
+						<tr>
+							<th><center>Book Number</center></th>
+        						<td><input type="text" name="book_number" style="width:100%;"></td>
+        				</tr>
+    							<tr>
+    								<th><center>Student Library Card Number</center></th>
+    									<td><input type="text" name="library_card_num" style="width:100%""></td>
+    							</tr>
+    									
+    </table>
 
-    <p><label>Book Number</label>
-    <input type="text" name="book_number"></p>
-
-    <p><label>Studnet Library Card Number</label>
-    <input type="text" name="library_card_num"></p>
+ <center><input type="submit" class="button" value="Go" id="go">
+<input type="reset" class="button" value="Cancel" id="go">
 
 
-    <input type="submit" class="button" value="Go">
-
-
-</form>
-
-
+<br></center>
+<br>
+      
+    </div>
+  
+ </form>
+ </table>
+ </table>
 {% endblock %}

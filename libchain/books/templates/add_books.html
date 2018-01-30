@@ -2,14 +2,7 @@
 
 {% block content %}
 
-
-
-
-
-
-
-
-<form action="/books/add/" method="post" style="margin-top: 200px;">
+<form action="/books/add/" method="post" style="margin-top:100px;">
     {% csrf_token%}
  <div class="container">
                <div class="row">
@@ -29,28 +22,18 @@
                      <table class="table-responsive">
                      <table class="table" border=1 width=100% bordercolor=black style="border-collapse:collapse; ">
                      <table  class="table table-bordered" style="border:0px;">
-			<tr>
-			<th>
-		Book Name
-		</th>
-        <th>
-
-   <input type="text" name="book_name">
-    
-    <th></th></th></tr>
-    <th>
-
-    <p><label>Book Author</label></p></th>
-    <th>
-    <input type="text" name="book_name">
-    <tr><th>
-
-    <p><label>Book Description</label></p></th>
-    <th>
-    <input type="text" name="book_name">
-    
-    </th>
-
+						<tr>
+							<th><center>Book Name</center></th>
+        						<td><input type="text" name="book_name" style="width:100%""></td>
+        				</tr>
+    							<tr>
+    								<th><center>Book Author</center></th>
+    									<td><input type="text" name="book_name" style="width:100%""></td>
+    							</tr>
+    									<tr>
+    						 				<th><center>Book Description</center></th>
+    											<td><input type="text" name="book_name" style="width:100%"></td>
+    									</tr>
 
     </table>
 
@@ -71,8 +54,10 @@
 
     <p><label>Choose the Book Numbers Range:</label></p>
     <label>From</label> <input type="text" name="book_number_init"> <label>To</label> <input type="text" name="book_number_end"><br><br>
-<center><input type="submit" class="button" value="Add">
-<input type="reset" class="button" value="Cancel">
+
+    
+<center><input type="submit" class="button" value="Add" id="go">
+<input type="reset" class="button" value="Cancel" id="go">
 
 
 <br></center>
@@ -80,10 +65,7 @@
       
     </div>
   
-    
-
-
-</form>
+ </form>
 </table>
 </table>
 

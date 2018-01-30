@@ -147,6 +147,28 @@ ul li ul li {
 .off { text-decoration: line-through; color: rgb(86,86,86); }
 .space {height: 2px; background-color: #75b1ae;}
 
+#go{
+    width:100px;
+    margin: 10px;
+    color: #0f0;
+    font-size: 22px;
+    border: none;
+    background-color:#003300;  
+    text-align: center;
+    padding: 10px;   
+    font-family: times;   
+    border-radius: 0 60px 0 60px;
+    -webkit-transition: all 2s ease-in-out;
+    -moz-transition: all 2s ease-in-out;
+    -ms-transition: all 2s ease-in-out;
+    -o-transition: all 2s ease-in-out;
+}
+#go:hover{
+    background-color: #0f0; 
+    color: #fff;
+    border-radius: 60px 0 60px 0;
+    box-shadow: 0 0px 5px 2px rgba(0,0,0,0.5);
+}
 
  .form-control::-webkit-input-placeholder {
   color: lightgrey;
