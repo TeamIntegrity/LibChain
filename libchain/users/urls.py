@@ -10,5 +10,6 @@ urlpatterns = [
 
     url(r'^admin/dashboard/$', views.dashboard, name="dashboard"),
 
-    url(r'^details/(?P<libcard>[0-9]+)/$', views.user_detail, name="user_detail"),
+    url(r'^details/(?P<libcard>[0-9]+)/$', views.student_details, name="student_details"),
+    url(r'^details/$', views.student_search, name="student_search"),
 ]

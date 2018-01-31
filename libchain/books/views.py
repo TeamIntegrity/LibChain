@@ -103,7 +103,7 @@ def search(request):
     base = get_base(request)
 
     if request.method == 'POST':
-        query =  str(request.POST.get('param'))
+        query =  request.POST.get('param')
         if not query:
             return render(request, "search.html")
 
@@ -125,6 +125,44 @@ def search(request):
         return render(request, "search.html", context)
 
     return redirect("/home/")
+
+
+def details(request):
+    """ Find a books history """
+    base = get_base(request)
+
+    if request.method == "POST":
+        query = request.POST.get('query')
+
+        if query.isdecimal():
+            try:
+                book = Book.objects.get(book_number=query)
+            except:
+                book = None
+            context = {"base": base, "semesters": semesters, "departments": departments,
+                    "subjects": subjects, "book": book}
+        else:
+            books = BookDescription.objects.filter(
+                Q(name__icontains=query) | Q(author__icontains=query)
+                | Q(description__icontains=query) | Q(department__name__icontains=query)
+                | Q(subject__name__icontains=query)
+            )
+
+            context = {"base": base, "semesters": semesters, "departments": departments,
+                    "subjects": subjects, "books": books}
+    else:
+        context = {"base": base, "semesters": semesters, "departments": departments, "subjects": subjects}
+    return render(request, "book_details.html", context)
+
+
+def details_by_id(request, id):
+    """This will show the book's description based on the id"""
+    book = BookDescription.objects.get(id=id)
+    base = get_base(request)
+    context = {"book": book, "base": base, "semesters": semesters,
+                "departments": departments, "subjects": subjects}
+
+    return render(request, "bookdescription.html", context)
 
 
 

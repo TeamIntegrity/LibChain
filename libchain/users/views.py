@@ -5,6 +5,9 @@ from api.views import get_base, get_vars
 # Importing Django's default User model class for users
 from django.contrib.auth.models import User
 
+# Importing search utility tool Q
+from django.db.models import Q
+
 from users.models import Student, UserProfile, Staff
 
 from department.models import Department, Semester
@@ -241,7 +244,7 @@ def dashboard(request):
 
 
 
-def user_detail(request, libcard):
+def student_details(request, libcard):
     """
     This will act as the link for the admins to find details about the student
     """
@@ -256,4 +259,38 @@ def user_detail(request, libcard):
     tx_details = student.transaction_set.all()
     context = {"base": base, "student": student, "tx_details": tx_details, 'semesters': semesters,
     'departments': departments, 'subjects': subjects}
-    return render(request, "user_detail.html", context)
+    return render(request, "student_details.html", context)
+
+
+def student_search(request):
+    """
+    This will act as the link for the admins to find details about the student
+    """
+    base = get_base(request)
+
+    if request.method == "POST":
+        query = request.POST.get('query')
+
+        if query.isdecimal():
+            try:
+                student = Student.objects.get(libcard=query)
+            except:
+                try:
+                    student = Student.objects.get(rollno=query)
+                    notfound = False
+                except:
+                    student = None
+                    notfound = True
+            context = {"base": base, "student": student, "notfound": notfound, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects}
+        else:
+            students = Student.objects.filter(
+                Q(userprofile__user__first_name__icontains=query) |
+                Q(userprofile__user__last_name__icontains=query)
+                ).filter(userprofile__entity="student")
+
+            context = {"base": base, "students": students, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects}
+    else:
+        context = {"base": base, 'semesters': semesters, 'departments': departments, 'subjects': subjects}
+    return render(request, "student_search.html", context)
