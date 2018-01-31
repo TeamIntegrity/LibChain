@@ -1,41 +1,135 @@
 {% extends base %}
 
 {% block content %}
+<br>
+<br>
+<div>
+               <div class="row">
+               </div><br>
+
+
+                       <!-- Pack 1-->
+                       <div class="col-lg-2">
+                       </div>
+                        <div class="col-lg-8" id="home-box">
+                            <center>
+                            <div class="pricing_header">
+                                <h2>User Credentials</h2>
+                                <div class="space"></div>
+                     </div>
+                     </center>
 
 
 <form action="/books/issue/confirm/" method="post">
     {% csrf_token%}
 
-    <p><label>Book Name</label>
-    <input type="text" name="book_name" value="{{book.details.name}}" placeholder="{{book.details.name}}"></p>
+<li class="list-group-item">
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Book Name</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="{{book.details.name}}" placeholder="{{book.details.name}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
 
-    <p><label>Book Number</label>
-    <input type="text" name="book_number" value="{{book.book_number}}" placeholder="{{book.book_number}}"></p>
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Book Number</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;"  name="book_number" value="{{book.book_number}}" placeholder="{{book.book_number}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
 
-    <p><label>Author</label>
-    <input type="text" name="book_author" value="{{book.details.author}}" placeholder="{{book.details.author}}"></p>
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Author</label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="book_author" value="{{book.details.author}}" placeholder="{{book.details.author}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
+
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Student Name </label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="student_name" value="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}" placeholder="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
+
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Studnet Library Card Number </label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="libcard" value="{{student.libcard}}" placeholder="{{student.libcard}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
+
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Studnet Roll Number </label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="rollno" value="{{student.rollno}}" placeholder="{{student.rollno}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
+
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Branch </label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="branch" value="{{student.department_name}}" placeholder="{{student.department_name}}">
+         </center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         <hr>
+
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
+         <div class="form-group">
+         <center><label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Semester </label></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="semester" value="{{student.semester}}" placeholder="{{student.semester}}"></center>
+         </div>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+             
+</li>
+<br>
 
 
-    <p><label>Studnet Name</label>
-    <input type="text" name="student_name" value="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}" placeholder="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}"></p>
-
-    <p><label>Studnet Library Card Number</label>
-    <input type="text" name="libcard" value="{{student.libcard}}" placeholder="{{student.libcard}}"></p>
-
-    <p><label>Studnet Roll Number</label>
-    <input type="text" name="rollno" value="{{student.rollno}}" placeholder="{{student.rollno}}"></p>
-
-    <p><label>Branch</label>
-    <input type="text" name="branch" value="{{student.department_name}}" placeholder="{{student.department_name}}"></p>
-
-    <p><label>Semester</label>
-    <input type="text" name="semester" value="{{student.semester}}" placeholder="{{student.semester}}"></p>
-
-
+<center>
+    
     <input type="submit" class="button" value="Confirm">
-
+</center>
 
 </form>
 
-
+</div>
 {% endblock %}
