@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.decorators import login_required
+
 from api.views import get_base, get_vars
 
 # Importing Django's default User model class for users
@@ -164,6 +166,7 @@ def login(request):
 
 
 
+@login_required
 def logout(request):
     """This is the logout function"""
 
@@ -173,6 +176,7 @@ def logout(request):
 
 
 
+@login_required
 def profile(request):
     """This function will show the user their profile details"""
     user = User.objects.get(id=request.user.id)
@@ -193,6 +197,7 @@ def profile(request):
 
 
 
+@login_required
 def edit(request):
     """This function will let the user edit their details"""
     base = get_base(request)
@@ -235,21 +240,29 @@ def edit(request):
 
 
 
+@login_required
 def dashboard(request):
     """ This method will render the dashboard for the admin """
     base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     context = {'base': base, 'semesters': semesters, 'departments': departments, 'subjects': subjects}
     return render(request, "dashboard.html", context)
 
 
 
+@login_required
 def student_details(request, libcard):
     """
     This will act as the link for the admins to find details about the student
     """
 
     base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     try:
         student = Student.objects.get(libcard=libcard)
@@ -262,11 +275,16 @@ def student_details(request, libcard):
     return render(request, "student_details.html", context)
 
 
+
+@login_required
 def student_search(request):
     """
     This will act as the link for the admins to find details about the student
     """
     base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         query = request.POST.get('query')
@@ -274,6 +292,7 @@ def student_search(request):
         if query.isdecimal():
             try:
                 student = Student.objects.get(libcard=query)
+                notfound = False
             except:
                 try:
                     student = Student.objects.get(rollno=query)

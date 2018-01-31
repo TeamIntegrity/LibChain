@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.decorators import login_required
+
 import datetime
 
 # Importing students model
-from users.models import Student, Staff
+from users.models import UserProfile, Student, Staff
 
 # Importing transaction models
 from transactions.models import Transaction
@@ -127,9 +129,13 @@ def search(request):
     return redirect("/home/")
 
 
+@login_required
 def details(request):
     """ Find a books history """
     base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         query = request.POST.get('query')
@@ -155,8 +161,11 @@ def details(request):
     return render(request, "book_details.html", context)
 
 
+@login_required
 def details_by_id(request, id):
     """This will show the book's description based on the id"""
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
     book = BookDescription.objects.get(id=id)
     base = get_base(request)
     context = {"book": book, "base": base, "semesters": semesters,
@@ -165,10 +174,12 @@ def details_by_id(request, id):
     return render(request, "bookdescription.html", context)
 
 
-
+@login_required
 def add_books(request):
     """ This method will let the admins add books to the database """
     base = get_base(request)
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         book_name = request.POST.get("book_name")
@@ -205,10 +216,12 @@ def add_books(request):
     return render(request, "add_books.html", context)
 
 
-
+@login_required
 def issue(request):
     """ This method will allow admin to issue books to the student """
     base = get_base(request)
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -224,10 +237,12 @@ def issue(request):
                 "departments": departments, "subjects": subjects})
 
 
-
+@login_required
 def issue_confirm(request):
     """ This method will show details about the book and student and confirm the issue """
     base = get_base(request)
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -243,10 +258,12 @@ def issue_confirm(request):
         return redirect("/books/issue/")
 
 
-
+@login_required
 def return_book(request):
     """ This method will allow admin to take books back from students """
     base = get_base(request)
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
@@ -263,10 +280,12 @@ def return_book(request):
                 "departments": departments, "subjects": subjects})
 
 
-
+@login_required
 def return_confirm(request):
     """ This method will show details about the book and student and confirm the return """
     base = get_base(request)
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
 
     if request.method == "POST":
         book_number = request.POST.get("book_number")
