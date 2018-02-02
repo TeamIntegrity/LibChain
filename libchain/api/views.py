@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from users.models import UserProfile, Student, Staff
 
+from department.models import Semester, Subject, Department
+
 
 
 def get_base(request):
@@ -20,3 +22,13 @@ def get_base(request):
         base = "base.html"
 
     return base
+
+
+def get_vars():
+    """ This will return variables to be used in nav bar """
+
+    semesters = Semester.objects.all()
+    departments = Department.objects.all()
+    subjects = Subject.objects.all()[:5]
+
+    return (semesters, departments, subjects)

@@ -3,20 +3,13 @@
  {% block content %}
 
 {% if profile == 'student' %}
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <div>
 <div class="container">
                <div class="row">
                </div><br>
-                    
-                     
+
+
                        <!-- Pack 1-->
                        <div class="col-lg-2">
                        </div>
@@ -40,21 +33,11 @@
             <option value="" selected>
                {{student.department_name.name}}
             </option>
-            <option value="COMPUTER SCIENCE AND ENGINEERING">
-               COMPUTER SCIENCE AND ENGINEERING
+            {% for dep in departments %}
+            <option value="{{dep}}">
+               {{dep}}
             </option>
-            <option value="ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING">
-               ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING
-            </option>
-            <option value="ELECTRICAL AND ELCETRONICS ENGINEERING">
-               ELECTRICAL AND ELCETRONICS ENGINEERING
-            </option>
-            <option value="MECHANICAL ENGINEERING">
-               MECHANICAL ENGINEERING
-            </option>
-            <option value="CIVIL ENGINEERING">
-               CIVIL ENGINEERING
-            </option>
+            {% endfor %}
             </center>
           </select>
          <!--<input id="user" type="text" class="input" name="branch" placeholder={{student.department_name.name}}>-->
@@ -98,17 +81,32 @@
          </div>
          </li>
          <li class="list-group-item">
-
+         
+<div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">                       
          <div class="form-group">
          <center><label for="user" class="label" style="color: rgb(35, 176, 133);">Library Card Number</label></center>
-         <center><input id="user" type="text" class="input" name="libcard" placeholder={{student.libcard}}></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;"  name="libcard" Placeholder={{student.libcard}}></center>
          </div>
-         <hr>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         </li>
+
+         <li class="list-group-item">
+<div class="row">
+         <div class="col-md-3"></div>
+         <div class="col-md-6">
          <div class="form-group">
          <center><label for="user" class="label" style="color: rgb(35, 176, 133);">Phone</label></center>
-         <center><input id="user" type="text" class="input" name="phone" placeholder={{student.userprofile.phone}}></center>
+         <center><input id="user" type="text" class="input" style="font-size: 16px;" name="phone" Placeholder={{student.userprofile.phone}}></center>
          </div>
-         <hr>
+         </div>
+         <div class="col-md-3"></div>
+         </div>
+         </li>
+         <br>
          <div class="form-group">
          			<center><input type="submit" class="button" value="Save"></center>
          </div>
@@ -124,7 +122,7 @@
 
          <label for="user" class="label" style="color: rgb(35, 176, 133);">Name</label>
          <input id="user" type="text" class="input" name="name" placeholder={{staff.userprofile.user.first_name}}>
- 
+
          <label for="user" class="label" style="color: rgb(35, 176, 133);">Phone</label>
          <input id="user" type="text" class="input" name="phone" placeholder={{staff.userprofile.phone}}>
 
@@ -135,7 +133,7 @@
          <div class="form-group">
          <center><input type="submit" class="button" value="Save"></center>
          </div>
-         
+
       </form>
 </div>
 </ul>

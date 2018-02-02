@@ -13,8 +13,9 @@ class BookDescription(models.Model):
     available_stock = models.IntegerField()
 
     department = models.ManyToManyField(Department)
-    subject = models.ManyToManyField(Subject)
+    subject = models.ManyToManyField(Subject, blank=True)
     semester = models.ManyToManyField(Semester)
+    image_url = models.URLField(blank=True, null=True, default="{{book.image_url}}")
 
     def __str__(self):
         """To represent the objects name in the admin panel"""

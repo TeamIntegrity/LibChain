@@ -1,41 +1,40 @@
 {% extends base %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<section id="login">
+
+<section id="login" style="margin-top: -5%;">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
-                <h1>Please fill you Details</h1>
+
+                <h1>Start your journey of amazing e-library experience</h1>
                     <form role="form" action="/users/register/" method="post" id="login-form" autocomplete="off">
     {% csrf_token%}
 
 <div class="form-group">
-    <label for="name" class="sr-only">First Name</label>
-    <input id="user" type="text" class="form-control" name="first_name" placeholder="First Name">
+    <label>First Name</label>
+    <input id="user" type="text" class="form-control" style="font-size: 16px;" name="first_name" placeholder="First Name">
     </div>
     <div class="form-group">
-    <label for="user" class="sr-only">Last Name</label>
-    <input id="user" type="text" class="form-control" name="last_name" placeholder="Last Name">
+    <label>Last Name</label>
+    <input id="user" type="text" class="form-control" style="font-size: 16px;" name="last_name" placeholder="Last Name">
     </div>
     <div class="form-group">
-    <label for="email" class="sr-only">Email</label>
-    <input id="pass" type="text" class="form-control" name="email" placeholder="Email">
+    <label>Email</label>
+    <input id="pass" type="text" class="form-control" style="font-size: 16px;" name="email" placeholder="Email">
     </div>
     <div class="form-group">
-    <label for="email" class="sr-only">Roll Number</label>
-    <input id="pass" type="text" class="form-control" name="rollno" placeholder="Roll Number">
+    <label>Roll Number</label>
+    <input id="pass" type="text" class="form-control" style="font-size: 16px;" name="rollno" placeholder="316XXXXXXXX">
     </div>
     <div class="form-group">
-    <label for="pass" class="sr-only">Password</label>
-    <input id="pass" type="password" class="form-control" data-type="password" name="password1" placeholder="Password">
+    <label>Password</label>
+    <input id="pass" type="password" class="form-control" style="font-size: 16px;" data-type="password" name="password1" placeholder="********">
     </div>
     <div class="form-group">
-    <label for="pass" class="sr-only">Repeat Password</label>
-    <input id="pass" type="password" class="form-control" data-type="password" name="password2" placeholder="Confirm Password">
+    <label>Repeat Password</label>
+    <input id="pass" type="password" class="form-control" style="font-size: 16px;" data-type="password" name="password2" placeholder="********">
 </div>
 <div class="group">
 			<input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
@@ -45,5 +44,5 @@
 
 </form>
 <a href="/users/login/" class="forget" >Already a user? Sign-in.</a>
-
+</section>
 {% endblock %}

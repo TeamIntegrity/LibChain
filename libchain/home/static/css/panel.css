@@ -7,6 +7,10 @@
   font-style: normal;
 }
 
+.content {
+  margin-top: 100px;
+}
+
 .gallery
 {
     display: inline-block;
@@ -171,3 +175,54 @@ ul li ul li {
 }
     }
 
+ .form-control::-webkit-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-moz-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.navbar form input {
+    margin: 0 5px 1px 8px;
+        margin-top: 0px;
+        margin-right: 5px;
+    height: 1.5rem;
+    font-size: 16px;
+}
+.navbar .dropdown-menu a:hover {
+    color: green!important;
+}
+.navbar .dropdown-menu a {
+    font-size: 10px !important;
+}
+
+.input[type="date"], input[type="datetime-local"], input[type="email"], input[type="number"], input[type="password"], input[type="search-md"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], textarea.md-textarea {
+    height: 2.8rem;
+}
+
+.navbar form input {
+    height: 2.5rem;
+    
+}
