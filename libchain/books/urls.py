@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^search/$', views.search, name="search"),
 
     url(r'^details/$', views.details, name="details"),
-    url(r'^details/(?P<id>[0-9]+)/$', views.details_by_id, name="details_by_id"),
+    url(r'^details/(?P<num>[0-9]+)/$', views.details_by_num, name="details_by_num"),
 
     url(r'^add/$', views.add_books, name="add_books"),
 

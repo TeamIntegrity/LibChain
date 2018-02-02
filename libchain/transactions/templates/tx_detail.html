@@ -4,10 +4,10 @@
 
 <section>
 <div class="container">
-  <center><h2>Transactions</h2></center> 
+  <center><h2 style="color:#777777;">Your Book Records</h2></center>
   <hr>
-  <br>                                                          
-  <div class="table-responsive">          
+  <br>
+  <div class="table-responsive">
   <table class="table table-bordered table-hover" style="border-width: 2px;border-color: rgb(35, 176, 133);">
     <thead>
       <tr>
@@ -21,11 +21,11 @@
     </thead>
     <tbody>
       </tr>
-    
+
       {% for tx in tx_details %}
       <tr>
-        <td style="font-size: 12px;"> {{ tx.book.book_number }} </td>
-        <td style="font-size: 12px;"> {{ tx.book.details.name }} </td>
+        <td style="font-size: 12px;"><a href="/books/{{tx.book.details.id}}/"> {{ tx.book.book_number }} </a></td>
+        <td style="font-size: 12px;"><a href="/books/{{tx.book.details.id}}/"> {{ tx.book.details.name }} </a></td>
         <td style="font-size: 12px;"> {{ tx.issue_time }} </td>
         <td style="font-size: 12px;"> {{ tx.issue_hash }} </td>
         <td style="font-size: 12px;"> {{ tx.return_time }} </td>
@@ -35,7 +35,7 @@
 </tbody>
   </table>
   </div>
-</div>      
+</div>
 </section>
 
 {% endblock %}

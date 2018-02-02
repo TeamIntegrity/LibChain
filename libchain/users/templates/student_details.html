@@ -1,6 +1,8 @@
 {% extends base %}
 
 {% block content %}
+<center><h2 style="color:#777777;">Student Details</h2></center>
+<hr style="width: 30%;">
 
 	<center>
 		<h3>Name - {{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h3>
@@ -12,37 +14,38 @@
 
 
 	<section>
-	<!--for demo wrap-->
-	<h1>Transactions</h1>
-	<div>
-	  <table cellpadding="0" cellspacing="0" border="0">
+	<div class="container">
+	  <center><h2 style="color:#777777;">Activities Of {{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h2></center>
+	  <hr>
+	  <br>
+	  <div class="table-responsive">
+	  <table class="table table-bordered table-hover" style="border-width: 2px;border-color: rgb(35, 176, 133);">
 	    <thead>
 	      <tr>
-	        <th>Book Number</th>
-	        <th>Book Name</th>
-	        <th>Issued On</th>
-	        <th>Issue Tx Hash</th>
-	        <th>Returned On</th>
-	        <th>Return Tx Hash</th>
+	        <th style="font-size: 16px;">#</th>
+	        <th style="font-size: 16px;">Book name</th>
+	        <th style="font-size: 16px;">Issued On</th>
+	        <th style="font-size: 16px;">Issue Hash</th>
+	        <th style="font-size: 16px;">Return Time</th>
+	        <th style="font-size: 16px;">Return hash</th>
 	      </tr>
 	    </thead>
-	  </table>
-	</div>
-	<div>
-	  <table cellpadding="0" cellspacing="0" border="0">
 	    <tbody>
+	      </tr>
+
 	      {% for tx in tx_details %}
 	      <tr>
-	        <td> {{ tx.book.book_number }} </td>
-	        <td> {{ tx.book.details.name }} </td>
-	        <td> {{ tx.issue_time }} </td>
-	        <td> {{ tx.issue_hash }} </td>
-	        <td> {{ tx.return_time }} </td>
-	        <td> {{ tx.return_hash }} </td>
+	        <td style="font-size: 12px;"><a href="/books/details/{{tx.book.book_number}}/"> {{ tx.book.book_number }} </a></td>
+	        <td style="font-size: 12px;"><a href="/books/details/{{tx.book.book_number}}/"> {{ tx.book.details.name }} </a></td>
+	        <td style="font-size: 12px;"> {{ tx.issue_time }} </td>
+	        <td style="font-size: 12px;"><a href="#"> {{ tx.issue_hash }} </a></td>
+	        <td style="font-size: 12px;"> {{ tx.return_time }} </td>
+	        <td style="font-size: 12px;"><a href="#"> {{ tx.return_hash }} </a></td>
 	      </tr>
 	      {% endfor %}
-	      </tbody>
+	</tbody>
 	  </table>
+	  </div>
 	</div>
 	</section>
 

@@ -1,0 +1,82 @@
+{% extends base %}
+
+{% block content %}
+
+<div>
+        <div class='col-md-4' style="margin-left: 2.5%;">
+            <a class="thumbnail fancybox" rel="ligthbox" href="">
+                <img class="img-responsive" alt="" src="{{book.details.image_url}}">
+            </a>
+        </div>
+        <div class='col-md-7 '>
+
+                    <h4 class='text'><b>Name - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.details.name}}</b></h4>
+                    <hr>
+                    <h4 class='text'> <b>Author - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.details.author}} </b></h4>
+                    <hr>
+                    <h4 class='text'> <b>Description - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.details.description}} </b></h4>
+                    <hr>
+                    <h4 class='text'> <b>Available Stock - &nbsp;&nbsp;5</b></h4>
+                    <hr>
+
+        </div>
+    <div class="col-md-1"></div>
+    </div>
+
+
+<section>
+<div class="container">
+  <center><h2 style="color:#777777;">List Of Transaction For {{book.details.name}}</h2></center>
+  <hr>
+  <br>
+  <div class="table-responsive">
+  <table class="table table-bordered table-hover" style="border-width: 2px;border-color: rgb(35, 176, 133);">
+    <thead>
+      <tr>
+
+        <th style="font-size: 16px;">Student name</th>
+        <th style="font-size: 16px;">Issued On</th>
+        <th style="font-size: 16px;">Issue Hash</th>
+        <th style="font-size: 16px;">Return Time</th>
+        <th style="font-size: 16px;">Return hash</th>
+      </tr>
+    </thead>
+    <tbody>
+      </tr>
+
+      {% for tx in book_tx %}
+      <tr>
+        <td style="font-size: 12px;"><a href="/users/details/{{tx.student.libcard}}/"> {{ tx.student }} </a></td>
+        <td style="font-size: 12px;"> {{ tx.issue_time }} </td>
+        <td style="font-size: 12px;"><a href="#"> {{ tx.issue_hash }} </a></td>
+        <td style="font-size: 12px;"> {{ tx.return_time }} </td>
+        <td style="font-size: 12px;"><a href="#"> {{ tx.return_hash }} </a></td>
+      </tr>
+      {% endfor %}
+</tbody>
+  </table>
+  </div>
+</div>
+</section>
+
+{% if book %}
+	<center>
+		<a href="/books/details/{{book.details.id}}/"><h3>{{book.details.name}}</h3></a>
+	</center>
+
+{% elif books %}
+	{% for book in books %}
+	<center>
+		<a href="/books/details/{{book.id}}/"><h3>{{book.name}}</h3></a>
+	</center>
+{% endfor %}
+{% endif %}
+
+{% if notfound %}
+<center>
+	<h3 style="color:#777777;">No details found. Try again</h3>
+</center>
+{% endif %}
+
+
+{% endblock %}

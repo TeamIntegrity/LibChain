@@ -148,10 +148,10 @@ def details(request):
             context = {"base": base, "semesters": semesters, "departments": departments,
                     "subjects": subjects, "book": book}
         else:
-            books = BookDescription.objects.filter(
-                Q(name__icontains=query) | Q(author__icontains=query)
-                | Q(description__icontains=query) | Q(department__name__icontains=query)
-                | Q(subject__name__icontains=query)
+            books = Book.objects.filter(
+                Q(details__name__icontains=query) | Q(details__author__icontains=query)
+                | Q(details__description__icontains=query) | Q(details__department__name__icontains=query)
+                | Q(details__subject__name__icontains=query)
             )
 
             context = {"base": base, "semesters": semesters, "departments": departments,
@@ -162,16 +162,17 @@ def details(request):
 
 
 @login_required
-def details_by_id(request, id):
+def details_by_num(request, num):
     """This will show the book's description based on the id"""
     if UserProfile.objects.get(user=request.user).entity != 'staff':
         return redirect('/home/')
-    book = BookDescription.objects.get(id=id)
+    book = Book.objects.get(book_number=num)
     base = get_base(request)
+    book_tx = book.transaction_set.all()
     context = {"book": book, "base": base, "semesters": semesters,
-                "departments": departments, "subjects": subjects}
+                "departments": departments, "subjects": subjects, "book_tx": book_tx}
 
-    return render(request, "bookdescription.html", context)
+    return render(request, "book_details_num.html", context)
 
 
 @login_required
