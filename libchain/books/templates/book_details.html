@@ -24,13 +24,13 @@
 
 {% if book %}
 	<center>
-		<a href="/books/details/{{book.book_number}}/"><h3>{{book.details.name}}</h3></a>
+		<a href="/books/details/{{book.details.id}}/"><h3>{{book.details.name}}</h3></a>
 	</center>
 
 {% elif books %}
 	{% for book in books %}
 	<center>
-		<a href="/books/details/{{book.book_number}}/"><h3>{{book.name}}</h3></a>
+		<a href="/books/details/{{book.id}}/"><h3>{{book.name}}</h3></a>
 	</center>
 {% endfor %}
 {% endif %}

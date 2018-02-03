@@ -269,7 +269,7 @@ def student_details(request, libcard):
     except:
         return render(request, "error.html", {"message": "No user could be found with that card number", "base": base})
 
-    tx_details = student.transaction_set.all()
+    tx_details = student.transaction_set.all().order_by('-id')
     context = {"base": base, "student": student, "tx_details": tx_details, 'semesters': semesters,
     'departments': departments, 'subjects': subjects}
     return render(request, "student_details.html", context)

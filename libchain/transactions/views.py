@@ -27,7 +27,7 @@ def transaction(request, type):
             student = None
 
         if student != None:
-            tx_details = Transaction.objects.filter(student=student)
+            tx_details = Transaction.objects.filter(student=student).order_by('-id')
         else:
             return redirect("/")
 

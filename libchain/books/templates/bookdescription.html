@@ -21,9 +21,13 @@
                         <hr>
                         <h4 class='text'> <b>Description - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.description}} </b></h4>
                         <hr>
-                        <h4 class='text'> <b>Available Stock - &nbsp;&nbsp;5</b></h4>
+												{% if available == True %}
+                        <h4 class='text' style="color: green"> Available</h4>
+												{% else %}
+												<h4 class='text' style="color: red"> Not Available</h4>
+												{% endif %}
                         <hr>
-                        
+
             </div>
         <div class="col-md-1"></div>
         </div>

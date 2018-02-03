@@ -92,9 +92,14 @@ def by_subject(request, sub):
 def description(request, id):
     """This will show the book's description based on the id"""
     book = BookDescription.objects.get(id=id)
+    available_nos = len(list(Book.objects.filter(details=book, available=True)))
+    if available_nos > 0:
+        available = True
+    else:
+        available = False
     base = get_base(request)
     context = {"book": book, "base": base, "semesters": semesters,
-                "departments": departments, "subjects": subjects}
+                "departments": departments, "subjects": subjects, "available": available}
 
     return render(request, "bookdescription.html", context)
 
@@ -148,10 +153,10 @@ def details(request):
             context = {"base": base, "semesters": semesters, "departments": departments,
                     "subjects": subjects, "book": book}
         else:
-            books = Book.objects.filter(
-                Q(details__name__icontains=query) | Q(details__author__icontains=query)
-                | Q(details__description__icontains=query) | Q(details__department__name__icontains=query)
-                | Q(details__subject__name__icontains=query)
+            books = BookDescription.objects.filter(
+                Q(name__icontains=query) | Q(author__icontains=query)
+                | Q(description__icontains=query) | Q(department__name__icontains=query)
+                | Q(subject__name__icontains=query)
             )
 
             context = {"base": base, "semesters": semesters, "departments": departments,
@@ -166,11 +171,17 @@ def details_by_num(request, num):
     """This will show the book's description based on the id"""
     if UserProfile.objects.get(user=request.user).entity != 'staff':
         return redirect('/home/')
-    book = Book.objects.get(book_number=num)
+    book = BookDescription.objects.get(id=num)
     base = get_base(request)
-    book_tx = book.transaction_set.all()
-    context = {"book": book, "base": base, "semesters": semesters,
-                "departments": departments, "subjects": subjects, "book_tx": book_tx}
+    book_tx = Transaction.objects.filter(book__details=book).order_by('-id')
+    total_stock = len(list(Book.objects.filter(details=book)))
+    available_nos = len(list(Book.objects.filter(details=book, available=True)))
+    if available_nos > 0:
+        available = available_nos
+    else:
+        available = False
+    context = {"book": book, "base": base, "semesters": semesters, "available": available,
+                "total_stock": total_stock, "departments": departments, "subjects": subjects, "book_tx": book_tx}
 
     return render(request, "book_details_num.html", context)
 
@@ -229,8 +240,13 @@ def issue(request):
         library_card_num = request.POST.get("library_card_num")
 
         book = Book.objects.get(book_number=book_number)
+        if book.available == False:
+            context = {"book": book, "available": False, "base": base, "semesters": semesters,
+                        "departments": departments, "subjects": subjects}
+            return render(request, "issue_confirm.html", context)
+
         student = Student.objects.get(libcard=library_card_num)
-        context = {"book": book, "student": student, "base": base, "semesters": semesters,
+        context = {"book": book, "available": True, "student": student, "base": base, "semesters": semesters,
                     "departments": departments, "subjects": subjects}
         return render(request, "issue_confirm.html", context)
 
@@ -255,7 +271,8 @@ def issue_confirm(request):
         staff = Staff.objects.get(userprofile__user=request.user)
 
         Transaction.objects.create(staff=staff, student=student, book=book, issued=True, issue_time=datetime.datetime.now())
-
+        book.available = False
+        book.save()
         return redirect("/books/issue/")
 
 
@@ -270,7 +287,7 @@ def return_book(request):
         book_number = request.POST.get("book_number")
         library_card_num = request.POST.get("library_card_num")
 
-        book = Book.objects.get(book_number=book_number)
+        book = Book.objects.get(book_number=book_number, available=False)
         student = Student.objects.get(libcard=library_card_num)
         tx_detail = Transaction.objects.get(book=book, student=student, issued=True, returned=False)
         context = {"book": book, "student": student, "tx_detail": tx_detail, "base": base, "semesters": semesters,
@@ -301,5 +318,7 @@ def return_confirm(request):
         tx.return_time = datetime.datetime.now()
 
         tx.save()
+        book.available = True
+        book.save()
 
         return redirect("/books/return/")

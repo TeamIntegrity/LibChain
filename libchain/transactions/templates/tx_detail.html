@@ -28,7 +28,11 @@
         <td style="font-size: 12px;"><a href="/books/{{tx.book.details.id}}/"> {{ tx.book.details.name }} </a></td>
         <td style="font-size: 12px;"> {{ tx.issue_time }} </td>
         <td style="font-size: 12px;"> {{ tx.issue_hash }} </td>
+        {% if tx.return_time == None %}
+        <td style="font-size: 12px; color: #ef2d6e;"> <b>Yet To Be Returned</b> </td>
+        {% else %}
         <td style="font-size: 12px;"> {{ tx.return_time }} </td>
+        {% endif %}
         <td style="font-size: 12px;"> {{ tx.return_hash }} </td>
       </tr>
       {% endfor %}
