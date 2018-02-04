@@ -7,15 +7,18 @@
 
   <div class="container">
     <div class="row">
-        <div class= 'col-md-12'>
-          <h3 style="color: grey; margin-bottom: 10%;"> <u>Showing results for "{{query}}"</u> </h3>
-        </div>
+      <div class="row">
+      <div class= 'col-md-12'>
+        <center><h2 style="color:#777777;"> <b>Showing results for "{{query}}"</b> </h2></center>
+        <hr style="width: 100%;">
+      </div>
+    </div>
 
     <center>
-              <div class='row' style="margin-left: 2.5%;">
+              <div class='row'>
                 <div class="col-xs-12">
                   <div class="col-xs-2">
-                  <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.details.id}}/">
+                  <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{books_by_num.details.id}}/">
                       <img class="img-responsive" alt="" src="{{books_by_num.details.image_url}}">
                       <div class='text-center'>
                           <small class='text'>
@@ -34,31 +37,36 @@
   {% elif books_by_name|length > 0 %}
 
   <div class="container">
-  	<div class="row">
-  			<div class= 'col-md-12'>
-  				<h3 style="color: grey; margin-bottom: 3%;"> <u>Showing results for "{{query}}"</u> </h3>
-  			</div>
-
-  	<center>
-              <div class='row' style="margin-left: 2.5%;">
-  							<div class="col-xs-12">
-  								{% for book in books_by_name %}
-  								<div class="col-xs-2">
-                  <a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
-                      <img class="img-responsive" alt="" src="{{book.image_url}}">
-                      <div class='text-center'>
-                          <small class='text'>
-                           {{book.name}}<br>
-    						 			 		{{book.author}}
-                          </small>
-                      </div> <!-- text-right / end -->
-                  </a>
-  							</div>
-  								{% endfor %}
-              </div>
-          </div>
-       </center>
+    <div class="row">
+    <div class= 'col-md-12'>
+      <center><h2 style="color:#777777;"> <b>Showing results for "{{query}}"</b> </h2></center>
+      <hr style="width: 100%;">
+    </div>
   </div>
+
+  		<div class='row'>
+  				{% for book in books_by_name %}
+  						<div class="col-md-2">
+  								<a class="thumbnail fancybox" rel="ligthbox" href="/books/{{book.id}}/">
+  								    <img class="img-responsive" alt="" src="{{book.image_url}}">
+  								    <div class='text-center'>
+  								        <small class='text'>
+  								         {{book.name}}<br>
+  												 {{book.author}}
+  								        </small>
+  								    </div>
+  								</a>
+  						</div>
+
+  		{% if forloop.counter|divisibleby:"6" and not forloop.last %}
+  		</div>
+  	<hr style="width: 100%;">
+
+  	<div class="row">
+  		{% endif %}
+  		{% endfor %}
+  	</div>
+  	<hr style="width: 100%;">
   </div>
 
   {% else %}
