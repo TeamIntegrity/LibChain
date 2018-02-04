@@ -194,37 +194,41 @@ def add_books(request):
         return redirect('/home/')
 
     if request.method == "POST":
-        book_name = request.POST.get("book_name")
-        book_author = request.POST.get("book_author")
-        book_description = request.POST.get("book_description")
-
         book_number_init = int(request.POST.get("book_number_init"))
         book_number_end = int(request.POST.get("book_number_end"))
+        book_id = request.POST.get("existing_book")
 
-        initial_stock = (book_number_end - book_number_init)+1
+        if book_id:
+            book = BookDescription.objects.get(id=book_id)
 
-        book = BookDescription.objects.create(name=book_name, author=book_author,
-                description=book_description, initial_stock=initial_stock, available_stock=initial_stock)
+        else:
+            book_name = request.POST.get("book_name")
+            book_author = request.POST.get("book_author")
+            book_description = request.POST.get("book_description")
 
-        for department in departments:
-            dprt = Department.objects.get(name=department)
-            book.department.add(dprt)
+            book = BookDescription.objects.create(name=book_name, author=book_author,
+                    description=book_description)
 
-        for subject in subjects:
-            sub = Subject.objects.get(name=subject)
-            book.subject.add(sub)
+            for department in departments:
+                dprt = Department.objects.get(name=department)
+                book.department.add(dprt)
 
-        for semester in semesters:
-            sem = Semester.objects.get(semester=semester)
-            book.semester.add(sem)
+            for subject in subjects:
+                sub = Subject.objects.get(name=subject)
+                book.subject.add(sub)
+
+            for semester in semesters:
+                sem = Semester.objects.get(semester=semester)
+                book.semester.add(sem)
 
         for i in range(book_number_init, book_number_end+1):
             Book.objects.create(details=book, book_number=i)
 
         return redirect("/books/add/")
 
+    existing_books = BookDescription.objects.all().order_by('name')
     context = {"departments": departments, "semesters": semesters,
-                "subjects": subjects, "base": base}
+                "subjects": subjects, "base": base, "existing_books": existing_books}
     return render(request, "add_books.html", context)
 
 

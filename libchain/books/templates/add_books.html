@@ -48,6 +48,19 @@
     <p><input type="checkbox" name="semester" value="{{semester}}">{{semester}}</p>
     {% endfor %}
 
+    <p><label>Or choose the already existing book:</label></p>
+    <p><select  name="existing_book" class="form-input">
+      <option value="" selected>
+         Select a book
+      </option>
+      {% for book in existing_books %}
+      <option value="{{book.id}}">
+         {{book.name}}
+      </option>
+      {% endfor %}
+    </select></p>
+
+
     <p><label>Choose the Book Numbers Range:</label></p>
     <label>From</label> <input type="text" name="book_number_init"> <label>To</label> <input type="text" name="book_number_end"><br><br>
 
