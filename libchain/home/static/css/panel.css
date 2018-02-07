@@ -218,6 +218,52 @@ ul li ul li {
     font-size: 10px !important;
 }
 
+<<<<<<< HEAD
+=======
+ .form-control::-webkit-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-moz-placeholder {
+  color: lightgrey;
+  opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::-ms-input-placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.form-control::placeholder {
+  color: lightgrey;
+  opacity: 1;
+  font-size: 16px;
+}
+
+.navbar form input {
+    margin: 0 5px 1px 8px;
+        margin-top: 0px;
+        margin-right: 5px;
+    height: 1.5rem;
+    font-size: 16px;
+}
+.navbar .dropdown-menu a:hover {
+    color: green!important;
+}
+.navbar .dropdown-menu a {
+    font-size: 10px !important;
+}
+
+>>>>>>> 62f4f00b03ed684c71c836a41e0718b0d5913ce5
 .input[type="date"], input[type="datetime-local"], input[type="email"], input[type="number"], input[type="password"], input[type="search-md"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], textarea.md-textarea {
     height: 2.8rem;
 }
