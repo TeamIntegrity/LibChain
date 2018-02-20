@@ -1,0 +1,58 @@
+{% extends base %}
+
+{% block content %}
+<center><h2 style="color:#777777;">Student Details</h2></center>
+<hr style="width: 30%;">
+
+	<center>
+		<h3>Name - {{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h3>
+	  <h3>Roll Number - {{student.userprofile.user.username}}</h3>
+		<h3>Branch - {{student.department_name.name}}</h3>
+		<h3>Semester - {{student.semester.semester}} Semester</h3>
+		<h3>Library Card Number - {{student.libcard}}</h3>
+	</center>
+
+
+	<section>
+	<div class="container">
+	  <center><h2 style="color:#777777;">Activities Of {{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h2></center>
+	  <hr>
+	  <br>
+	  <div class="table-responsive">
+	  <table class="table table-bordered table-hover" style="border-width: 2px;border-color: rgb(35, 176, 133);">
+	    <thead>
+	      <tr>
+	        <th style="font-size: 16px;">Book Number</th>
+	        <th style="font-size: 16px;">Book name</th>
+	        <th style="font-size: 16px;">Issued On</th>
+	        <th style="font-size: 16px;">Issue Hash</th>
+	        <th style="font-size: 16px;">Return Time</th>
+	        <th style="font-size: 16px;">Return hash</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      </tr>
+
+	      {% for tx in tx_details %}
+	      <tr>
+	        <td style="font-size: 12px;"><a href="/books/details/{{tx.book.details.id}}/"> {{ tx.book.book_number }} </a></td>
+	        <td style="font-size: 12px;"><a href="/books/details/{{tx.book.details.id}}/"> {{ tx.book.details.name }} </a></td>
+	        <td style="font-size: 12px;"> {{ tx.issue_time }} </td>
+	        <td style="font-size: 12px;"><a href="#"> {{ tx.issue_hash }} </a></td>
+					{% if tx.return_time == None %}
+	        <td style="font-size: 12px; color: #ef2d6e;"> <b>Yet To Be Returned</b> </td>
+					{% else %}
+					<td style="font-size: 12px;"> {{ tx.return_time }} </td>
+					{% endif %}
+	        <td style="font-size: 12px;"><a href="#"> {{ tx.return_hash }} </a></td>
+	      </tr>
+	      {% endfor %}
+	</tbody>
+	  </table>
+	  </div>
+	</div>
+	</section>
+
+
+
+{% endblock %}

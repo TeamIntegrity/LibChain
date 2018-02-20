@@ -2,40 +2,117 @@
 
 {% block content %}
 
+{% if not available %}
+<div style="margin-top: 270px">
+<center><h2 style="color:#777777;"><a href="/books/details/{{book.details.id}}/">{{book.details.name}}</a> with number <a href="/books/details/{{book.details.id}}/">#{{book.book_number}}</a> has already been issued.</h2><h3 style="color:#777777;"><a href="/books/issue/">Try Again</a></h3></center>
+<hr style="width: 30%;">
+</div>
+{% else %}
+
+
+
+<!-- Pack 1-->
+<div class="col-lg-2">
+</div>
+<div class="col-lg-8" id="home-box">
+  <center><h2 style="color:#777777;">Confirm Issue</h2></center>
+  <hr style="width: 30%;">
+
 
 <form action="/books/issue/confirm/" method="post">
     {% csrf_token%}
 
-    <p><label>Book Name</label>
-    <input type="text" name="book_name" value="{{book.details.name}}" placeholder="{{book.details.name}}"></p>
 
-    <p><label>Book Number</label>
-    <input type="text" name="book_number" value="{{book.book_number}}" placeholder="{{book.book_number}}"></p>
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Book Name</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{book.details.name}}">
+         </div>
+</div>
+<hr>
 
-    <p><label>Author</label>
-    <input type="text" name="book_author" value="{{book.details.author}}" placeholder="{{book.details.author}}"></p>
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Book Author</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{book.details.author}}">
+         </div>
+</div>
+<hr>
+
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Book Number</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_number" value="{{book.book_number}}" placeholder="{{book.book_number}}">
+         </div>
+</div>
+<hr>
+
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Student Name</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}">
+         </div>
+</div>
+<hr>
+
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Student Library Card</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="libcard" value="{{student.libcard}}" placeholder="{{student.libcard}}">
+         </div>
+</div>
+<hr>
 
 
-    <p><label>Studnet Name</label>
-    <input type="text" name="student_name" value="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}" placeholder="{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}"></p>
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Student Roll Number</label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{student.rollno}}">
+         </div>
+</div>
+<hr>
 
-    <p><label>Studnet Library Card Number</label>
-    <input type="text" name="libcard" value="{{student.libcard}}" placeholder="{{student.libcard}}"></p>
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Branch </label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{student.department_name}}">
+         </div>
+</div>
+<hr>
 
-    <p><label>Studnet Roll Number</label>
-    <input type="text" name="rollno" value="{{student.rollno}}" placeholder="{{student.rollno}}"></p>
 
-    <p><label>Branch</label>
-    <input type="text" name="branch" value="{{student.department_name}}" placeholder="{{student.department_name}}"></p>
+<div class="row">
+        <div class="col-md-4 col-md-offset-2">
+        <label for="user" class="label" style="color: rgb(35, 176, 133);font-size: 16px;"> Semester </label>
+        </div>
+        <div class="col-md-4">
+         <input id="user" type="text" class="input" style="font-size: 16px;"  name="book_name" value="" placeholder="{{student.semester}}">
+         </div>
+</div>
+<hr>
 
-    <p><label>Semester</label>
-    <input type="text" name="semester" value="{{student.semester}}" placeholder="{{student.semester}}"></p>
 
+<center>
 
     <input type="submit" class="button" value="Confirm">
-
+</center>
 
 </form>
 
-
+</div>
+{% endif %}
 {% endblock %}

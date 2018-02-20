@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.decorators import login_required
+
 from api.views import get_base, get_vars
 
 from users.models import UserProfile, Student
@@ -11,6 +13,7 @@ from transactions.models import Transaction
 semesters, departments, subjects = get_vars()
 
 
+@login_required
 def transaction(request, type):
     """This will return the transaction detail table for
         specific users and can be filtered by the type
@@ -24,7 +27,7 @@ def transaction(request, type):
             student = None
 
         if student != None:
-            tx_details = Transaction.objects.filter(student=student)
+            tx_details = Transaction.objects.filter(student=student).order_by('-id')
         else:
             return redirect("/")
 

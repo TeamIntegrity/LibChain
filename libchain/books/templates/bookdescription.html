@@ -2,32 +2,30 @@
 
 {% block content %}
 
-		<div>
-            <div class='col-md-4' style="margin-left: 2.5%;">
-                <a class="thumbnail fancybox" rel="ligthbox" href="">
-                    <img class="img-responsive" alt="" src="{{book.image_url}}">
-                </a>
-            </div>
-            <div class='col-md-7 '>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-                        <h4 class='text'><b>Name - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.name}}</b></h4>
-                        <hr>
-                        <h4 class='text'> <b>Author - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.author}} </b></h4>
-                        <hr>
-                        <h4 class='text'> <b>Description - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{book.description}} </b></h4>
-                        <hr>
-                        <h4 class='text'> <b>Available Stock - &nbsp;&nbsp;5</b></h4>
-                        <hr>
-                        
-            </div>
-        <div class="col-md-1"></div>
+<div style="margin-top:8%;">
+  <div class="row">
+        <div class='col-md-2 col-md-offset-1'>
+            <a class="thumbnail fancybox" rel="ligthbox" href="">
+                <img class="img-responsive" alt="" src="{{book.image_url}}">
+            </a>
         </div>
+        <div class='col-md-6'>
+
+                    <h3 style="color:#777777;">{{book.name}}</h3>
+                    <h5 style="color:#777777;"> By - {{book.author}} </h5>
+                    <hr>
+                    <h4 class='text'> {{book.description}} </h4>
+                    <hr>
+										{% if available == True %}
+										<h4 class='text' style="color: green"> Available</h4>
+										{% else %}
+										<h4 class='text' style="color: red"> Not Available</h4>
+										{% endif %}
+                    <hr>
+        </div>
+
+  </div>
+</div>
 
 
 {% endblock %}
-                    <!-- text-right / end -->

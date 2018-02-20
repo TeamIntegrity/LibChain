@@ -7,31 +7,27 @@
  <div class="container">
                <div class="row">
                </div><br>
-                    
-                     
+
+
                        <!-- Pack 1-->
                        <div class="col-lg-2">
                        </div>
                         <div class="col-lg-8" id="home-box">
-                            <center>
-                            <div class="pricing_header">
-                                <h2>Add Books</h2>
-                                <div class="space"></div>
-                     </div>
-                     </center>
+                          <center><h2 style="color:#777777;">Add A New Book</h2></center>
+                          <hr style="width: 50%;">
                      <table class="table-responsive">
                      <table class="table" border=1 width=100% bordercolor=black style="border-collapse:collapse; ">
                      <table  class="table table-bordered" style="border:0px;">
 						<tr>
-							<th><center>Book Name</center></th>
+							<th style="font-size: 16px;"><center>Book Name</center></th>
         						<td><input type="text" name="book_name" style="width:100%""></td>
         				</tr>
     							<tr>
-    								<th><center>Book Author</center></th>
+    								<th style="font-size: 16px;"><center>Book Author</center></th>
     									<td><input type="text" name="book_name" style="width:100%""></td>
     							</tr>
     									<tr>
-    						 				<th><center>Book Description</center></th>
+    						 				<th style="font-size: 16px;"><center>Book Description</center></th>
     											<td><input type="text" name="book_name" style="width:100%"></td>
     									</tr>
 
@@ -52,19 +48,32 @@
     <p><input type="checkbox" name="semester" value="{{semester}}">{{semester}}</p>
     {% endfor %}
 
+    <p><label>Or choose the already existing book:</label></p>
+    <p><select  name="existing_book" class="form-input">
+      <option value="" selected>
+         Select a book
+      </option>
+      {% for book in existing_books %}
+      <option value="{{book.id}}">
+         {{book.name}}
+      </option>
+      {% endfor %}
+    </select></p>
+
+
     <p><label>Choose the Book Numbers Range:</label></p>
     <label>From</label> <input type="text" name="book_number_init"> <label>To</label> <input type="text" name="book_number_end"><br><br>
 
-    
+
 <center><input type="submit" class="button" value="Add" id="go">
 <input type="reset" class="button" value="Cancel" id="go">
 
 
 <br></center>
 <br>
-      
+
     </div>
-  
+
  </form>
 </table>
 </table>

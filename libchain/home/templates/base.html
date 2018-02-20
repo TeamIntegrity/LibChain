@@ -39,12 +39,12 @@
 <div class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav">
 	<li class="dropdown">
-          <a href="/home/" style="color:white; margin-top:5px;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+          <a href="/home/" style="color: white; margin-top:10px;"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
 	</li>
 
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-           Semester <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          <a href="/home/" style="color: white;  margin-top:10px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+           Semester <i class="fa fa-angle-down" aria-hidden="true"></i></a>
 
           <ul class="dropdown-menu">
             {% for sem in semesters %}
@@ -54,8 +54,8 @@
 	</li>
 
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Department <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          <a href="/home/" style="color: white; margin-top:10px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Department <i class="fa fa-angle-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
             {% for dep in departments %}
             <li><a href="/books/branch/{{dep}}/">{{dep}}</a></li>
@@ -64,8 +64,8 @@
 	</li>
 
 	<li class="dropdown">
-          <a href="/home/" style="color:white;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          Subject <i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          <a href="/home/" style="color: white; margin-top:10px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Subject <i class="fa fa-angle-down" aria-hidden="true"></i></a>
           <ul class="dropdown-menu">
             {% for sub in subjects %}
             <li><a href="/books/subject/{{sub}}/">{{sub}}</a></li>
@@ -73,27 +73,29 @@
           </ul>
 	</li>
 </ul>
-{% block nav %}
 
-{% endblock %}
 
 <form action="/books/search/" method="post" class="navbar-form navbar-left">
         {% csrf_token %}
       <div class="form-group">
        <input type="text" name="param" class="form-control mr-lg-2" style="width: 280px;margin-top:8px;color: #fff;" placeholder="Search for books">
        </div>
-       <button type="button"
-       class="btn btn-outline-success waves-effect btn-md" style="position:fixed;background-color: white;color: background:rgb(35, 176, 133);margin-top: 12px;" type="submit">Go</button>
+       <input class="btn btn-outline-success waves-effect btn-md" style="position:fixed;background-color: white;color: background:rgb(35, 176, 133);margin-top: 12px;" 
+       value="Go" type="submit">
+  
 
 </form>
 
 
+{% block nav %}
+
+{% endblock %}
 
 {% if not user.is_authenticated %}
-	<ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav" style="margin-left: 140px;">
     <li class="dropdown">
-            <a href="/home/" style="color:white;margin-right:18px;margin-top:5px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Signup <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+            <a href="/home/" style="color:white;margin-right:18px;margin-top:10px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Signup </a>
             <ul class="dropdown-menu">
               <li><a href="/users/register/" style="margin-top:5px;">Register </a></li>
               <li><a href="/users/login/" style="margin-top:5px;">Login </a></li>

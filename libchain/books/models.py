@@ -8,14 +8,12 @@ class BookDescription(models.Model):
     """This class will hold the description of the books"""
     name = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    description = models.TextField(blank=True, null=True)
-    initial_stock = models.IntegerField()
-    available_stock = models.IntegerField()
+    description = models.TextField(blank=True, default='')
 
     department = models.ManyToManyField(Department)
     subject = models.ManyToManyField(Subject, blank=True)
     semester = models.ManyToManyField(Semester)
-    image_url = models.URLField(blank=True, null=True, default="{{book.image_url}}")
+    image_url = models.URLField(blank=True, default='')
 
     def __str__(self):
         """To represent the objects name in the admin panel"""
@@ -27,6 +25,7 @@ class Book(models.Model):
     """This class will hold the book details specific to one book"""
     details = models.ForeignKey(BookDescription, on_delete=models.CASCADE)
     book_number = models.IntegerField()
+    available = models.BooleanField(default=True)
 
     def __str__(self):
         """To represent the objects name in the admin panel"""

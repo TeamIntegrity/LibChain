@@ -1,0 +1,45 @@
+{% extends base %}
+
+{% block content %}
+
+<section id="login">
+    <div class="container">
+    	<div class="row">
+    	    <div class="col-xs-12">
+        	    <div class="form-wrap">
+                    <form role="form" action="/users/details/" method="post" id="login-form" autocomplete="off">
+    {% csrf_token%}
+													<div class="form-group">
+
+                            <input type="text" name="query" id="pass" class="form-control" style="font-size: 16px;" placeholder="Search by roll no, library card, name">
+                        </div>
+
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Go">
+                    </form>
+        	    </div>
+    		</div> <!-- /.col-xs-12 -->
+    	</div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+
+{% if student %}
+	<center>
+		<a href="/users/details/{{student.libcard}}/"><h3>{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h3></a>
+	</center>
+
+{% elif students %}
+	{% for student in students %}
+	<center>
+		<a href="/users/details/{{student.libcard}}/"><h3>{{student.userprofile.user.first_name}} {{student.userprofile.user.last_name}}</h3></a>
+	</center>
+{% endfor %}
+{% endif %}
+
+{% if notfound %}
+<center>
+	<h3 style="color:#777777;">No details found. Try again</h3>
+</center>
+{% endif %}
+
+
+{% endblock %}

@@ -1,9 +1,14 @@
 from django.shortcuts import render, redirect
 
+from django.contrib.auth.decorators import login_required
+
 from api.views import get_base, get_vars
 
 # Importing Django's default User model class for users
 from django.contrib.auth.models import User
+
+# Importing search utility tool Q
+from django.db.models import Q
 
 from users.models import Student, UserProfile, Staff
 
@@ -138,7 +143,11 @@ def login(request):
         if user:
             if user.is_active:
                 auth_login(request, user)
-                return redirect('/home/')
+                entity = UserProfile.objects.get(user=user).entity
+                if entity == "staff":
+                    return redirect('/users/admin/dashboard/')
+                else:
+                    return redirect('/home/')
             else:
                 message = """The user is not active.
                             Kindly contact the administrator"""
@@ -157,6 +166,7 @@ def login(request):
 
 
 
+@login_required
 def logout(request):
     """This is the logout function"""
 
@@ -166,6 +176,7 @@ def logout(request):
 
 
 
+@login_required
 def profile(request):
     """This function will show the user their profile details"""
     user = User.objects.get(id=request.user.id)
@@ -186,6 +197,7 @@ def profile(request):
 
 
 
+@login_required
 def edit(request):
     """This function will let the user edit their details"""
     base = get_base(request)
@@ -228,19 +240,76 @@ def edit(request):
 
 
 
-def user_detail(request, libcard):
+@login_required
+def dashboard(request):
+    """ This method will render the dashboard for the admin """
+    base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
+
+    context = {'base': base, 'semesters': semesters, 'departments': departments, 'subjects': subjects}
+    return render(request, "dashboard.html", context)
+
+
+
+@login_required
+def student_details(request, libcard):
     """
     This will act as the link for the admins to find details about the student
     """
 
     base = get_base(request)
 
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
+
     try:
         student = Student.objects.get(libcard=libcard)
     except:
         return render(request, "error.html", {"message": "No user could be found with that card number", "base": base})
 
-    tx_details = student.transaction_set.all()
+    tx_details = student.transaction_set.all().order_by('-id')
     context = {"base": base, "student": student, "tx_details": tx_details, 'semesters': semesters,
     'departments': departments, 'subjects': subjects}
-    return render(request, "user_detail.html", context)
+    return render(request, "student_details.html", context)
+
+
+
+@login_required
+def student_search(request):
+    """
+    This will act as the link for the admins to find details about the student
+    """
+    base = get_base(request)
+
+    if UserProfile.objects.get(user=request.user).entity != 'staff':
+        return redirect('/home/')
+
+    if request.method == "POST":
+        query = request.POST.get('query')
+
+        if query.isdecimal():
+            try:
+                student = Student.objects.get(libcard=query)
+                notfound = False
+            except:
+                try:
+                    student = Student.objects.get(rollno=query)
+                    notfound = False
+                except:
+                    student = None
+                    notfound = True
+            context = {"base": base, "student": student, "notfound": notfound, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects}
+        else:
+            students = Student.objects.filter(
+                Q(userprofile__user__first_name__icontains=query) |
+                Q(userprofile__user__last_name__icontains=query)
+                ).filter(userprofile__entity="student")
+
+            context = {"base": base, "students": students, 'semesters': semesters,
+            'departments': departments, 'subjects': subjects}
+    else:
+        context = {"base": base, 'semesters': semesters, 'departments': departments, 'subjects': subjects}
+    return render(request, "student_search.html", context)

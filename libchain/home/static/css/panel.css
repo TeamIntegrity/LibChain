@@ -11,6 +11,10 @@
   margin-top: 100px;
 }
 
+.block-nav {
+  margin-left: 100px;
+}
+
 .gallery
 {
     display: inline-block;
@@ -31,8 +35,9 @@
 }
 
 ul li {
-  font-size: 20px;
+  font-size: 16px;
   font-family: Arial;
+  font-weight: bold;
 }
 
 ul li ul li {
@@ -150,24 +155,15 @@ ul li ul li {
 #go{
     width:100px;
     margin: 10px;
-    color: #0f0;
-    font-size: 22px;
+    color: white;
+    font-size: 16px;
     border: none;
-    background-color:#003300;  
+    background-color:rgb(35, 176, 133);
     text-align: center;
-    padding: 10px;   
-    font-family: times;   
-    border-radius: 0 60px 0 60px;
-    -webkit-transition: all 2s ease-in-out;
-    -moz-transition: all 2s ease-in-out;
-    -ms-transition: all 2s ease-in-out;
-    -o-transition: all 2s ease-in-out;
+    padding: 5px;
+    font-family: arial;
 }
 #go:hover{
-    background-color: #0f0; 
-    color: #fff;
-    border-radius: 60px 0 60px 0;
-    box-shadow: 0 0px 5px 2px rgba(0,0,0,0.5);
 }
 
  .form-control::-webkit-input-placeholder {
@@ -219,5 +215,33 @@ ul li ul li {
 
 .navbar form input {
     height: 2.5rem;
-    
+
+}
+
+.panel {
+    margin-bottom: 20px;
+    border: 1px solid #b5b6b7;
+    background-color: #fff;
+    border-radius: 5px;
+
+}
+
+.panel > a {
+  text-decoration:none;
+}
+
+.panel:hover
+{
+    z-index: 2;
+    border: 1px solid rgb(35, 176, 133);
+    -webkit-box-shadow: 1px 1px 1px 1px rgb(35, 176, 133);
+    box-shadow: 1px 1px 1px 1px rgb(35, 176, 133);
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.05);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.05);
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.05);
+    transition: all 200ms ease-in;
+    transform: scale(1.05);
 }
